@@ -1,0 +1,125 @@
+.header {
+  font-family: "Roboto", "Inter", Arial, sans-serif;
+  display: block;
+  background-image: url("../../images/header_background.svg");
+  object-fit: cover;
+  background-position: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: 1440px 576px;
+}
+
+.header-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
+}
+
+.header-bar__link {
+  display: block;
+  height: 24px;
+  width: 200px;
+  margin: 30px auto 26px 104px;
+}
+
+.header-bar__menu {
+  display: flex;
+  flex-direction: row;
+  margin-right: 104px;
+}
+
+.header-bar__authtorisation {
+  height: 48px;
+  width: 176px;
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  border-radius: 100px;
+  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #fff;
+  background: none;
+  margin: 19px 0 13px 32px;
+}
+
+.header-bar__link-to-main {
+  color: #fff;
+  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  text-decoration: none;
+  margin-top: 30px;
+  outline: none;
+}
+
+.header-search {
+  display: block;
+  width: 608px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.header-search__title {
+  font-family: "Roboto Slab", "Inter", Arial, sans-serif;
+  font-size: 60px;
+  line-height: 1.06;
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 32px;
+}
+
+.header-search__text {
+  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.header-search__input-fild {
+  position: relative;
+
+  margin-top: 64px;
+}
+
+.header-search__input {
+  height: 64px;
+  width: 608px;
+  background: #fff;
+  border-radius: 100px;
+  border: 1px solid #d1d2d6;
+  box-sizing: border-box;
+  outline: none;
+  box-shadow: none;
+  padding-left: 24px;
+  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #1a1b22;
+}
+
+.header-search__input::placeholder {
+  color: #b6bcbf;
+}
+
+.header-search__search-button {
+  height: 64px;
+  width: 168px;
+  background-color: #2f71e5;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  border-radius: 100px;
+  padding: 0;
+  outline: none;
+  border: none;
+}

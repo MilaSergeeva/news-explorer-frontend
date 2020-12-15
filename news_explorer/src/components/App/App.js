@@ -1,23 +1,25 @@
-import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import React, { useState } from "react";
+// import { Redirect, Route, Switch } from "react-router-dom";
 import Header from "../Header/Header.js";
-import Login from "../Login/Login.js";
-import Register from "../Register/Register.js";
-import GenericNotFound from "../GenericNotFound/GenericNotFound.js";
-import InfoTooltip from "../InfoTooltip/InfoTooltip.js";
-import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
-import Footer from "../Footer/Footer.js";
+// import Login from "../Login/Login.js";
+// import Register from "../Register/Register.js";
+// import GenericNotFound from "../GenericNotFound/GenericNotFound.js";
+// import InfoTooltip from "../InfoTooltip/InfoTooltip.js";
+// import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
+// import Footer from "../Footer/Footer.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import "./App.css";
 
 function App() {
+  const [currentUser, setСurrentUser] = useState({});
+
   return (
-    <CurrentUserContext.Provider>
+    <CurrentUserContext.Provider value={currentUser}>
       <div className="root">
         <div className="page">
           <Header />
           <main className="content">
-            <Switch>
+            {/* <Switch>
               <Route exact path="/users/me" />
 
               <Route exact path="/users/me" />
@@ -31,15 +33,15 @@ function App() {
               <Route path="*">
                 <GenericNotFound />
               </Route>
-            </Switch>
+            </Switch> */}
           </main>
-          <Footer />
+          {/* <Footer /> */}
         </div>
 
         <section className="popup-forms">
-          <PopupWithForm />
+          {/* <PopupWithForm /> */}
 
-          <InfoTooltip />
+          {/* <InfoTooltip /> */}
         </section>
       </div>
     </CurrentUserContext.Provider>
