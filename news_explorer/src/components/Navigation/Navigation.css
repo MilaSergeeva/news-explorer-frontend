@@ -1,0 +1,45 @@
+.header-bar__menu {
+  display: flex;
+  flex-direction: row;
+  margin-right: 104px;
+}
+
+.header-bar__button {
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  border-radius: 100px;
+  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #fff;
+  background: none;
+  margin: 19px 0 13px 32px;
+  padding: 12px 19px;
+}
+
+.header-bar__exit-img {
+  margin-left: 15px;
+}
+.header-bar__link-to-main {
+  color: #fff;
+  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  text-decoration: none;
+  margin-top: 30px;
+  outline: none;
+}
+
+.header-bar__saved-news {
+  color: #fff;
+  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  text-decoration: none;
+  margin-top: 30px;
+  outline: none;
+  margin-left: 34px;
+}

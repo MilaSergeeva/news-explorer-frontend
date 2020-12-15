@@ -6,7 +6,8 @@ import Header from "../Header/Header.js";
 // import GenericNotFound from "../GenericNotFound/GenericNotFound.js";
 // import InfoTooltip from "../InfoTooltip/InfoTooltip.js";
 // import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
-// import Footer from "../Footer/Footer.js";
+import Main from "../Main/Main.js";
+import Footer from "../Footer/Footer.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import "./App.css";
 
@@ -19,6 +20,7 @@ function App() {
         <div className="page">
           <Header />
           <main className="content">
+            <Main />
             {/* <Switch>
               <Route exact path="/users/me" />
 
@@ -35,7 +37,7 @@ function App() {
               </Route>
             </Switch> */}
           </main>
-          {/* <Footer /> */}
+          <Footer />
         </div>
 
         <section className="popup-forms">

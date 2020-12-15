@@ -1,0 +1,36 @@
+.profile__container {
+  display: flex;
+  flex-direction: colrowumn;
+  /* display: inline-block; */
+}
+
+.profile__avatar {
+  height: 464px;
+  width: 464px;
+  border-radius: 50%;
+  display: block;
+}
+
+.profile__about {
+  display: block;
+  max-width: 600px;
+  margin-left: 56px;
+  margin-top: 51px;
+}
+
+.profile__title {
+  color: #000;
+  font-family: "Roboto Slab", "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.profile__context {
+  color: #000;
+  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.3;
+}
