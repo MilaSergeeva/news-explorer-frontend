@@ -28,6 +28,9 @@ function NewsCard() {
           <div className="news-card__search-tag">
             <p className="news-card__search-tag-text">Кашалот</p>
           </div>
+          <div className="news-card__search-tag">
+            <p className="news-card__search-tag-text">Кашалот</p>
+          </div>
           <button
             type="button"
             aria-label="delete"
