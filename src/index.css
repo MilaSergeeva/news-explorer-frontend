@@ -1,0 +1,15 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/index.css);
+
+.page {
+  max-width: 1440px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  background-image: url("./images/header_background.svg");
+  /* object-fit: cover; */
+  /* background-position: center; */
+  /* box-sizing: border-box; */
+  /* overflow: visible; */
+  background-repeat: no-repeat;
+  background-size: 1440px 576px;
+}

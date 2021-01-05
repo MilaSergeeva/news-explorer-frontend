@@ -1,14 +1,8 @@
 .header {
   font-family: "Roboto", "Inter", Arial, sans-serif;
   display: block;
-  background-image: url("../../images/header_background.svg");
-  object-fit: cover;
-  background-position: center;
-  box-sizing: border-box;
-  overflow: hidden;
-  background-repeat: no-repeat;
-  background-size: 1440px 576px;
-  padding: 0 104px;
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .header-bar {
@@ -17,6 +11,7 @@
   justify-content: space-between;
   box-shadow: inset 0px -1px 0px #d1d2d6;
   box-sizing: border-box;
+  padding-left: 104px;
 }
 
 .header-bar__link {
@@ -24,4 +19,8 @@
   height: 24px;
   width: 200px;
   margin: 30px auto 26px 0;
+}
+
+.background-transparency {
+  background-color: rgba(255, 255, 255, 1);
 }

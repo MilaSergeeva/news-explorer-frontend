@@ -21,21 +21,6 @@ function App() {
           <Header />
           <main className="content">
             <Main />
-            {/* <Switch>
-              <Route exact path="/users/me" />
-
-              <Route exact path="/users/me" />
-
-              <Route exact path="/signin">
-                <Login />
-              </Route>
-              <Route exact path="/signup">
-                <Register />
-              </Route>
-              <Route path="*">
-                <GenericNotFound />
-              </Route>
-            </Switch> */}
           </main>
           <Footer />
         </div>

@@ -3,10 +3,18 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import NewsCardList from "../NewsCardList/NewsCardList.js";
 import About from "../About/About.js";
+import SearchForm from "../SearchForm/SearchForm.js";
+import InfoTooltip from "../InfoTooltip/InfoTooltip.js";
 
 function Main() {
   return (
     <div>
+      <Route exact path="/">
+        <SearchForm />
+      </Route>
+      <Route exact path="/saved-news">
+        <InfoTooltip />
+      </Route>
       <section className="search-result">
         <div className="search-result-success">
           <h2 className="search-result-success__tile">Результаты поиска</h2>

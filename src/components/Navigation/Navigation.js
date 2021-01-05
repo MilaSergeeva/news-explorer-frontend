@@ -1,15 +1,31 @@
 import "./Navigation.css";
 import exitImg from "../../images/exit.svg";
-import React from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, Route, Switch } from "react-router-dom";
+import cn from "classnames";
 
 function Navigation() {
+  const [isActive, setIsActive] = useState(false);
+
   return (
     <div className="header-bar__menu">
       <Route path="/*">
-        <Link to="/" className="header-bar__link-to-main">
+        <NavLink
+          activeStyle={{ borderBottom: "solid #fff 2px" }}
+          exact
+          to="/"
+          className="header-bar__nav-link"
+        >
           <p>Главная</p>
-        </Link>
+        </NavLink>
+        <NavLink
+          activeStyle={{ borderBottom: "solid #000 2px" }}
+          exact
+          to="/saved-news"
+          className="header-bar__nav-link"
+        >
+          <p className="header-bar__saved-news">Сохраненные статьи</p>
+        </NavLink>
       </Route>
 
       <Switch>
@@ -23,7 +39,6 @@ function Navigation() {
           </button>
         </Route>
         <Route exact path="/saved-news">
-          <p className="header-bar__saved-news">Сохраненные статьи</p>
           <button
             type="button"
             aria-label="Авторизация"
