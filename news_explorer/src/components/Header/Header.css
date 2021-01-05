@@ -8,13 +8,14 @@
   overflow: hidden;
   background-repeat: no-repeat;
   background-size: 1440px 576px;
+  padding: 0 104px;
 }
 
 .header-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0px -1px 0px #d1d2d6;
   box-sizing: border-box;
 }
 
@@ -22,5 +23,5 @@
   display: block;
   height: 24px;
   width: 200px;
-  margin: 30px auto 26px 104px;
+  margin: 30px auto 26px 0;
 }

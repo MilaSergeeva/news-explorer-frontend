@@ -1,7 +1,6 @@
 .header-bar__menu {
   display: flex;
   flex-direction: row;
-  margin-right: 104px;
 }
 
 .header-bar__button {
@@ -30,6 +29,7 @@
   text-decoration: none;
   margin-top: 30px;
   outline: none;
+  border-bottom: solid #fff 2px;
 }
 
 .header-bar__saved-news {
@@ -42,4 +42,5 @@
   margin-top: 30px;
   outline: none;
   margin-left: 34px;
+  border-bottom: solid #000 2px;
 }

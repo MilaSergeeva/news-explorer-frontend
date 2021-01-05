@@ -1,0 +1,35 @@
+.user-info {
+  padding: 40px 0 56px 0;
+  background-color: #fff;
+  color: #000;
+}
+
+.user-info__title {
+  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  margin-bottom: 28px;
+  max-width: 50%;
+}
+
+.user-info__main-info {
+  font-family: "Roboto Slab", "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.15;
+  margin-bottom: 30px;
+  max-width: 50%;
+}
+
+.user-info__additional-info {
+  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  max-width: 50%;
+}
+
+.user-info__additional-info_font_bold {
+  font-weight: 700;
+}

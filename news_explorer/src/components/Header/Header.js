@@ -4,6 +4,7 @@ import React from "react";
 import { Link, Route } from "react-router-dom";
 import SearchForm from "../SearchForm/SearchForm.js";
 import Navigation from "../Navigation/Navigation.js";
+import InfoTooltip from "../InfoTooltip/InfoTooltip.js";
 
 function Header() {
   return (
@@ -18,6 +19,9 @@ function Header() {
       </div>
       <Route exact path="/">
         <SearchForm />
+      </Route>
+      <Route exact path="/saved-news">
+        <InfoTooltip />
       </Route>
     </header>
   );
