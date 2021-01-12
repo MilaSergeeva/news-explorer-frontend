@@ -2,20 +2,16 @@ import "./NewsCard.css";
 import React from "react";
 import { Link, Route } from "react-router-dom";
 
-function NewsCard() {
-  const newsTitle =
-    'Ученые приступили к расшифровке щелчковой "речи" кашалотов';
-  const newsText =
-    "Океанологи впервые обнаружили и записали то, как кашалоты общаются друг с другом, используя своеобразную ультразвуковую речь из коротких и длинных повторяющихся щелчков, похожих на азбуку Морзе, говорится в статье, опубликованной в Journal of the Acoustical Society of America.";
+function NewsCard({ card, ...rest }) {
+  // const newsTitle =
+  //   'Ученые приступили к расшифровке щелчковой "речи" кашалотов';
+  // const newsText =
+  //   "Океанологи впервые обнаружили и записали то, как кашалоты общаются друг с другом, используя своеобразную ультразвуковую речь из коротких и длинных повторяющихся щелчков, похожих на азбуку Морзе, говорится в статье, опубликованной в Journal of the Acoustical Society of America.";
 
-  const newsResource = "Лента.ру";
+  // const newsResource = "Лента.ру";
   return (
     <figure className="news-card">
-      <img
-        className="news-card__img"
-        src="https://i.pinimg.com/originals/a9/b8/4b/a9b84bf853a4cda320710ad2691adcf7.jpg"
-        alt="Кашалот"
-      />
+      <img className="news-card__img" src={card.image} alt={card.tag} />
       <div className="news-card__lables">
         <Route exact path="/">
           <button
@@ -25,12 +21,10 @@ function NewsCard() {
           />
         </Route>
         <Route exact path="/saved-news">
-          <div className="news-card__search-tag">
-            <p className="news-card__search-tag-text">Кашалот</p>
-          </div>
-          <div className="news-card__search-tag">
-            <p className="news-card__search-tag-text">Кашалот</p>
-          </div>
+          <p className="news-card__search-tag">{card.tag}</p>
+          <p className="news-card__delete-notification">
+            Убрать из сохранённых
+          </p>
           <button
             type="button"
             aria-label="delete"
@@ -38,13 +32,15 @@ function NewsCard() {
           />
         </Route>
       </div>
-      <figcaption className="news-card__context">
+      <figcaption className="news-card__inf-container">
         <time className="news-card__date" datetime="2002-09-15">
-          15 сентября, 2002
+          {card.date}
         </time>
-        <h3 className="news-card__title">{newsTitle}</h3>
-        <p className="news-card__text">{newsText}</p>
-        <p className="news-card__resource">{newsResource.toUpperCase()}</p>
+        <div className="news-card__content">
+          <h3 className="news-card__title">{card.title}</h3>
+          <p className="news-card__text">{card.text}</p>
+        </div>
+        <p className="news-card__resource">{card.resource}</p>
       </figcaption>
     </figure>
   );

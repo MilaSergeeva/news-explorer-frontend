@@ -1,12 +1,12 @@
 .user-info {
-  padding: 40px 0 56px 0;
+  padding: 40px 104px 56px 104px;
   background-color: #fff;
   color: #000;
+  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-weight: 400;
 }
 
 .user-info__title {
-  font-family: "Roboto", "Inter", Arial, sans-serif;
-  font-weight: 400;
   font-size: 18px;
   line-height: 1.33;
   margin-bottom: 28px;
@@ -15,7 +15,6 @@
 
 .user-info__main-info {
   font-family: "Roboto Slab", "Inter", Arial, sans-serif;
-  font-weight: 400;
   font-size: 40px;
   line-height: 1.15;
   margin-bottom: 30px;
@@ -23,8 +22,6 @@
 }
 
 .user-info__additional-info {
-  font-family: "Roboto", "Inter", Arial, sans-serif;
-  font-weight: 400;
   font-size: 18px;
   line-height: 1.33;
   max-width: 50%;

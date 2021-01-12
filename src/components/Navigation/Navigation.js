@@ -9,24 +9,26 @@ function Navigation() {
 
   return (
     <div className="header-bar__menu">
-      <Route path="/*">
-        <NavLink
-          activeStyle={{ borderBottom: "solid #fff 2px" }}
-          exact
-          to="/"
-          className="header-bar__nav-link"
-        >
-          <p>Главная</p>
-        </NavLink>
-        <NavLink
-          activeStyle={{ borderBottom: "solid #000 2px" }}
-          exact
-          to="/saved-news"
-          className="header-bar__nav-link"
-        >
-          <p className="header-bar__saved-news">Сохраненные статьи</p>
-        </NavLink>
-      </Route>
+      {/* <Route path="/*"> */}
+      <NavLink
+        activeStyle={{ borderBottom: "solid #fff 2px", color: "#fff" }}
+        style={{ color: "#000" }}
+        exact
+        to="/"
+        className="header-bar__nav-link"
+      >
+        <p>Главная</p>
+      </NavLink>
+      <NavLink
+        activeStyle={{ borderBottom: "solid #000 2px", color: "#000" }}
+        style={{ color: "#fff" }}
+        exact
+        to="/saved-news"
+        className="header-bar__nav-link"
+      >
+        <p className="header-bar__saved-news">Сохраненные статьи</p>
+      </NavLink>
+      {/* </Route> */}
 
       <Switch>
         <Route exact path="/">
@@ -42,7 +44,7 @@ function Navigation() {
           <button
             type="button"
             aria-label="Авторизация"
-            className="header-bar__button"
+            className="header-bar__button color-black"
           >
             Имя
             <img

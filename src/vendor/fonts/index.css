@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("./roboto/Roboto-Light.woff?v=3.13") format("woff");
+  src: url("./roboto/roboto-regular.woff?v=3.13") format("woff");
 }
 
 @font-face {
@@ -11,7 +11,15 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("./roboto/Roboto-Regular.woff?v=3.13") format("woff");
+  src: url("./roboto/roboto-medium.woff?v=3.13") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("./roboto/roboto-black.woff?v=3.13") format("woff");
 }
 
 @font-face {
@@ -19,7 +27,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("./roboto_slab/RobotoSlab-SemiBold.woff?v=3.13") format("woff");
+  src: url("./roboto_slab/robotoSlab-SemiBold.woff?v=3.13") format("woff");
 }
 
 @font-face {
@@ -27,16 +35,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("./roboto_slab/RobotoSlab-Light.woff?v=3.13") format("woff");
-}
-
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("./inter/inter-regular.woff2?v=3.13") format("woff2"),
-    url("./inter/inter-regular.woff?v=3.13") format("woff");
+  src: url("./roboto_slab/robotoslab-regular.woff?v=3.13") format("woff");
 }
 
 @font-face {
@@ -44,15 +43,23 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("./inter/Inter-Light.woff?v=3.13") format("woff");
+  src: url("./inter/inter-regular.woff?v=3.13") format("woff");
 }
 
 @font-face {
   font-family: "Inter";
   font-style: normal;
-  font-weight: 700;
+  font-weight: 300;
   font-display: swap;
-  src: url("./inter/Inter-SemiBold.woff?v=3.13") format("woff");
+  src: url("./inter/inter-light.woff?v=3.13") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./inter/inter-semiBold.woff?v=3.13") format("woff");
 }
 
 @font-face {
@@ -60,6 +67,5 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("./source_sans_pro/source-sans-pro.woff?v=3.13") format("woff"),
-    url("./source_sans_pro/source-sans-pro.woff2?v=3.13") format("woff2");
+  src: url("./source_sans_pro/sourcesanspro-regular.woff?v=3.13") format("woff");
 }
