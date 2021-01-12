@@ -26,7 +26,7 @@
   .header-bar__menu {
     flex-direction: column;
     grid-column: 1 / span 2;
-    padding-right: 0;
+    padding: 0 16px 24px;
   }
 }
 
@@ -49,6 +49,13 @@
   }
 }
 
+@media screen and (max-width: 600px) {
+  .header-bar__button {
+    margin: 30px 0 0;
+    padding: 15px 74px 17px;
+  }
+}
+
 .header-bar__exit-img {
   margin-left: 15px;
 }
@@ -63,6 +70,13 @@
   .header-bar__nav-link {
     margin-left: 16px;
     margin-top: 22px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header-bar__nav-link {
+    display: inline;
+    margin-top: 30px;
   }
 }
 

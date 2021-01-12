@@ -5,6 +5,14 @@
   background-color: rgba(255, 255, 255, 0);
 }
 
+@media screen and (max-width: 600px) {
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
 .header-bar {
   display: flex;
   flex-direction: row;
@@ -81,9 +89,8 @@
     box-shadow: inset 0px -1px 0px #d1d2d6;
     box-sizing: border-box;
     margin: 0;
-
     padding-right: 16px;
-    padding-top: auto;
+    padding-top: 24px;
     padding-bottom: auto;
     padding-left: auto;
   }
@@ -93,8 +100,9 @@
   width: 16px;
   height: 2px;
   background-color: #fff;
-  margin: 4px;
+  margin-bottom: 4px;
   transition: 0.4s;
+  margin-left: auto;
 }
 
 .header-bar__menu-tag-line2 {
@@ -102,4 +110,5 @@
   height: 2px;
   background-color: #fff;
   transition: 0.4s;
+  margin-left: auto;
 }
