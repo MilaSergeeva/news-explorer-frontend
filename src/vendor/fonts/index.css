@@ -27,7 +27,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("./roboto_slab/robotoSlab-SemiBold.woff?v=3.13") format("woff");
+  src: url("./roboto_slab/robotoSlab-semiBold.woff?v=3.13") format("woff");
 }
 
 @font-face {
@@ -35,7 +35,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("./roboto_slab/robotoslab-regular.woff?v=3.13") format("woff");
+  src: url("./roboto_slab/robotoSlab-regular.woff?v=3.13") format("woff");
 }
 
 @font-face {

@@ -43,6 +43,10 @@
   justify-content: space-between;
   display: flex;
   flex-direction: row;
+  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
 }
 
 @media screen and (max-width: 780px) {
@@ -94,10 +98,6 @@
   background-color: #fff;
   background-size: 24px 24px;
   background-image: url("../../images/trash.svg");
-}
-
-.news-card__delete-btn:hover {
-  background-image: url("../../images/trashBlack.svg");
 }
 
 .news-card__inf-container {
@@ -193,15 +193,14 @@
 .news-card__delete-notification {
   display: block;
   border-radius: 10px;
-  margin: 0 5px 0 auto;
   background-color: #fff;
-  padding: 13px 0;
-  font-family: "Roboto", "Inter", Arial, sans-serif;
-  font-weight: 500;
+  padding: 13px 10px;
   font-size: 12px;
-  line-height: 1.2;
-  text-align: center;
-  width: 159px;
+  position: absolute;
+  top: 0;
+  right: 45px;
+  opacity: 0;
+  transition: opacity 1s ease 0.1s;
 }
 
 @media screen and (max-width: 780px) {
@@ -211,4 +210,35 @@
     font-size: 10px;
     width: 90px;
   }
+}
+
+.news-card__delete-btn:hover {
+  background-image: url("../../images/trashBlack.svg");
+}
+
+.news-card__delete-btn:hover + .news-card__delete-notification {
+  opacity: 1;
+}
+
+.news-card__save-btn:hover {
+  background-image: url("../../images/saveHover.svg");
+}
+
+.news-card__save-notification {
+  display: inline-block;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 14px 10px;
+  font-size: 10px;
+  line-height: 1.2;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  right: 45px;
+  opacity: 0;
+  transition: opacity 1s ease 0.1s;
+}
+
+.news-card__save-btn:hover + .news-card__save-notification {
+  opacity: 1;
 }

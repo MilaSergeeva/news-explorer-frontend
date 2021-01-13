@@ -4,11 +4,13 @@ import React, { useState } from "react";
 import { NavLink, Route, Switch } from "react-router-dom";
 import cn from "classnames";
 
-function Navigation() {
+function Navigation({ isMenuOpened }) {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <div className="header-bar__menu">
+    <div
+      className={`header-bar__menu ${isMenuOpened === true ? "opened" : ""}`}
+    >
       {/* <Route path="/*"> */}
       <NavLink
         activeStyle={{ borderBottom: "solid #fff 2px", color: "#fff" }}

@@ -19,17 +19,20 @@ function NewsCard({ card, ...rest }) {
             aria-label="save"
             className="news-card__save-btn"
           />
+          <p className="news-card__save-notification">
+            Войдите, чтобы сохранять статьи
+          </p>
         </Route>
         <Route exact path="/saved-news">
           <p className="news-card__search-tag">{card.tag}</p>
-          <p className="news-card__delete-notification">
-            Убрать из сохранённых
-          </p>
           <button
             type="button"
             aria-label="delete"
             className="news-card__delete-btn"
           />
+          <p className="news-card__delete-notification">
+            Убрать из сохранённых
+          </p>
         </Route>
       </div>
       <figcaption className="news-card__inf-container">
