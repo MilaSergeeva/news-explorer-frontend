@@ -13,6 +13,7 @@ import "./App.css";
 
 function App() {
   const [currentUser, setСurrentUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState(true);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -20,7 +21,7 @@ function App() {
         <div className="page">
           <Header />
           <main className="content">
-            <Main />
+            <Main loggedIn={loggedIn} />
           </main>
           <Footer />
         </div>

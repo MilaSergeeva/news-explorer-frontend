@@ -1,36 +1,38 @@
 import "./Navigation.css";
 import exitImg from "../../images/exit.svg";
 import React, { useState } from "react";
-import { NavLink, Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch, Link } from "react-router-dom";
 import cn from "classnames";
 
 function Navigation({ isMenuOpened }) {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
+
+  const toggleLinkActiveStatus = () => {
+    isActive ? setIsActive(false) : setIsActive(true);
+  };
 
   return (
     <div
       className={`header-bar__menu ${isMenuOpened === true ? "opened" : ""}`}
     >
-      {/* <Route path="/*"> */}
       <NavLink
-        activeStyle={{ borderBottom: "solid #fff 2px", color: "#fff" }}
-        style={{ color: "#000" }}
         exact
         to="/"
-        className="header-bar__nav-link"
+        activeClassName="activeMain"
+        className="header-bar__nav-link color-black"
+        onClick={toggleLinkActiveStatus}
       >
         <p>Главная</p>
       </NavLink>
       <NavLink
-        activeStyle={{ borderBottom: "solid #000 2px", color: "#000" }}
-        style={{ color: "#fff" }}
         exact
         to="/saved-news"
-        className="header-bar__nav-link"
+        activeClassName="activeSavedNews"
+        className="header-bar__nav-link color-white"
+        onClick={toggleLinkActiveStatus}
       >
         <p className="header-bar__saved-news">Сохраненные статьи</p>
       </NavLink>
-      {/* </Route> */}
 
       <Switch>
         <Route exact path="/">
@@ -43,18 +45,20 @@ function Navigation({ isMenuOpened }) {
           </button>
         </Route>
         <Route exact path="/saved-news">
-          <button
-            type="button"
-            aria-label="Авторизация"
-            className="header-bar__button color-black"
-          >
-            Имя
-            <img
-              className="header-bar__exit-img"
-              src={exitImg}
-              alt="знак выхода"
-            />
-          </button>
+          <Link to="/">
+            <button
+              type="button"
+              aria-label="Авторизация"
+              className="header-bar__button color-black"
+            >
+              Имя
+              <img
+                className="header-bar__exit-img"
+                src={exitImg}
+                alt="знак выхода"
+              />
+            </button>
+          </Link>
         </Route>
       </Switch>
     </div>

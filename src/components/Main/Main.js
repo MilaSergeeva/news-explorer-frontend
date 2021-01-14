@@ -7,7 +7,7 @@ import SearchForm from "../SearchForm/SearchForm.js";
 import InfoTooltip from "../InfoTooltip/InfoTooltip.js";
 import Preloader from "../Preloader/Preloader.js";
 
-function Main() {
+function Main({ loggedIn }) {
   return (
     <div className="main-content">
       <Route exact path="/">
@@ -20,7 +20,7 @@ function Main() {
       <section className="search-result">
         {/* <div className="search-result-success">
           <h2 className="search-result-success__tile">Результаты поиска</h2> */}
-        <NewsCardList />
+        <NewsCardList loggedIn={loggedIn} />
         {/* <button
             type="button"
             aria-label="Показать еще"

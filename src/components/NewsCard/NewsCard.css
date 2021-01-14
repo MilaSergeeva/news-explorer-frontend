@@ -225,7 +225,7 @@
 }
 
 .news-card__save-notification {
-  display: inline-block;
+  display: none;
   border-radius: 10px;
   background-color: #fff;
   padding: 14px 10px;
@@ -241,4 +241,12 @@
 
 .news-card__save-btn:hover + .news-card__save-notification {
   opacity: 1;
+}
+
+.saved {
+  background-image: url("../../images/saveActive.svg");
+}
+
+.saved:hover {
+  background-image: url("../../images/saveActive.svg");
 }

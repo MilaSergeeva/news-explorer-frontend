@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import NewsCard from "../NewsCard/NewsCard.js";
 import cardsList from "../../utils/cardslist.js";
 
-function NewsCardList() {
+function NewsCardList({ loggedIn }) {
   const [cards, setCards] = useState(cardsList);
   const [itemsToShow, setItemsToShow] = useState(3);
 
@@ -15,8 +15,10 @@ function NewsCardList() {
     <div className="search-result-success">
       <h2 className="search-result-success__tile">Результаты поиска</h2>
       <div className="news-card-list">
-        {cards.slice(0, itemsToShow).map((place) => {
-          return <NewsCard key={place._id} card={place} />;
+        {cards.slice(0, itemsToShow).map((newsCard) => {
+          return (
+            <NewsCard key={newsCard._id} card={newsCard} loggedIn={loggedIn} />
+          );
         })}
       </div>
       <button

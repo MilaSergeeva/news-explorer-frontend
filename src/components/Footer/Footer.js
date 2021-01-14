@@ -11,8 +11,8 @@ function Footer() {
         &copy; 2020 Supersite, Powered by News API
       </p>
       <Route path="/*">
-        <nav class="footer__nav">
-          <ul class="footer__nav-links">
+        <nav className="footer__nav">
+          <ul className="footer__nav-links">
             <li>
               <Link to="/" className="footer__nav-link">
                 <p className="footer__link-to-main">Главная</p>
@@ -28,7 +28,7 @@ function Footer() {
             </li>
           </ul>
 
-          <ul class="footer__sosial-links">
+          <ul className="footer__sosial-links">
             <li>
               <Link to="https://github.com" className="footer__gitHub-logo">
                 <img

@@ -57,7 +57,11 @@ function Header() {
               <div className="header-bar__menu-icon-line2"></div>
             </div>
           </div>
-          <Navigation isMenuOpened={isMenuOpened} />
+          <Navigation
+            style={{ color: "#fff" }}
+            toggleMenu={toggleMenu}
+            isMenuOpened={isMenuOpened}
+          />
         </div>
       </Route>
       <Route exact path="/saved-news">
@@ -75,7 +79,7 @@ function Header() {
               <div className="header-bar__menu-icon-line2 white-theme-menu-icon-background"></div>
             </div>
           </div>
-          <Navigation isMenuOpened={isMenuOpened} />
+          <Navigation style={{ color: "#000" }} isMenuOpened={isMenuOpened} />
         </div>
       </Route>
     </header>
