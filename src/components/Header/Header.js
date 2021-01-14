@@ -5,6 +5,7 @@ import headerLogoBlack from "../../images/newsExplorerBlack.svg";
 import React, { useState } from "react";
 import { Link, Route } from "react-router-dom";
 import Navigation from "../Navigation/Navigation.js";
+import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader.js";
 
 function Header() {
   const [darkBackground, setDarkBackground] = useState(false);
@@ -65,22 +66,7 @@ function Header() {
         </div>
       </Route>
       <Route exact path="/saved-news">
-        <div className="header-bar white-theme">
-          <Link to="/" className="header-bar__logo-link">
-            <img
-              className="header-bar__logo"
-              src={headerLogoBlack}
-              alt="Логотип"
-            />
-          </Link>
-          <div className="header-bar__menu-icon-container">
-            <div className="header-bar__menu-icon" onClick={animateMenuTag}>
-              <div className="header-bar__menu-icon-line1 white-theme-menu-icon-background"></div>
-              <div className="header-bar__menu-icon-line2 white-theme-menu-icon-background"></div>
-            </div>
-          </div>
-          <Navigation style={{ color: "#000" }} isMenuOpened={isMenuOpened} />
-        </div>
+        <SavedNewsHeader isMenuOpened={isMenuOpened} onClick={animateMenuTag} />
       </Route>
     </header>
   );

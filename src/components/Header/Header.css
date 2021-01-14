@@ -77,11 +77,6 @@
   }
 }
 
-.white-theme {
-  background-color: rgba(255, 255, 255, 1);
-  color: #000;
-}
-
 @media screen and (max-width: 600px) {
   .dark-theme {
     background-color: rgba(26, 27, 34, 1);
@@ -137,10 +132,6 @@
   transition: 0.4s;
   margin: 0;
   display: inline-block;
-}
-
-.white-theme-menu-icon-background {
-  background-color: #000;
 }
 
 .change .header-bar__menu-icon-line1 {
