@@ -33,6 +33,6 @@
 
 @media screen and (max-width: 600px) {
   .search-result-fail__paragraph {
-    width: 300;
+    max-width: 300;
   }
 }
