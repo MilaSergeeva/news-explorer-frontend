@@ -2,14 +2,29 @@ import "./Register.css";
 import React from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 
-const Register = ({ onClose, isOpen, onRedirect }) => {
+const Register = ({
+  onClose,
+  isOpen,
+  onRedirect,
+  onClick,
+  modalRef,
+  isValid,
+  emailHandler,
+  passwordHandler,
+  nameHandler,
+  inputError,
+  inputValue,
+}) => {
   return (
     <PopupWithForm
       name="regstration"
       title="Регистрация"
       savebtn="Зарегистрироваться"
       onClose={onClose}
+      onClick={onClick}
+      modalRef={modalRef}
       isOpen={isOpen}
+      isValid={isValid}
       redirectTo=" Войти"
       onRedirect={onRedirect}
     >
@@ -23,9 +38,17 @@ const Register = ({ onClose, isOpen, onRedirect }) => {
           minLength="5"
           maxLength="40"
           autoComplete="off"
+          value={inputValue.email}
+          onInput={emailHandler}
           required
         />
-        <span className="popup__error"></span>
+        <span
+          className={`popup__error ${
+            inputError.email ? "popup__error_visible" : ""
+          }`}
+        >
+          {inputError.email ? "Нeправильный формат email" : ""}
+        </span>
       </div>
 
       <div className="popup__input-container">
@@ -38,9 +61,19 @@ const Register = ({ onClose, isOpen, onRedirect }) => {
           minLength="8"
           maxLength="30"
           autoComplete="off"
+          value={inputValue.password}
+          onInput={passwordHandler}
           required
         />
-        <span className="popup__error"></span>
+        <span
+          className={`popup__error ${
+            inputError.password ? "popup__error_visible" : ""
+          }`}
+        >
+          {inputError.password
+            ? "Нeправильный формат пароля. Минимум 8 знаков, цыфр, букв и специальных символов"
+            : ""}
+        </span>
       </div>
 
       <div className="popup__input-container">
@@ -53,9 +86,17 @@ const Register = ({ onClose, isOpen, onRedirect }) => {
           minLength="2"
           maxLength="30"
           autoComplete="off"
+          value={inputValue.name}
+          onInput={nameHandler}
           required
         />
-        <span className="popup__error"></span>
+        <span
+          className={`popup__error ${
+            inputError.name ? "popup__error_visible" : ""
+          }`}
+        >
+          {inputError.name ? "Поле должно быть заполнено" : ""}
+        </span>
       </div>
     </PopupWithForm>
   );

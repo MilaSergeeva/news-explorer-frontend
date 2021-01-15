@@ -20,7 +20,7 @@ function App() {
   const [darkBackgroundHeader, setDarkBackgroundHeader] = useState(false);
   const [clickedOutside, setClickedOutside] = useState(false);
   const [isActiveMenuLink, setIsActiveMenuLink] = useState(true);
-  const myRef = useRef();
+  const modalRef = useRef();
 
   //закрытие модального окна
   function closeAllPopups() {
@@ -30,7 +30,10 @@ function App() {
 
   //нажатие кнопки авторизации в меню
   const handleAutorizationClick = () => {
+    console.log("clickef authorization");
+
     setIsLoginPopupOpen(true);
+
     if (isMenuOpened === true) {
       setIsMenuOpened(false);
       setDarkBackgroundHeader(false);
@@ -39,10 +42,13 @@ function App() {
 
   //перенаправление внутри модального окна (войти/зарегистрироваться)
   const handleRedirect = () => {
+    console.log("is login popup", isLoginPopupOpen, isRegisterPopupOpen);
+
     if (isLoginPopupOpen === true) {
       setIsLoginPopupOpen(false);
       setIsRegisterPopupOpen(true);
     } else {
+      console.log("open login popup");
       setIsLoginPopupOpen(true);
       setIsRegisterPopupOpen(false);
     }
@@ -91,7 +97,7 @@ function App() {
 
   //закрытие модального окна по оверлей
   const handleClickOutside = (e) => {
-    if (!myRef.current.contains(e.target)) {
+    if (!modalRef.current.contains(e.target)) {
       setClickedOutside(true);
       closeAllPopups();
     }
@@ -99,10 +105,71 @@ function App() {
 
   const handleClickInside = () => setClickedOutside(false);
 
+  //валидация формы
+
+  const [inputValue, setInputValue] = useState({
+    email: "",
+    password: "",
+    name: "",
+  });
+
+  // наличие ошибки при вводе данных
+  const [inputError, setInputError] = useState({
+    email: false,
+    password: false,
+    name: false,
+  });
+
+  //валидность формы
+  const [isValid, setIsValid] = useState(false);
+
+  //состояние ошибки отправки формы
+  //const [submitError, setSubmitError] = useState("");
+
+  //обработчик инпута email
+  function emailHandler(e) {
+    setInputValue({ ...inputValue, email: e.target.value });
+    const reg = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{2,15}$/i;
+    if (!reg.test(e.target.value)) {
+      setInputError({ ...inputError, email: true });
+    } else {
+      setInputError({ ...inputError, email: false });
+    }
+  }
+
+  //обработчик инпута имени
+  function nameHandler(e) {
+    setInputValue({ ...inputValue, name: e.target.value });
+    if (e.target.value.length < 3) {
+      setInputError({ ...inputError, name: true });
+    } else {
+      setInputError({ ...inputError, name: false });
+    }
+  }
+
+  //обработчик инпута имени
+  function passwordHandler(e) {
+    setInputValue({ ...inputValue, password: e.target.value });
+    const reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&~])[A-Za-z\d@$!%*#?&~]{8,}$/i;
+    if (!reg.test(e.target.value)) {
+      setInputError({ ...inputError, password: true });
+    } else {
+      setInputError({ ...inputError, password: false });
+    }
+  }
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   });
+
+  useEffect(() => {
+    if (inputError.email & inputError.password & inputError.name) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -128,17 +195,28 @@ function App() {
           <Login
             isOpen={isLoginPopupOpen}
             onClose={closeAllPopups}
-            // onUpdateUser={handleUpdateUser}
             onRedirect={handleRedirect}
-            onRef={myRef}
+            modalRef={modalRef}
             onClick={handleClickInside}
+            inputValue={inputValue}
+            isValid={isValid}
+            emailHandler={emailHandler}
+            passwordHandler={passwordHandler}
+            inputError={inputError}
           />
 
           <Register
             isOpen={isRegisterPopupOpen}
             onClose={closeAllPopups}
-            // onUpdateUser={handleUpdateUser}
             onRedirect={handleRedirect}
+            modalRef={modalRef}
+            onClick={handleClickInside}
+            inputValue={inputValue}
+            isValid={isValid}
+            emailHandler={emailHandler}
+            passwordHandler={passwordHandler}
+            nameHandler={nameHandler}
+            inputError={inputError}
           />
         </section>
       </div>

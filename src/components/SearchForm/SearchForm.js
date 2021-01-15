@@ -18,6 +18,7 @@ function SearchForm() {
           minLength="2"
           maxLength="40"
           autoComplete="off"
+          pattern="^[A-Za-zА-Яа-я]{2,40}$"
           required
         />
         <button

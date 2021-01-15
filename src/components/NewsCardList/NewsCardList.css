@@ -51,6 +51,10 @@
   cursor: pointer;
 }
 
+.search-result-success__button:hover {
+  opacity: 0.9;
+}
+
 @media screen and (max-width: 780px) {
   .search-result-success__button {
     height: 56px;

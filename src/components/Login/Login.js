@@ -2,7 +2,19 @@ import React from "react";
 import "./Login.css";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 
-const Login = ({ onClose, isOpen, onRedirect, onClick, onRef }) => {
+const Login = ({
+  onClose,
+  isOpen,
+  onRedirect,
+  onClick,
+  modalRef,
+  inputValue,
+  isValid,
+  emailHandler,
+  passwordHandler,
+  inputError,
+}) => {
+  console.log(isValid);
   return (
     <PopupWithForm
       name="login"
@@ -12,7 +24,8 @@ const Login = ({ onClose, isOpen, onRedirect, onClick, onRef }) => {
       onClose={onClose}
       onRedirect={onRedirect}
       onClick={onClick}
-      onRef={onRef}
+      modalRef={modalRef}
+      isValid={isValid}
       redirectTo=" Зарегистрироваться"
     >
       <div className="popup__input-container">
@@ -25,9 +38,17 @@ const Login = ({ onClose, isOpen, onRedirect, onClick, onRef }) => {
           minLength="5"
           maxLength="40"
           autoComplete="off"
+          value={inputValue.email}
+          onInput={emailHandler}
           required
         />
-        <span className="popup__error"></span>
+        <span
+          className={`popup__error ${
+            inputError.email ? "popup__error_visible" : ""
+          }`}
+        >
+          {inputError.email ? "Нeправильный формат email" : ""}
+        </span>
       </div>
 
       <div className="popup__input-container">
@@ -40,9 +61,19 @@ const Login = ({ onClose, isOpen, onRedirect, onClick, onRef }) => {
           minLength="8"
           maxLength="30"
           autoComplete="off"
+          value={inputValue.password}
+          onInput={passwordHandler}
           required
         />
-        <span className="popup__error"></span>
+        <span
+          className={`popup__error ${
+            inputError.password ? "popup__error_visible" : ""
+          }`}
+        >
+          {inputError.password
+            ? "Нeправильный формат пароля. Минимум 8 знаков, цыфр, букв и специальных символов"
+            : ""}
+        </span>
       </div>
     </PopupWithForm>
   );

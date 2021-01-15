@@ -8,7 +8,7 @@ const PopupWithForm = (props) => {
     >
       <div
         className="popup__container"
-        ref={props.onRef}
+        ref={props.modalRef}
         onClick={props.onClick}
       >
         <button
@@ -29,7 +29,7 @@ const PopupWithForm = (props) => {
             {props.children}
             <button
               type="submit"
-              className="popup__btn-save"
+              className={`popup__btn-save ${props.isValid ? "active-btn" : ""}`}
               data-submitting-label="Сохраняется..."
             >
               {props.savebtn}

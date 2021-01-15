@@ -137,6 +137,10 @@
   background-color: #347eff;
 }
 
+.search-form__search-button:focus {
+  background-color: #2a65cc;
+}
+
 @media screen and (max-width: 1024px) {
   .search-form__search-button {
     height: 6.25vw;

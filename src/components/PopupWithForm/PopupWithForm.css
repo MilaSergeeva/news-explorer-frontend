@@ -52,8 +52,8 @@
   font-family: "Roboto", "Inter", Arial, sans-serif;
   font-size: 24px;
   line-height: 1.2;
-  margin: 0;
-  padding: 0 0 22px;
+  margin: 0 0 -10px;
+  padding: 0;
   color: #000000;
 }
 
@@ -62,7 +62,7 @@
   width: 100%;
   font-size: 14px;
   line-height: 1.2;
-  margin: 0 0 31px;
+  margin: 0;
   color: #000000;
   padding: 8px 0 11px;
   border: none;
@@ -173,25 +173,29 @@
 .popup__btn-save {
   max-width: 358px;
   width: 100%;
-  background: #2f71e5;
+  background: #e6e8eb;
   border-radius: 100px;
   font-size: 18px;
   line-height: 1.2;
   text-align: center;
   border: none;
   box-shadow: none;
-  color: #ffffff;
+  color: #b6bcbf;
   padding: 20px 0;
   cursor: pointer;
-  margin: 8px 0 16px;
+  margin: 39px 0 16px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   outline: none;
 }
 
-.popup__btn-save:hover {
+.active-btn {
+  background: #2f71e5;
+  color: #fff;
+}
+/* .popup__btn-save:hover {
   background: rgba(0, 0, 0, 0.8);
   transition: 0.5s ease-in-out;
-}
+} */
 
 @media screen and (max-width: 700px) {
   .popup__btn-save {
@@ -215,7 +219,7 @@
   display: block;
   color: #2f71e5;
   font-size: 12px;
-  margin: 0;
+  margin: 31px 0 0;
   padding: 0;
 }
 
