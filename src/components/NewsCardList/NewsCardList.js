@@ -1,10 +1,8 @@
 import "./NewsCardList.css";
 import React, { useState } from "react";
 import NewsCard from "../NewsCard/NewsCard.js";
-import cardsList from "../../utils/cardslist.js";
 
-function NewsCardList({ loggedIn }) {
-  const [cards, setCards] = useState(cardsList);
+function NewsCardList({ loggedIn, cards }) {
   const [itemsToShow, setItemsToShow] = useState(3);
 
   const swowMoreCards = () => {

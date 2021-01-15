@@ -1,0 +1,38 @@
+.search-result-fail {
+  font-weight: 400;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  padding: 86px 0 80px;
+}
+
+@media screen and (max-width: 400px) {
+  .search-result-fail {
+  }
+}
+
+.search-result-fail__title {
+  display: inline-block;
+  color: #1a1b22;
+  font-family: "Roboto Slab", "Inter", Arial, sans-serif;
+  font-size: 26px;
+  line-height: 1.15;
+  margin: 24px 0 0;
+}
+
+.search-result-fail__paragraph {
+  display: inline-block;
+  color: #b6bcbf;
+  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.3;
+  margin: 16px 0 0;
+  text-align: center;
+  width: 340px;
+}
+
+@media screen and (max-width: 600px) {
+  .search-result-fail__paragraph {
+    width: 300;
+  }
+}

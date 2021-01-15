@@ -8,6 +8,7 @@ const cardsList = [
     date: "15 сентября, 2002",
     image:
       "https://i.pinimg.com/originals/a9/b8/4b/a9b84bf853a4cda320710ad2691adcf7.jpg",
+    _id: 1,
   },
   {
     title: 'Ученые приступили к расшифровке щелчковой "речи" кашалотов',
@@ -18,6 +19,7 @@ const cardsList = [
     date: "15 сентября, 2002",
     image:
       "https://i.pinimg.com/originals/a9/b8/4b/a9b84bf853a4cda320710ad2691adcf7.jpg",
+    _id: 2,
   },
   {
     title: 'Ученые приступили к расшифровке щелчковой "речи" кашалотов',
@@ -28,6 +30,7 @@ const cardsList = [
     date: "15 сентября, 2002",
     image:
       "https://i.pinimg.com/originals/a9/b8/4b/a9b84bf853a4cda320710ad2691adcf7.jpg",
+    _id: 3,
   },
   {
     title: 'Ученые приступили к расшифровке щелчковой "речи" кашалотов',
@@ -38,6 +41,7 @@ const cardsList = [
     date: "15 сентября, 2002",
     image:
       "https://i.pinimg.com/originals/a9/b8/4b/a9b84bf853a4cda320710ad2691adcf7.jpg",
+    _id: 4,
   },
   {
     title: 'Ученые приступили к расшифровке щелчковой "речи" кашалотов',
@@ -48,6 +52,7 @@ const cardsList = [
     date: "15 сентября, 2002",
     image:
       "https://i.pinimg.com/originals/a9/b8/4b/a9b84bf853a4cda320710ad2691adcf7.jpg",
+    _id: 5,
   },
   {
     title: 'Ученые приступили к расшифровке щелчковой "речи" кашалотов',
@@ -58,6 +63,7 @@ const cardsList = [
     date: "15 сентября, 2002",
     image:
       "https://i.pinimg.com/originals/a9/b8/4b/a9b84bf853a4cda320710ad2691adcf7.jpg",
+    _id: 6,
   },
   {
     title: 'Ученые приступили к расшифровке щелчковой "речи" кашалотов',
@@ -68,6 +74,7 @@ const cardsList = [
     date: "15 сентября, 2002",
     image:
       "https://i.pinimg.com/originals/a9/b8/4b/a9b84bf853a4cda320710ad2691adcf7.jpg",
+    _id: 7,
   },
 ];
 

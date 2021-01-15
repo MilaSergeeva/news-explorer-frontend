@@ -54,6 +54,7 @@
   padding: 12px 19px;
   outline: none;
   cursor: pointer;
+  text-align: center;
 }
 
 @media screen and (max-width: 780px) {

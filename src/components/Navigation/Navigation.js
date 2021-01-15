@@ -4,12 +4,17 @@ import React, { useState } from "react";
 import { NavLink, Route, Switch, Link } from "react-router-dom";
 import cn from "classnames";
 
-function Navigation({ isMenuOpened }) {
-  const [isActive, setIsActive] = useState(true);
+function Navigation({
+  isMenuOpened,
+  onAutorizationClick,
+  onChangeActiveStatus,
+  onCloseMenu,
+}) {
+  // const [isActiveMenuLink, setIsActiveMenuLink] = useState(true);
 
-  const toggleLinkActiveStatus = () => {
-    isActive ? setIsActive(false) : setIsActive(true);
-  };
+  // const toggleLinkActiveStatus = () => {
+  //   isActive ? setIsActiveMenuLink(false) : setIsActiveMenuLink(true);
+  // };
 
   return (
     <div
@@ -20,7 +25,7 @@ function Navigation({ isMenuOpened }) {
         to="/"
         activeClassName="activeMain"
         className="header-bar__nav-link color-black"
-        onClick={toggleLinkActiveStatus}
+        onClick={onChangeActiveStatus}
       >
         <p>Главная</p>
       </NavLink>
@@ -29,7 +34,7 @@ function Navigation({ isMenuOpened }) {
         to="/saved-news"
         activeClassName="activeSavedNews"
         className="header-bar__nav-link color-white"
-        onClick={toggleLinkActiveStatus}
+        onClick={onChangeActiveStatus}
       >
         <p className="header-bar__saved-news">Сохраненные статьи</p>
       </NavLink>
@@ -40,24 +45,24 @@ function Navigation({ isMenuOpened }) {
             type="button"
             aria-label="Авторизация"
             className="header-bar__button"
+            onClick={onAutorizationClick}
           >
             Авторизация
           </button>
         </Route>
         <Route exact path="/saved-news">
-          <Link to="/">
-            <button
-              type="button"
-              aria-label="Авторизация"
-              className="header-bar__button color-black"
-            >
-              Имя
-              <img
-                className="header-bar__exit-img"
-                src={exitImg}
-                alt="знак выхода"
-              />
-            </button>
+          <Link
+            to="/"
+            className="header-bar__button color-black"
+            onClick={onCloseMenu}
+          >
+            Имя
+            <img
+              className="header-bar__exit-img"
+              src={exitImg}
+              alt="знак выхода"
+            />
+            {/* </button> */}
           </Link>
         </Route>
       </Switch>
