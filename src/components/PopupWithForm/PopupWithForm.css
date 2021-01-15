@@ -33,7 +33,7 @@
 @media screen and (max-width: 400px) {
   .popup {
     padding: 0;
-    background-image: url("../../images/header_background.svg");
+    background-image: url("../../images/header_background.png");
     z-index: 1000;
     position: fixed;
     overflow: hidden;

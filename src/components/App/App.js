@@ -24,14 +24,14 @@ function App() {
 
   //закрытие модального окна
   function closeAllPopups() {
+    console.log("close all popups");
+
     setIsLoginPopupOpen(false);
     setIsRegisterPopupOpen(false);
   }
 
   //нажатие кнопки авторизации в меню
   const handleAutorizationClick = () => {
-    console.log("clickef authorization");
-
     setIsLoginPopupOpen(true);
 
     if (isMenuOpened === true) {
@@ -97,6 +97,7 @@ function App() {
 
   //закрытие модального окна по оверлей
   const handleClickOutside = (e) => {
+    console.log("handle click outside");
     if (!modalRef.current.contains(e.target)) {
       setClickedOutside(true);
       closeAllPopups();
@@ -159,8 +160,8 @@ function App() {
   }
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    // document.addEventListener("mousedown", handleClickOutside);
+    // return () => document.removeEventListener("mousedown", handleClickOutside);
   });
 
   useEffect(() => {

@@ -14,7 +14,6 @@ const Login = ({
   passwordHandler,
   inputError,
 }) => {
-  console.log(isValid);
   return (
     <PopupWithForm
       name="login"
@@ -26,7 +25,7 @@ const Login = ({
       onClick={onClick}
       modalRef={modalRef}
       isValid={isValid}
-      redirectTo=" Зарегистрироваться"
+      redirectTo="Зарегистрироваться"
     >
       <div className="popup__input-container">
         <p className="popup__input-title">Email</p>

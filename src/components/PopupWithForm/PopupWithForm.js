@@ -35,7 +35,7 @@ const PopupWithForm = (props) => {
               {props.savebtn}
             </button>
             <p className="popup__redirect">
-              или
+              или&nbsp;
               <span className="popup__redirect-to" onClick={props.onRedirect}>
                 {props.redirectTo}
               </span>

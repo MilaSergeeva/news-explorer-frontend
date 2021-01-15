@@ -25,7 +25,7 @@ const Register = ({
       modalRef={modalRef}
       isOpen={isOpen}
       isValid={isValid}
-      redirectTo=" Войти"
+      redirectTo="Войти"
       onRedirect={onRedirect}
     >
       <div className="popup__input-container">
