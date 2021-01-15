@@ -20,12 +20,24 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s linear, visibility 0.5s linear;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 600px) {
   .popup {
     padding: 0 9.6vw;
     box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .popup {
+    padding: 0;
+    background-image: url("../../images/header_background.svg");
+    z-index: 1000;
+    position: fixed;
+    overflow: hidden;
+    width: 100vw;
   }
 }
 
@@ -106,6 +118,14 @@
   }
 }
 
+@media screen and (max-width: 400px) {
+  .popup__container {
+    height: 100vh;
+    width: 100vw;
+    margin-top: 56px;
+  }
+}
+
 .popup__close {
   position: absolute;
   display: block;
@@ -138,6 +158,15 @@
     height: 8.2vw;
     top: -6.8vw;
     right: -6.8vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .popup__close {
+    top: -30px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -201,4 +230,10 @@
 .popup__redirect-to {
   color: #2f71e5;
   cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .popup__redirect {
+    font-size: 14px;
+  }
 }
