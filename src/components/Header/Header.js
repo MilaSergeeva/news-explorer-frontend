@@ -15,31 +15,6 @@ function Header({
   darkBackgroundHeader,
   onCloseMenu,
 }) {
-  // const [darkBackground, setDarkBackground] = useState(false);
-  // const [isMenuOpened, setIsMenuOpened] = useState(false);
-
-  // const toggleBakgroundColor = () => {
-  //   if (darkBackground === false) {
-  //     setDarkBackground(true);
-  //   } else {
-  //     setDarkBackground(false);
-  //   }
-  // };
-
-  // const toggleMenu = () => {
-  //   if (isMenuOpened === false) {
-  //     setIsMenuOpened(true);
-  //   } else {
-  //     setIsMenuOpened(false);
-  //   }
-  // };
-
-  // const animateMenuTag = (e) => {
-  //   e.target.classList.toggle("change");
-  //   toggleBakgroundColor();
-  //   toggleMenu();
-  // };
-
   return (
     <header
       className={`header ${

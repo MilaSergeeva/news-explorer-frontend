@@ -6,11 +6,7 @@ const PopupWithForm = (props) => {
     <div
       className={`popup popup_${props.name} ${props.isOpen && "popup_opened"} `}
     >
-      <div
-        className="popup__container"
-        ref={props.modalRef}
-        onClick={props.onClick}
-      >
+      <div className="popup__container" onClick={props.onClick}>
         <button
           type="button"
           aria-label="Закрыть"
@@ -22,15 +18,17 @@ const PopupWithForm = (props) => {
             method="POST"
             name="user-info"
             className="popup__form"
-            // onSubmit={props.onSubmit}
+            onSubmit={props.onSubmit}
             noValidate
           >
             <h3 className="popup__title">{props.title}</h3>
             {props.children}
+            <span className="popup__error popup__error_position"></span>
             <button
               type="submit"
               className={`popup__btn-save ${props.isValid ? "active-btn" : ""}`}
               data-submitting-label="Сохраняется..."
+              disabled={props.isValid === true ? false : true}
             >
               {props.savebtn}
             </button>

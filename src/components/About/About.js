@@ -1,6 +1,6 @@
 import "./About.css";
 import React from "react";
-import { Link, Route, Switch } from "react-router-dom";
+
 import avatar from "../../images/avatar.png";
 
 function About() {

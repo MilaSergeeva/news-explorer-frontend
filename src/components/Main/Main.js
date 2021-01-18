@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import NewsCardList from "../NewsCardList/NewsCardList.js";
 import About from "../About/About.js";
 import SearchForm from "../SearchForm/SearchForm.js";
-import InfoTooltip from "../InfoTooltip/InfoTooltip.js";
+import UserArticlesInfo from "../UserArticlesInfo/UserArticlesInfo.js";
 import Preloader from "../Preloader/Preloader.js";
 import SavedNews from "../SavedNews/SavedNews.js";
 import GenericNotFound from "../GenericNotFound/GenericNotFound.js";
@@ -21,7 +21,7 @@ function Main({ loggedIn, cards }) {
         </section>
       </Route>
       <Route exact path="/saved-news">
-        <InfoTooltip />
+        <UserArticlesInfo />
         <SavedNews cards={cards} />
       </Route>
 

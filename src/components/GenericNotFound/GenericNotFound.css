@@ -6,11 +6,6 @@
   padding: 86px 0 80px;
 }
 
-@media screen and (max-width: 400px) {
-  .search-result-fail {
-  }
-}
-
 .search-result-fail__title {
   display: inline-block;
   color: #1a1b22;

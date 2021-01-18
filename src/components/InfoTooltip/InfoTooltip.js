@@ -1,29 +1,32 @@
 import "./InfoTooltip.css";
 import React from "react";
 
-function InfoTooltip() {
-  const userName = "Name";
-  const savedArticlesCount = 5;
-
+const InfoTooltip = ({ success, isOpen, onClose, onClick, onRedirect }) => {
   return (
-    <div className="user-info">
-      <h5 className="user-info__title">Сохранённые статьи</h5>
-      <h2 className="user-info__main-info">
-        {userName}, у вас {savedArticlesCount} сохранённых статей
-      </h2>
-      <p className="user-info__additional-info">
-        По ключевым словам:{" "}
-        <span className="user-info__additional-info_font_bold">
-          Природа, Тайга
-        </span>{" "}
-        и
-        <span className="user-info__additional-info_font_bold">
-          {" "}
-          2-м другим
-        </span>
-      </p>
+    <div className={`popup popup-info-tools ${isOpen && "popup_opened"}`}>
+      <div className="info-tools">
+        <button
+          type="button"
+          aria-label="Закрыть"
+          className="popup__close"
+          onClick={onClose}
+        ></button>
+        <div className="popup__container" onClick={onClick}>
+          <h3 className="popup__title popup__title_position">
+            {success === true
+              ? "Пользователь успешно зарегистрирован!"
+              : "Что-то пошло не так! Попробуйте еще раз."}
+          </h3>
+          <span
+            className="popup__redirect-to popup__redirect-to_font-size"
+            onClick={onRedirect}
+          >
+            Войти
+          </span>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default InfoTooltip;

@@ -10,12 +10,6 @@ function Navigation({
   onChangeActiveStatus,
   onCloseMenu,
 }) {
-  // const [isActiveMenuLink, setIsActiveMenuLink] = useState(true);
-
-  // const toggleLinkActiveStatus = () => {
-  //   isActive ? setIsActiveMenuLink(false) : setIsActiveMenuLink(true);
-  // };
-
   return (
     <div
       className={`header-bar__menu ${isMenuOpened === true ? "opened" : ""}`}

@@ -21,6 +21,7 @@
   visibility: hidden;
   transition: opacity 0.5s linear, visibility 0.5s linear;
   box-sizing: border-box;
+  z-index: 10000;
 }
 
 @media screen and (max-width: 600px) {
@@ -90,15 +91,11 @@
 }
 
 .popup__error {
-  display: none;
+  display: block;
   font-size: 12px;
   line-height: 1.25;
   padding-top: 5px;
   color: #ff0000;
-}
-
-.popup__error_visible {
-  display: block;
 }
 
 .popup__container {
@@ -239,5 +236,17 @@
 @media screen and (max-width: 600px) {
   .popup__redirect {
     font-size: 14px;
+  }
+}
+
+.popup__error_position {
+  text-align: center;
+  display: block;
+  margin-bottom: -31px;
+}
+
+@media screen and (max-width: 600px) {
+  .popup__error_position {
+    margin-bottom: -15px;
   }
 }

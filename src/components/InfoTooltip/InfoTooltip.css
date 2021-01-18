@@ -1,60 +1,22 @@
-.user-info {
-  padding: 40px 104px 56px 104px;
-  background-color: #fff;
-  color: #000;
-  font-family: "Roboto", "Inter", Arial, sans-serif;
-  font-weight: 400;
+.info-tools {
+  position: relative;
 }
 
-@media screen and (max-width: 600px) {
-  .user-info {
-    padding: 62px 16px 32px 16px;
-  }
+.popup__container {
+  max-width: 430px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  padding: 43px 36px 51px;
+  box-sizing: border-box;
 }
 
-.user-info__title {
+.popup__title_position {
+  margin-bottom: 14px;
+}
+
+.popup__redirect-to_font-size {
+  display: block;
   font-size: 18px;
-  line-height: 1.33;
-  margin-bottom: 28px;
-  max-width: 50%;
-}
-
-@media screen and (max-width: 600px) {
-  .user-info__title {
-    font-size: 12px;
-    max-width: 100%;
-    margin-bottom: 16px;
-  }
-}
-
-.user-info__main-info {
-  font-family: "Roboto Slab", "Inter", Arial, sans-serif;
-  font-size: 40px;
-  line-height: 1.15;
-  margin-bottom: 30px;
-  max-width: 50%;
-}
-
-@media screen and (max-width: 600px) {
-  .user-info__main-info {
-    font-size: 30px;
-    max-width: 100%;
-    margin-bottom: 16px;
-  }
-}
-
-.user-info__additional-info {
-  font-size: 18px;
-  line-height: 1.33;
-  max-width: 50%;
-}
-
-@media screen and (max-width: 600px) {
-  .user-info__additional-info {
-    max-width: 100%;
-  }
-}
-
-.user-info__additional-info_font_bold {
-  font-weight: 700;
 }

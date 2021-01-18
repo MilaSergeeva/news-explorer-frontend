@@ -1,20 +1,38 @@
 import "./Register.css";
-import React from "react";
+import React, { useEffect } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
+import useValidationForForm from "../../hooks/useForm.js";
 
-const Register = ({
-  onClose,
-  isOpen,
-  onRedirect,
-  onClick,
-  modalRef,
-  isValid,
-  emailHandler,
-  passwordHandler,
-  nameHandler,
-  inputError,
-  inputValue,
-}) => {
+const Register = ({ onClose, isOpen, onRedirect, onClick, onRegister }) => {
+  const {
+    values,
+    handleChange,
+    errors,
+    isValid,
+    resetForm,
+  } = useValidationForForm();
+
+  const handleSignUpSubmit = () => {
+    if (isValid) {
+      onRegister();
+    } else {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    resetForm();
+  }, [isOpen, resetForm]);
+
+  const regPassword =
+    "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&~])[A-Za-z\\d@$!%*#?&~]{8,}$";
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    onLogin(email, password);
+  };
+
   return (
     <PopupWithForm
       name="regstration"
@@ -22,13 +40,13 @@ const Register = ({
       savebtn="Зарегистрироваться"
       onClose={onClose}
       onClick={onClick}
-      modalRef={modalRef}
       isOpen={isOpen}
       isValid={isValid}
       redirectTo="Войти"
       onRedirect={onRedirect}
+      onSubmit={onRegister}
     >
-      <div className="popup__input-container">
+      <label className="popup__input-container">
         <p className="popup__input-title">Email</p>
         <input
           type="email"
@@ -38,66 +56,51 @@ const Register = ({
           minLength="5"
           maxLength="40"
           autoComplete="off"
-          value={inputValue.email}
-          onInput={emailHandler}
+          value={values.email}
+          onChange={handleChange}
           required
         />
-        <span
-          className={`popup__error ${
-            inputError.email ? "popup__error_visible" : ""
-          }`}
-        >
-          {inputError.email ? "Нeправильный формат email" : ""}
-        </span>
-      </div>
+        <span className="popup__error">{errors.email || ""}</span>
+      </label>
 
-      <div className="popup__input-container">
+      <label className="popup__input-container">
         <p className="popup__input-title">Пароль</p>
         <input
           type="password"
-          name="user-occupation"
+          name="password"
           placeholder="Введите пароль"
           className="popup__input"
           minLength="8"
           maxLength="30"
           autoComplete="off"
-          value={inputValue.password}
-          onInput={passwordHandler}
+          pattern={regPassword}
+          value={values.password}
+          onChange={handleChange}
           required
         />
-        <span
-          className={`popup__error ${
-            inputError.password ? "popup__error_visible" : ""
-          }`}
-        >
-          {inputError.password
-            ? "Нeправильный формат пароля. Минимум 8 знаков, цыфр, букв и специальных символов"
+        <span className="popup__error">
+          {errors.password
+            ? "Пароль должен включать буквы, как минимум 1 цифра, 1 спецсимвол, не менее 8 знаков"
             : ""}
         </span>
-      </div>
+      </label>
 
-      <div className="popup__input-container">
+      <label className="popup__input-container">
         <p className="popup__input-title">Имя</p>
         <input
           type="text"
-          name="user-occupation"
+          name="name"
           placeholder="Введите своё имя"
           className="popup__input"
           minLength="2"
           maxLength="30"
           autoComplete="off"
-          value={inputValue.name}
-          onInput={nameHandler}
+          value={values.name}
+          onChange={handleChange}
           required
         />
-        <span
-          className={`popup__error ${
-            inputError.name ? "popup__error_visible" : ""
-          }`}
-        >
-          {inputError.name ? "Поле должно быть заполнено" : ""}
-        </span>
-      </div>
+        <span className="popup__error">{errors.name || ""}</span>
+      </label>
     </PopupWithForm>
   );
 };
