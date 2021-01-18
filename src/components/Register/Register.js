@@ -21,17 +21,13 @@ const Register = ({ onClose, isOpen, onRedirect, onClick, onRegister }) => {
   };
 
   useEffect(() => {
+    console.log(values);
     resetForm();
+    console.log("use effect is open");
   }, [isOpen, resetForm]);
 
   const regPassword =
     "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&~])[A-Za-z\\d@$!%*#?&~]{8,}$";
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    onLogin(email, password);
-  };
 
   return (
     <PopupWithForm
@@ -56,7 +52,7 @@ const Register = ({ onClose, isOpen, onRedirect, onClick, onRegister }) => {
           minLength="5"
           maxLength="40"
           autoComplete="off"
-          value={values.email}
+          value={values.email || ""}
           onChange={handleChange}
           required
         />

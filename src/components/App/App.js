@@ -9,6 +9,7 @@ import Register from "../Register/Register.js";
 import Login from "../Login/Login.js";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import InfoTooltip from "../InfoTooltip/InfoTooltip.js";
+import useValidationForForm from "../../hooks/useForm.js";
 
 function App() {
   const [currentUser, setСurrentUser] = useState({});

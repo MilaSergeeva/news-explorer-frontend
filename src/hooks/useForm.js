@@ -13,15 +13,8 @@ function useValidationForForm() {
     setValues({ ...values, [name]: value });
     setErrors({ ...errors, [name]: target.validationMessage });
 
-    console.log(errors);
     setIsValid(target.closest("form").checkValidity());
   };
-
-  // if (!values.email) {
-  //   errors.email = "Email address is required";
-  // } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-  //   errors.email = "Email address is invalid";
-  // }
 
   const resetForm = useCallback(
     (newValues = {}, newErrors = {}, newIsValid = false) => {
