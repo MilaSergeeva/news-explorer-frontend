@@ -1,6 +1,6 @@
 import "./Main.css";
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 import NewsCardList from "../NewsCardList/NewsCardList.js";
 import About from "../About/About.js";
 import SearchForm from "../SearchForm/SearchForm.js";

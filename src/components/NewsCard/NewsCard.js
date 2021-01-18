@@ -1,6 +1,6 @@
 import "./NewsCard.css";
 import React from "react";
-import { Link, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 function NewsCard({ card, loggedIn, ...rest }) {
   const saveNewsCard = (e) => {

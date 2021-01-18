@@ -2,7 +2,7 @@ import "./Footer.css";
 import facebook_Logo from "../../images/facebook.svg";
 import gitHub_Logo from "../../images/gitHub.svg";
 import React from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 
 function Footer() {
   return (

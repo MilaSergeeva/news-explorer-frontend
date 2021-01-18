@@ -39,7 +39,7 @@ const Login = ({ onClose, isOpen, onRedirect, onClick, onLogin }) => {
           minLength="5"
           maxLength="40"
           autoComplete="off"
-          value={values.email}
+          value={values.email || ""}
           onChange={handleChange}
           required
         />
@@ -56,7 +56,7 @@ const Login = ({ onClose, isOpen, onRedirect, onClick, onLogin }) => {
           minLength="8"
           maxLength="30"
           autoComplete="off"
-          value={values.password}
+          value={values.password || ""}
           onChange={handleChange}
           required
         />

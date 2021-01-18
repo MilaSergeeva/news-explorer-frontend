@@ -12,18 +12,8 @@ const Register = ({ onClose, isOpen, onRedirect, onClick, onRegister }) => {
     resetForm,
   } = useValidationForForm();
 
-  const handleSignUpSubmit = () => {
-    if (isValid) {
-      onRegister();
-    } else {
-      onClose();
-    }
-  };
-
   useEffect(() => {
-    console.log(values);
     resetForm();
-    console.log("use effect is open");
   }, [isOpen, resetForm]);
 
   const regPassword =
@@ -70,7 +60,7 @@ const Register = ({ onClose, isOpen, onRedirect, onClick, onRegister }) => {
           maxLength="30"
           autoComplete="off"
           pattern={regPassword}
-          value={values.password}
+          value={values.password || ""}
           onChange={handleChange}
           required
         />
@@ -91,7 +81,7 @@ const Register = ({ onClose, isOpen, onRedirect, onClick, onRegister }) => {
           minLength="2"
           maxLength="30"
           autoComplete="off"
-          value={values.name}
+          value={values.name || ""}
           onChange={handleChange}
           required
         />

@@ -1,5 +1,5 @@
 import "./GenericNotFound.css";
-import React, { useState } from "react";
+import React from "react";
 import notFound from "../../images/not-found.svg";
 
 function GenericNotFound() {

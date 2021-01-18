@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Header/Header.js";
 import Main from "../Main/Main.js";
 import Footer from "../Footer/Footer.js";
@@ -9,7 +9,6 @@ import Register from "../Register/Register.js";
 import Login from "../Login/Login.js";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import InfoTooltip from "../InfoTooltip/InfoTooltip.js";
-import useValidationForForm from "../../hooks/useForm.js";
 
 function App() {
   const [currentUser, setСurrentUser] = useState({});

@@ -1,8 +1,7 @@
 import "./Navigation.css";
 import exitImg from "../../images/exit.svg";
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, Route, Switch, Link } from "react-router-dom";
-import cn from "classnames";
 
 function Navigation({
   isMenuOpened,

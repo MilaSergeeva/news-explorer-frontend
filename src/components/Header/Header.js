@@ -1,8 +1,6 @@
 import "./Header.css";
-
 import headerLogoWhite from "../../images/newsExplorerWhite.svg";
-import headerLogoBlack from "../../images/newsExplorerBlack.svg";
-import React, { useState } from "react";
+import React from "react";
 import { Link, Route } from "react-router-dom";
 import Navigation from "../Navigation/Navigation.js";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader.js";
