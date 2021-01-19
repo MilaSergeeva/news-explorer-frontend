@@ -18,14 +18,18 @@ function NewsCardList({ loggedIn, cards }) {
           <NewsCard key={newsCard._id} card={newsCard} loggedIn={loggedIn} />
         ))}
       </div>
-      <button
-        type="button"
-        aria-label="Показать еще"
-        className="search-result-success__button"
-        onClick={swowMoreCards}
-      >
-        {itemsToShow >= cards.length ? 'Больше карточек нет' : 'Показать ещё'}
-      </button>
+      {itemsToShow <= cards.length ? (
+        <button
+          type="button"
+          aria-label="Показать еще"
+          className="search-result-success__button"
+          onClick={swowMoreCards}
+        >
+          Показать ещё
+        </button>
+      ) : (
+        ''
+      )}
     </div>
   );
 }
