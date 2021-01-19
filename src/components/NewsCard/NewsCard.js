@@ -1,10 +1,12 @@
-import "./NewsCard.css";
-import React from "react";
-import { Route } from "react-router-dom";
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-unused-vars */
+import './NewsCard.css';
+import React from 'react';
+import { Route } from 'react-router-dom';
 
-function NewsCard({ card, loggedIn, ...rest }) {
+function NewsCard({ card, loggedIn }) {
   const saveNewsCard = (e) => {
-    loggedIn === true ? e.target.classList.toggle("saved") : " ";
+    loggedIn === true ? e.target.classList.toggle('saved') : ' ';
   };
 
   return (
@@ -20,7 +22,7 @@ function NewsCard({ card, loggedIn, ...rest }) {
           />
           <p
             className="news-card__save-notification"
-            style={{ display: loggedIn ? "none" : "inline-block" }}
+            style={{ display: loggedIn ? 'none' : 'inline-block' }}
           >
             Войдите, чтобы сохранять статьи
           </p>

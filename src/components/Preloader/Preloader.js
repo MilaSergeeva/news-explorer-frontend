@@ -1,5 +1,6 @@
-import "./Preloader.css";
-import React from "react";
+/* eslint-disable no-unused-vars */
+import './Preloader.css';
+import React from 'react';
 
 function Preloader() {
   return (

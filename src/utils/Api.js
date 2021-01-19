@@ -1,8 +1,10 @@
-import qs from "querystring";
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable prefer-promise-reject-errors */
+import qs from 'querystring';
 
 class Api {
   constructor({ baseUrl, headers }) {
-    //options
+    // options
     this.baseUrl = baseUrl;
     this.headers = headers;
   }
@@ -16,8 +18,8 @@ class Api {
     };
 
     if (
-      payload !== undefined &&
-      ["POST", "PUT", "PATCH"].includes(httpMethod)
+      payload !== undefined
+      && ['POST', 'PUT', 'PATCH'].includes(httpMethod)
     ) {
       options.body = JSON.stringify(payload);
     } else if (payload !== undefined) {
@@ -32,9 +34,9 @@ class Api {
 
       // server respond with error 4xx
       if (res.status >= 400 && res.status < 500) {
-        return res.json().then((body) => {
-          return Promise.reject(`Что-то пошло не так: ${body.message}`);
-        });
+        return res
+          .json()
+          .then((body) => Promise.reject(`Что-то пошло не так: ${body.message}`));
       }
 
       // server didn't reply 5xx
@@ -43,22 +45,22 @@ class Api {
   }
 
   findNews() {
-    const endpoint = "/";
-    const httpMethod = "GET";
+    const endpoint = '/';
+    const httpMethod = 'GET';
 
     return this.makeRequest(endpoint, httpMethod);
   }
 
   getSavedNews() {
-    const endpoint = "articles";
-    const httpMethod = "GET";
+    const endpoint = 'articles';
+    const httpMethod = 'GET';
 
     return this.makeRequest(endpoint, httpMethod);
   }
 
   saveNews(newsPayload) {
-    const endpoint = "articles";
-    const httpMethod = "POST";
+    const endpoint = 'articles';
+    const httpMethod = 'POST';
 
     return this.makeRequest(endpoint, httpMethod, newsPayload);
   }
@@ -66,21 +68,20 @@ class Api {
   changeSaveNewsStatus(newsId, isSaved) {
     if (!isSaved) {
       return this.likeCard(newsId);
-    } else {
-      return this.deleteLikeCard(newsId);
     }
+    return this.deleteLikeCard(newsId);
   }
 
-  deleteSavedNews(newId) {
+  deleteSavedNews(newsId) {
     const endpoint = `articles/${newsId}`;
-    const httpMethod = "DELETE";
+    const httpMethod = 'DELETE';
 
     return this.makeRequest(endpoint, httpMethod);
   }
 
   getUserInfo() {
-    const endpoint = "users/me";
-    const httpMethod = "GET";
+    const endpoint = 'users/me';
+    const httpMethod = 'GET';
 
     return this.makeRequest(endpoint, httpMethod);
   }

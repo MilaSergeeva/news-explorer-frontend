@@ -1,7 +1,8 @@
-import "./Register.css";
-import React, { useEffect } from "react";
-import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
-import useValidationForForm from "../../hooks/useForm.js";
+/* eslint-disable no-unused-vars */
+import './Register.css';
+import React, { useEffect } from 'react';
+import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import useValidationForForm from '../../hooks/useForm';
 
 const Register = ({
   onClose,
@@ -23,8 +24,7 @@ const Register = ({
     resetForm();
   }, [isOpen, resetForm]);
 
-  const regPassword =
-    "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&~])[A-Za-z\\d@$!%*#?&~]{8,}$";
+  const regPassword = '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&~])[A-Za-z\\d@$!%*#?&~]{8,}$';
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
@@ -56,11 +56,11 @@ const Register = ({
           minLength="5"
           maxLength="40"
           autoComplete="off"
-          value={values.email || ""}
+          value={values.email || ''}
           onChange={handleChange}
           required
         />
-        <span className="popup__error">{errors.email || ""}</span>
+        <span className="popup__error">{errors.email || ''}</span>
       </label>
 
       <label className="popup__input-container">
@@ -74,14 +74,14 @@ const Register = ({
           maxLength="30"
           autoComplete="off"
           pattern={regPassword}
-          value={values.password || ""}
+          value={values.password || ''}
           onChange={handleChange}
           required
         />
         <span className="popup__error">
           {errors.password
-            ? "Пароль должен включать буквы, как минимум 1 цифра, 1 спецсимвол, не менее 8 знаков"
-            : ""}
+            ? 'Пароль должен включать буквы, как минимум 1 цифра, 1 спецсимвол, не менее 8 знаков'
+            : ''}
         </span>
       </label>
 
@@ -95,11 +95,11 @@ const Register = ({
           minLength="2"
           maxLength="30"
           autoComplete="off"
-          value={values.name || ""}
+          value={values.name || ''}
           onChange={handleChange}
           required
         />
-        <span className="popup__error">{errors.name || ""}</span>
+        <span className="popup__error">{errors.name || ''}</span>
       </label>
     </PopupWithForm>
   );

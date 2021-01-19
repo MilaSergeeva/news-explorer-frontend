@@ -1,13 +1,14 @@
-import "./Main.css";
-import React from "react";
-import { Route } from "react-router-dom";
-import NewsCardList from "../NewsCardList/NewsCardList.js";
-import About from "../About/About.js";
-import SearchForm from "../SearchForm/SearchForm.js";
-import UserArticlesInfo from "../UserArticlesInfo/UserArticlesInfo.js";
-import Preloader from "../Preloader/Preloader.js";
-import SavedNews from "../SavedNews/SavedNews.js";
-import GenericNotFound from "../GenericNotFound/GenericNotFound.js";
+/* eslint-disable no-unused-vars */
+import './Main.css';
+import React from 'react';
+import { Route } from 'react-router-dom';
+import NewsCardList from '../NewsCardList/NewsCardList';
+import About from '../About/About';
+import SearchForm from '../SearchForm/SearchForm';
+import UserArticlesInfo from '../UserArticlesInfo/UserArticlesInfo';
+import Preloader from '../Preloader/Preloader';
+import SavedNews from '../SavedNews/SavedNews';
+import GenericNotFound from '../GenericNotFound/GenericNotFound';
 
 function Main({ loggedIn, savedNewsCards, cards }) {
   return (
@@ -22,7 +23,8 @@ function Main({ loggedIn, savedNewsCards, cards }) {
       </Route>
       <Route exact path="/saved-news">
         <UserArticlesInfo />
-        <SavedNews cards={savedNewsCards} />
+        <SavedNews cards={cards} />
+        {/* <SavedNews cards={savedNewsCards} /> */}
       </Route>
 
       <Route exact path="/">

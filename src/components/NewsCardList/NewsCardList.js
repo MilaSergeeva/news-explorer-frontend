@@ -1,6 +1,7 @@
-import "./NewsCardList.css";
-import React, { useState } from "react";
-import NewsCard from "../NewsCard/NewsCard.js";
+/* eslint-disable no-unused-vars */
+import './NewsCardList.css';
+import React, { useState } from 'react';
+import NewsCard from '../NewsCard/NewsCard';
 
 function NewsCardList({ loggedIn, cards }) {
   const [itemsToShow, setItemsToShow] = useState(3);
@@ -13,11 +14,9 @@ function NewsCardList({ loggedIn, cards }) {
     <div className="search-result-success">
       <h2 className="search-result-success__tile">Результаты поиска</h2>
       <div className="news-card-list">
-        {cards.slice(0, itemsToShow).map((newsCard) => {
-          return (
-            <NewsCard key={newsCard._id} card={newsCard} loggedIn={loggedIn} />
-          );
-        })}
+        {cards.slice(0, itemsToShow).map((newsCard) => (
+          <NewsCard key={newsCard._id} card={newsCard} loggedIn={loggedIn} />
+        ))}
       </div>
       <button
         type="button"
@@ -25,7 +24,7 @@ function NewsCardList({ loggedIn, cards }) {
         className="search-result-success__button"
         onClick={swowMoreCards}
       >
-        {itemsToShow >= cards.length ? "Больше карточек нет" : "Показать ещё"}
+        {itemsToShow >= cards.length ? 'Больше карточек нет' : 'Показать ещё'}
       </button>
     </div>
   );

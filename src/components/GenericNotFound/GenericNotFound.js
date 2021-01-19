@@ -1,6 +1,7 @@
-import "./GenericNotFound.css";
-import React from "react";
-import notFound from "../../images/not-found.svg";
+/* eslint-disable no-unused-vars */
+import './GenericNotFound.css';
+import React from 'react';
+import notFound from '../../images/not-found.svg';
 
 function GenericNotFound() {
   return (

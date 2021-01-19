@@ -1,9 +1,10 @@
-import "./Header.css";
-import headerLogoWhite from "../../images/newsExplorerWhite.svg";
-import React from "react";
-import { Link, Route } from "react-router-dom";
-import Navigation from "../Navigation/Navigation.js";
-import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader.js";
+/* eslint-disable no-unused-vars */
+import './Header.css';
+import React from 'react';
+import { Link, Route } from 'react-router-dom';
+import headerLogoWhite from '../../images/newsExplorerWhite.svg';
+import Navigation from '../Navigation/Navigation';
+import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 
 function Header({
   onAutorizationClick,
@@ -19,13 +20,13 @@ function Header({
   return (
     <header
       className={`header ${
-        isMenuOpened === true ? "header__border-radius" : " "
+        isMenuOpened === true ? 'header__border-radius' : ' '
       }`}
     >
       <Route exact path="/">
         <div
           className={`header-bar ${
-            darkBackgroundHeader === true ? "dark-theme" : " "
+            darkBackgroundHeader === true ? 'dark-theme' : ' '
           }`}
         >
           <Link to="/" className="header-bar__logo-link">
@@ -38,7 +39,7 @@ function Header({
           <div className="header-bar__menu-icon-container">
             <div
               className={`header-bar__menu-icon ${
-                isMenuOpened ? "change" : " "
+                isMenuOpened ? 'change' : ' '
               }`}
               onClick={onMenuTagClick}
             >
@@ -47,7 +48,7 @@ function Header({
             </div>
           </div>
           <Navigation
-            style={{ color: "#fff" }}
+            style={{ color: '#fff' }}
             isMenuOpened={isMenuOpened}
             onAutorizationClick={onAutorizationClick}
             onChangeActiveStatus={onChangeActiveStatus}

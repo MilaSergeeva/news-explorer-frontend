@@ -1,20 +1,23 @@
-import React, { useState, useEffect } from "react";
-import Header from "../Header/Header.js";
-import Main from "../Main/Main.js";
-import Footer from "../Footer/Footer.js";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
-import { apiClient, buildApiClient } from "../../utils/MainApi";
-import { newsApi } from "../../utils/NewsApi";
-import "./App.css";
-import cardsList from "../../utils/cardslist.js";
-import * as userAuth from "../../utils/authorization.js";
-import Register from "../Register/Register.js";
-import Login from "../Login/Login.js";
-import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
-import InfoTooltip from "../InfoTooltip/InfoTooltip.js";
-import { getToken, removeToken, setToken } from "../../utils/token.js";
-import { useLocation } from "react-router-dom";
-import backgroundImage from "../../images/header_background.png";
+/* eslint-disable no-unused-expressions */
+/* eslint-disable import/named */
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import './App.css';
+import Header from '../Header/Header';
+import Main from '../Main/Main';
+import Footer from '../Footer/Footer';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { apiClient, buildApiClient } from '../../utils/MainApi';
+import { newsApi } from '../../utils/NewsApi';
+import cardsList from '../../utils/cardslist';
+import * as userAuth from '../../utils/authorization';
+import Register from '../Register/Register';
+import Login from '../Login/Login';
+import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
+import { getToken, removeToken, setToken } from '../../utils/token';
+import backgroundImage from '../../images/header_background.png';
 
 function App() {
   const [currentUser, setСurrentUser] = useState({});
@@ -28,20 +31,20 @@ function App() {
   const [clickedOutside, setClickedOutside] = useState(false);
   const [isActiveMenuLink, setIsActiveMenuLink] = useState(true);
   const [isInfoToolsPopupOpen, setIsInfoToolsPopupOpen] = useState(false);
-  const [messageOnRegister, setMessageOnRegister] = useState("");
-  const [messageOnLogin, setMessageOnLogin] = useState("");
+  const [messageOnRegister, setMessageOnRegister] = useState('');
+  const [messageOnLogin, setMessageOnLogin] = useState('');
   const [signupSuccess, setSignupSuccess] = useState(false);
 
   const pathName = useLocation().pathname;
 
-  //закрытие модального окна
+  // закрытие модального окна
   function closeAllPopups() {
     setIsLoginPopupOpen(false);
     setIsRegisterPopupOpen(false);
     setIsInfoToolsPopupOpen(false);
   }
 
-  //нажатие кнопки авторизации в меню
+  // нажатие кнопки авторизации в меню
   const handleAutorizationClick = () => {
     setIsLoginPopupOpen(true);
 
@@ -51,7 +54,7 @@ function App() {
     }
   };
 
-  //перенаправление внутри модального окна (войти/зарегистрироваться)
+  // перенаправление внутри модального окна (войти/зарегистрироваться)
   const handleRedirect = () => {
     if (isLoginPopupOpen === false || isInfoToolsPopupOpen === true) {
       setIsLoginPopupOpen(true);
@@ -63,7 +66,7 @@ function App() {
     }
   };
 
-  //переключение фона всплывающего бургер меню
+  // переключение фона всплывающего бургер меню
   const toggleBakgroundColor = () => {
     if (darkBackgroundHeader === false) {
       setDarkBackgroundHeader(true);
@@ -72,7 +75,7 @@ function App() {
     }
   };
 
-  //закрытиее или открытие выпадающего меню
+  // закрытиее или открытие выпадающего меню
   const toggleMenu = () => {
     if (isMenuOpened === false) {
       setIsMenuOpened(true);
@@ -81,14 +84,14 @@ function App() {
     }
   };
 
-  //анимация иконки выпадающего меню
+  // анимация иконки выпадающего меню
   const animateMenuTag = (e) => {
-    e.target.classList.toggle("change");
+    e.target.classList.toggle('change');
     toggleBakgroundColor();
     toggleMenu();
   };
 
-  //закрытие всплывающего меню
+  // закрытие всплывающего меню
   const handleCloseMenu = () => {
     if (isMenuOpened === true) {
       setIsMenuOpened(false);
@@ -98,15 +101,15 @@ function App() {
     }
   };
 
-  //переключение активной ссылки меню
+  // переключение активной ссылки меню
   const toggleLinkActiveStatus = () => {
     isActiveMenuLink ? setIsActiveMenuLink(false) : setIsActiveMenuLink(true);
     handleCloseMenu();
   };
 
-  //закрытие модального окна по оверлей
+  // закрытие модального окна по оверлей
   const handleClickOutside = (e) => {
-    if (e.target.classList.contains("popup")) {
+    if (e.target.classList.contains('popup')) {
       setClickedOutside(true);
       closeAllPopups();
     }
@@ -115,23 +118,24 @@ function App() {
   const handleClickInside = () => setClickedOutside(false);
 
   useEffect(() => {
-    const elements = document.getElementsByClassName("popup");
+    const elements = document.getElementsByClassName('popup');
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const element of elements) {
-      element.addEventListener("mousedown", handleClickOutside);
+      element.addEventListener('mousedown', handleClickOutside);
     }
   }, []);
 
   useEffect(() => {
     function handleCloseByEsc(evt) {
-      if (evt.key === "Escape") {
+      if (evt.key === 'Escape') {
         closeAllPopups();
       }
     }
 
-    document.addEventListener("keydown", handleCloseByEsc);
+    document.addEventListener('keydown', handleCloseByEsc);
     return () => {
-      document.removeEventListener("keydown", handleCloseByEsc);
+      document.removeEventListener('keydown', handleCloseByEsc);
     };
   }, []);
 
@@ -145,26 +149,25 @@ function App() {
       .authorize(email, password)
       .then((data) => {
         setToken(data.token);
-        setMessageOnLogin("");
+        setMessageOnLogin('');
         closeAllPopups();
         setLoggedIn(true);
 
         // history.push("/users/me");
       })
       .catch((err) => {
-        setMessageOnLogin("Ошибка авторизации. Повторите попытку.");
+        setMessageOnLogin('Ошибка авторизации. Повторите попытку.');
       });
   };
 
   const handleRegister = (email, password, name) => {
-    console.log("start register");
     userAuth
       .register(email, password, name)
       .then(() => {
         closeAllPopups();
         setSignupSuccess(true);
         setIsInfoToolsPopupOpen(true);
-        setMessageOnRegister("");
+        setMessageOnRegister('');
 
         // history.push("/signin");
       })
@@ -184,7 +187,7 @@ function App() {
       return;
     }
 
-    let apiJWT = buildApiClient(jwt);
+    const apiJWT = buildApiClient(jwt);
 
     Promise.all([apiJWT.getUserInfo(), apiJWT.getSavedNews()])
       .then(([userInfo, newsElements]) => {
@@ -205,7 +208,7 @@ function App() {
           className="page"
           style={{
             backgroundImage: `${
-              pathName === "/" ? `url(${backgroundImage})` : "none"
+              pathName === '/' ? `url(${backgroundImage})` : 'none'
             }`,
           }}
         >

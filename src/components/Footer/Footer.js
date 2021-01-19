@@ -1,8 +1,9 @@
-import "./Footer.css";
-import facebook_Logo from "../../images/facebook.svg";
-import gitHub_Logo from "../../images/gitHub.svg";
-import React from "react";
-import { Link, Route } from "react-router-dom";
+/* eslint-disable no-unused-vars */
+import './Footer.css';
+import React from 'react';
+import { Link, Route } from 'react-router-dom';
+import facebookLogo from '../../images/facebook.svg';
+import gitHubLogo from '../../images/gitHub.svg';
 
 function Footer() {
   return (
@@ -33,7 +34,7 @@ function Footer() {
               <Link to="https://github.com" className="footer__gitHub-logo">
                 <img
                   className="footer__link-to-gitHub"
-                  src={gitHub_Logo}
+                  src={gitHubLogo}
                   alt="gitHub_logo"
                 />
               </Link>
@@ -42,7 +43,7 @@ function Footer() {
               <Link to="https://facebook.com" className="footer__facebook-logo">
                 <img
                   className="footer__link-to-facebook"
-                  src={facebook_Logo}
+                  src={facebookLogo}
                   alt="facebook"
                 />
               </Link>

@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
-import "./Login.css";
-import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
-import useValidationForForm from "../../hooks/useForm.js";
+/* eslint-disable no-unused-vars */
+import React, { useEffect } from 'react';
+import './Login.css';
+import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import useValidationForForm from '../../hooks/useForm';
 
 const Login = ({
   onClose,
@@ -53,11 +54,11 @@ const Login = ({
           minLength="5"
           maxLength="40"
           autoComplete="off"
-          value={values.email || ""}
+          value={values.email || ''}
           onChange={handleChange}
           required
         />
-        <span className="popup__error">{errors.email || ""}</span>
+        <span className="popup__error">{errors.email || ''}</span>
       </div>
 
       <div className="popup__input-container">
@@ -70,14 +71,14 @@ const Login = ({
           minLength="8"
           maxLength="30"
           autoComplete="off"
-          value={values.password || ""}
+          value={values.password || ''}
           onChange={handleChange}
           required
         />
         <span className="popup__error">
           {errors.password
-            ? "Пароль должен включать буквы, как минимум 1 цифра, 1 спецсимвол, не менее 8 знаков"
-            : ""}
+            ? 'Пароль должен включать буквы, как минимум 1 цифра, 1 спецсимвол, не менее 8 знаков'
+            : ''}
         </span>
       </div>
     </PopupWithForm>

@@ -1,8 +1,9 @@
-import "./SavedNewsHeader.css";
-import headerLogoBlack from "../../images/newsExplorerBlack.svg";
-import React from "react";
-import { Link } from "react-router-dom";
-import Navigation from "../Navigation/Navigation.js";
+/* eslint-disable no-unused-vars */
+import './SavedNewsHeader.css';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import headerLogoBlack from '../../images/newsExplorerBlack.svg';
+import Navigation from '../Navigation/Navigation';
 
 function SavedNewsHeader({
   isMenuOpened,
@@ -22,7 +23,7 @@ function SavedNewsHeader({
         </div>
       </div>
       <Navigation
-        style={{ color: "#000" }}
+        style={{ color: '#000' }}
         isMenuOpened={isMenuOpened}
         onChangeActiveStatus={onChangeActiveStatus}
         onCloseMenu={onCloseMenu}

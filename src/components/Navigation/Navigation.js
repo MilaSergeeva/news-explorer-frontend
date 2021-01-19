@@ -1,8 +1,9 @@
-import "./Navigation.css";
-import exitImgWhite from "../../images/exitWhite.svg";
-import exitImgBlack from "../../images/exitBlack.svg";
-import React from "react";
-import { NavLink, Link } from "react-router-dom";
+/* eslint-disable no-unused-vars */
+import './Navigation.css';
+import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import exitImgWhite from '../../images/exitWhite.svg';
+import exitImgBlack from '../../images/exitBlack.svg';
 
 function Navigation({
   isMenuOpened,
@@ -23,7 +24,7 @@ function Navigation({
       {loggedIn === false ? (
         <div
           className={`header-bar__menu-container ${
-            isMenuOpened === true ? "opened" : ""
+            isMenuOpened === true ? 'opened' : ''
           }`}
         >
           <NavLink
@@ -47,7 +48,7 @@ function Navigation({
       ) : (
         <div
           className={`header-bar__menu-container ${
-            isMenuOpened === true ? "opened" : ""
+            isMenuOpened === true ? 'opened' : ''
           }`}
         >
           <NavLink
@@ -72,14 +73,14 @@ function Navigation({
           <Link
             to="/"
             className={`header-bar__button ${
-              pathName === "/" ? " " : "color-black"
+              pathName === '/' ? ' ' : 'color-black'
             }`}
             onClick={exitProfile}
           >
             Имя
             <img
               className="header-bar__exit-img"
-              src={pathName === "/" ? exitImgWhite : exitImgBlack}
+              src={pathName === '/' ? exitImgWhite : exitImgBlack}
               alt="знак выхода"
             />
           </Link>

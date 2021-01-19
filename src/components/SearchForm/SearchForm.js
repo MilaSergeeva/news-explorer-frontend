@@ -1,5 +1,6 @@
-import "./SearchForm.css";
-import React from "react";
+/* eslint-disable no-unused-vars */
+import './SearchForm.css';
+import React from 'react';
 
 function SearchForm() {
   return (
