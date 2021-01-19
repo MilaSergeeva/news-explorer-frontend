@@ -5,7 +5,7 @@
   box-sizing: border-box;
   margin: 0 416px 0;
   background: none;
-  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-family: 'Roboto', 'Inter', Arial, sans-serif;
   font-weight: 400;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .search-form__title {
-  font-family: "Roboto Slab", "Inter", Arial, sans-serif;
+  font-family: 'Roboto Slab', 'Inter', Arial, sans-serif;
   font-size: 60px;
   line-height: 1.06;
   color: #fff;
@@ -87,12 +87,17 @@
   border: 1px solid #d1d2d6;
   box-sizing: border-box;
   outline: none;
+
   box-shadow: none;
   padding-left: 24px;
   font-size: 16px;
   line-height: 1.4;
   color: #1a1b22;
   caret-color: #2f71e5;
+}
+
+.search-form__input:focus {
+  box-shadow: 0 0 10px #d1d2d6;
 }
 
 @media screen and (max-width: 1024px) {
