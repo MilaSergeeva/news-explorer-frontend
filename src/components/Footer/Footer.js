@@ -23,6 +23,7 @@ function Footer() {
               <a
                 href="https://praktikum.yandex.ru"
                 className="footer__nav-link"
+                target="_blank"
               >
                 <p className="footer__link-to-praktikum">Яндекс.Практикум</p>
               </a>
@@ -31,7 +32,11 @@ function Footer() {
 
           <ul className="footer__sosial-links">
             <li>
-              <a href="https://github.com" className="footer__gitHub-logo">
+              <a
+                href="https://github.com"
+                target="_blank"
+                className="footer__gitHub-logo"
+              >
                 <img
                   className="footer__link-to-gitHub"
                   src={gitHubLogo}
@@ -40,7 +45,11 @@ function Footer() {
               </a>
             </li>
             <li>
-              <a href="https://facebook.com" className="footer__facebook-logo">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                className="footer__facebook-logo"
+              >
                 <img
                   className="footer__link-to-facebook"
                   src={facebookLogo}
