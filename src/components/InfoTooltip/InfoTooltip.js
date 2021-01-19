@@ -11,19 +11,41 @@ const InfoTooltip = ({ success, isOpen, onClose, onClick, onRedirect }) => {
           className="popup__close"
           onClick={onClose}
         ></button>
-        <div className="popup__container" onClick={onClick}>
+        {success === true ? (
+          <div className="popup__container" onClick={onClick}>
+            <h3 className="popup__title popup__title_position">
+              {success === true
+                ? "Пользователь успешно зарегистрирован!"
+                : "Что-то пошло не так! Попробуйте еще раз."}
+            </h3>
+            <span
+              className="popup__redirect-to popup__redirect-to_font-size"
+              onClick={onRedirect}
+            >
+              Войти
+            </span>
+          </div>
+        ) : (
+          <div className="popup__container" onClick={onClick}>
+            <h3 className="popup__title popup__title_position">
+              Что-то пошло не так! Попробуйте еще раз.
+            </h3>
+          </div>
+        )}
+        {/* <div className="popup__container" onClick={onClick}>
           <h3 className="popup__title popup__title_position">
             {success === true
               ? "Пользователь успешно зарегистрирован!"
               : "Что-то пошло не так! Попробуйте еще раз."}
           </h3>
+
           <span
             className="popup__redirect-to popup__redirect-to_font-size"
             onClick={onRedirect}
           >
             Войти
           </span>
-        </div>
+        </div> */}
       </div>
     </div>
   );

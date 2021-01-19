@@ -3,16 +3,23 @@ import Header from "../Header/Header.js";
 import Main from "../Main/Main.js";
 import Footer from "../Footer/Footer.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
+import { apiClient, buildApiClient } from "../../utils/MainApi";
+import { newsApi } from "../../utils/NewsApi";
 import "./App.css";
 import cardsList from "../../utils/cardslist.js";
+import * as userAuth from "../../utils/authorization.js";
 import Register from "../Register/Register.js";
 import Login from "../Login/Login.js";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import InfoTooltip from "../InfoTooltip/InfoTooltip.js";
+import { getToken, removeToken, setToken } from "../../utils/token.js";
+import { useLocation } from "react-router-dom";
+import backgroundImage from "../../images/header_background.png";
 
 function App() {
   const [currentUser, setСurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(true);
+  const [savedNewsCards, setSavedNewsCards] = useState([]);
   const [cards, setCards] = useState(cardsList);
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
@@ -21,8 +28,11 @@ function App() {
   const [clickedOutside, setClickedOutside] = useState(false);
   const [isActiveMenuLink, setIsActiveMenuLink] = useState(true);
   const [isInfoToolsPopupOpen, setIsInfoToolsPopupOpen] = useState(false);
-
+  const [messageOnRegister, setMessageOnRegister] = useState("");
+  const [messageOnLogin, setMessageOnLogin] = useState("");
   const [signupSuccess, setSignupSuccess] = useState(false);
+
+  const pathName = useLocation().pathname;
 
   //закрытие модального окна
   function closeAllPopups() {
@@ -94,22 +104,6 @@ function App() {
     handleCloseMenu();
   };
 
-  //сабмит формы решистрации
-  const handleRegisterSubmit = (e) => {
-    e.preventDefault();
-
-    closeAllPopups();
-    setSignupSuccess(true);
-    setIsInfoToolsPopupOpen(true);
-  };
-
-  //сабмит фолмы входа
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-
-    closeAllPopups();
-  };
-
   //закрытие модального окна по оверлей
   const handleClickOutside = (e) => {
     if (e.target.classList.contains("popup")) {
@@ -141,10 +135,80 @@ function App() {
     };
   }, []);
 
+  const handleLogout = () => {
+    removeToken();
+    setLoggedIn(false);
+  };
+
+  const handleLogin = (email, password) => {
+    userAuth
+      .authorize(email, password)
+      .then((data) => {
+        setToken(data.token);
+        setMessageOnLogin("");
+        closeAllPopups();
+        setLoggedIn(true);
+
+        // history.push("/users/me");
+      })
+      .catch((err) => {
+        setMessageOnLogin("Ошибка авторизации. Повторите попытку.");
+      });
+  };
+
+  const handleRegister = (email, password, name) => {
+    console.log("start register");
+    userAuth
+      .register(email, password, name)
+      .then(() => {
+        closeAllPopups();
+        setSignupSuccess(true);
+        setIsInfoToolsPopupOpen(true);
+        setMessageOnRegister("");
+
+        // history.push("/signin");
+      })
+      .catch((res) => {
+        setIsInfoToolsPopupOpen(true);
+        setSignupSuccess(false);
+        setMessageOnRegister(`${res.message}`);
+      });
+  };
+
+  React.useEffect(() => {
+    const jwt = getToken();
+
+    if (!jwt) {
+      setLoggedIn(false);
+
+      return;
+    }
+
+    let apiJWT = buildApiClient(jwt);
+
+    Promise.all([apiJWT.getUserInfo(), apiJWT.getSavedNews()])
+      .then(([userInfo, newsElements]) => {
+        setСurrentUser(userInfo);
+        setSavedNewsCards(newsElements);
+      })
+      .catch((err) => {
+        // potenitally need to log out
+        setLoggedIn(false);
+        removeToken();
+      });
+  }, [loggedIn]);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="root">
-        <div className="page">
+        <div
+          className="page"
+          style={{
+            backgroundImage: `${
+              pathName === "/" ? `url(${backgroundImage})` : "none"
+            }`,
+          }}
+        >
           <Header
             onAutorizationClick={handleAutorizationClick}
             onChangeActiveStatus={toggleLinkActiveStatus}
@@ -152,9 +216,16 @@ function App() {
             isMenuOpened={isMenuOpened}
             onCloseMenu={handleCloseMenu}
             darkBackgroundHeader={darkBackgroundHeader}
+            onLogout={handleLogout}
+            loggedIn={loggedIn}
+            pathName={pathName}
           />
           <main className="content">
-            <Main loggedIn={loggedIn} cards={cards} />
+            <Main
+              loggedIn={loggedIn}
+              savedNewsCards={savedNewsCards}
+              cards={cards}
+            />
           </main>
           <Footer />
         </div>
@@ -167,7 +238,8 @@ function App() {
             onClose={closeAllPopups}
             onRedirect={handleRedirect}
             onClick={handleClickInside}
-            onLogin={handleLoginSubmit}
+            onLogin={handleLogin}
+            messageOnLogin={messageOnLogin}
           />
 
           <Register
@@ -175,7 +247,8 @@ function App() {
             onClose={closeAllPopups}
             onRedirect={handleRedirect}
             onClick={handleClickInside}
-            onRegister={handleRegisterSubmit}
+            onRegister={handleRegister}
+            messageOnRegister={messageOnRegister}
           />
 
           <InfoTooltip

@@ -56,14 +56,14 @@
   display: block;
   height: 24px;
   width: 200px;
-  margin: 30px auto 26px 0;
+  margin: 28px auto 26px 0;
   z-index: 100;
   position: relative;
 }
 
 @media screen and (max-width: 780px) {
   .header-bar__logo-link {
-    margin: 23px auto 18.5px 0;
+    margin: 20px auto 18px 0;
   }
 }
 

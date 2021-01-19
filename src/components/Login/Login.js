@@ -3,7 +3,14 @@ import "./Login.css";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import useValidationForForm from "../../hooks/useForm.js";
 
-const Login = ({ onClose, isOpen, onRedirect, onClick, onLogin }) => {
+const Login = ({
+  onClose,
+  isOpen,
+  onRedirect,
+  onClick,
+  onLogin,
+  messageOnLogin,
+}) => {
   const {
     values,
     handleChange,
@@ -16,6 +23,12 @@ const Login = ({ onClose, isOpen, onRedirect, onClick, onLogin }) => {
     resetForm();
   }, [isOpen, resetForm]);
 
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+
+    onLogin(values.email, values.password);
+  };
+
   return (
     <PopupWithForm
       name="login"
@@ -27,7 +40,8 @@ const Login = ({ onClose, isOpen, onRedirect, onClick, onLogin }) => {
       onClick={onClick}
       isValid={isValid}
       redirectTo="Зарегистрироваться"
-      onSubmit={onLogin}
+      onSubmit={handleLoginSubmit}
+      errorMassageOnSubmit={messageOnLogin}
     >
       <div className="popup__input-container">
         <p className="popup__input-title">Email</p>

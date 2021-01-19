@@ -3,7 +3,14 @@ import React, { useEffect } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import useValidationForForm from "../../hooks/useForm.js";
 
-const Register = ({ onClose, isOpen, onRedirect, onClick, onRegister }) => {
+const Register = ({
+  onClose,
+  isOpen,
+  onRedirect,
+  onClick,
+  onRegister,
+  messageOnRegister,
+}) => {
   const {
     values,
     handleChange,
@@ -19,6 +26,12 @@ const Register = ({ onClose, isOpen, onRedirect, onClick, onRegister }) => {
   const regPassword =
     "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&~])[A-Za-z\\d@$!%*#?&~]{8,}$";
 
+  const handleRegisterSubmit = (e) => {
+    e.preventDefault();
+
+    onRegister(values.email, values.password, values.name);
+  };
+
   return (
     <PopupWithForm
       name="regstration"
@@ -30,7 +43,8 @@ const Register = ({ onClose, isOpen, onRedirect, onClick, onRegister }) => {
       isValid={isValid}
       redirectTo="Войти"
       onRedirect={onRedirect}
-      onSubmit={onRegister}
+      onSubmit={handleRegisterSubmit}
+      errorMassageOnSubmit={messageOnRegister}
     >
       <label className="popup__input-container">
         <p className="popup__input-title">Email</p>

@@ -9,7 +9,7 @@ import Preloader from "../Preloader/Preloader.js";
 import SavedNews from "../SavedNews/SavedNews.js";
 import GenericNotFound from "../GenericNotFound/GenericNotFound.js";
 
-function Main({ loggedIn, cards }) {
+function Main({ loggedIn, savedNewsCards, cards }) {
   return (
     <div className="main-content">
       <Route exact path="/">
@@ -22,7 +22,7 @@ function Main({ loggedIn, cards }) {
       </Route>
       <Route exact path="/saved-news">
         <UserArticlesInfo />
-        <SavedNews cards={cards} />
+        <SavedNews cards={savedNewsCards} />
       </Route>
 
       <Route exact path="/">
