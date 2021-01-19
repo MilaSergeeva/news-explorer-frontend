@@ -20,33 +20,33 @@ function Footer() {
               </Link>
             </li>
             <li>
-              <Link
-                to="https://praktikum.yandex.ru"
+              <a
+                href="https://praktikum.yandex.ru"
                 className="footer__nav-link"
               >
                 <p className="footer__link-to-praktikum">Яндекс.Практикум</p>
-              </Link>
+              </a>
             </li>
           </ul>
 
           <ul className="footer__sosial-links">
             <li>
-              <Link to="https://github.com" className="footer__gitHub-logo">
+              <a href="https://github.com" className="footer__gitHub-logo">
                 <img
                   className="footer__link-to-gitHub"
                   src={gitHubLogo}
                   alt="gitHub_logo"
                 />
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="https://facebook.com" className="footer__facebook-logo">
+              <a href="https://facebook.com" className="footer__facebook-logo">
                 <img
                   className="footer__link-to-facebook"
                   src={facebookLogo}
                   alt="facebook"
                 />
-              </Link>
+              </a>
             </li>
           </ul>
         </nav>
