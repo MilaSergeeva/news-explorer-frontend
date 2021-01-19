@@ -1,39 +1,40 @@
 import "./Navigation.css";
-import exitImg from "../../images/exit.svg";
+import exitImgWhite from "../../images/exitWhite.svg";
+import exitImgBlack from "../../images/exitBlack.svg";
 import React from "react";
-import { NavLink, Route, Switch, Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 function Navigation({
   isMenuOpened,
   onAutorizationClick,
   onChangeActiveStatus,
   onCloseMenu,
+  loggedIn,
+  onLogout,
+  pathName,
 }) {
-  return (
-    <div
-      className={`header-bar__menu ${isMenuOpened === true ? "opened" : ""}`}
-    >
-      <NavLink
-        exact
-        to="/"
-        activeClassName="activeMain"
-        className="header-bar__nav-link color-black"
-        onClick={onChangeActiveStatus}
-      >
-        <p>Главная</p>
-      </NavLink>
-      <NavLink
-        exact
-        to="/saved-news"
-        activeClassName="activeSavedNews"
-        className="header-bar__nav-link color-white"
-        onClick={onChangeActiveStatus}
-      >
-        <p className="header-bar__saved-news">Сохраненные статьи</p>
-      </NavLink>
+  const exitProfile = () => {
+    onCloseMenu();
+    onLogout();
+  };
 
-      <Switch>
-        <Route exact path="/">
+  return (
+    <div className="header-bar__menu">
+      {loggedIn === false ? (
+        <div
+          className={`header-bar__menu-container ${
+            isMenuOpened === true ? "opened" : ""
+          }`}
+        >
+          <NavLink
+            exact
+            to="/"
+            activeClassName="activeMain"
+            className="header-bar__nav-link color-black"
+            onClick={onChangeActiveStatus}
+          >
+            <p>Главная</p>
+          </NavLink>
           <button
             type="button"
             aria-label="Авторизация"
@@ -42,23 +43,48 @@ function Navigation({
           >
             Авторизация
           </button>
-        </Route>
-        <Route exact path="/saved-news">
+        </div>
+      ) : (
+        <div
+          className={`header-bar__menu-container ${
+            isMenuOpened === true ? "opened" : ""
+          }`}
+        >
+          <NavLink
+            exact
+            to="/"
+            activeClassName="activeMain"
+            className="header-bar__nav-link color-black"
+            onClick={onChangeActiveStatus}
+          >
+            <p>Главная</p>
+          </NavLink>
+          <NavLink
+            exact
+            to="/saved-news"
+            activeClassName="activeSavedNews"
+            className="header-bar__nav-link color-white"
+            onClick={onChangeActiveStatus}
+          >
+            <p className="header-bar__saved-news">Сохраненные статьи</p>
+          </NavLink>
+
           <Link
             to="/"
-            className="header-bar__button color-black"
-            onClick={onCloseMenu}
+            className={`header-bar__button ${
+              pathName === "/" ? " " : "color-black"
+            }`}
+            onClick={exitProfile}
           >
             Имя
             <img
               className="header-bar__exit-img"
-              src={exitImg}
+              src={pathName === "/" ? exitImgWhite : exitImgBlack}
               alt="знак выхода"
             />
-            {/* </button> */}
           </Link>
-        </Route>
-      </Switch>
+        </div>
+      )}
     </div>
   );
 }

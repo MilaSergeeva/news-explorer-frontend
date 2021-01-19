@@ -23,7 +23,9 @@ const PopupWithForm = (props) => {
           >
             <h3 className="popup__title">{props.title}</h3>
             {props.children}
-            <span className="popup__error popup__error_position"></span>
+            <span className="popup__error popup__error_position">
+              {props.errorMassageOnSubmit || ""}
+            </span>
             <button
               type="submit"
               className={`popup__btn-save ${props.isValid ? "active-btn" : ""}`}
