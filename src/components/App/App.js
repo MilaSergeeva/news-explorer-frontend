@@ -174,7 +174,7 @@ function App() {
       .catch((res) => {
         setIsInfoToolsPopupOpen(true);
         setSignupSuccess(false);
-        setMessageOnRegister(`${res.message}`);
+        setMessageOnRegister('Ошибка регистрации. Повторите попытку.');
       });
   };
 
