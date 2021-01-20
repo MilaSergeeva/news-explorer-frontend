@@ -16,6 +16,15 @@ function useValidationForForm() {
     setIsValid(target.closest('form').checkValidity());
   };
 
+  const handleChangeSearchForm = (event) => {
+    const { target } = event;
+    const { value } = target;
+    const { name } = target;
+
+    setValues({ ...values, [name]: value });
+    setErrors({ ...errors, [name]: target.validationMessage });
+  };
+
   const resetForm = useCallback(
     (newValues = {}, newErrors = {}, newIsValid = false) => {
       setValues(newValues);
@@ -26,7 +35,12 @@ function useValidationForForm() {
   );
 
   return {
-    values, handleChange, errors, isValid, resetForm,
+    values,
+    handleChange,
+    errors,
+    isValid,
+    resetForm,
+    handleChangeSearchForm,
   };
 }
 
