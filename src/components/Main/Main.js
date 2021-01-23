@@ -18,8 +18,7 @@ function Main({
   articles,
   searchSuccess,
   preloaderIsOn,
-  onSaveClick,
-  onDeleteClick,
+  onToggleClick,
   counter,
   isArticleSaved,
 }) {
@@ -35,7 +34,7 @@ function Main({
               loggedIn={loggedIn}
               articles={articles}
               savedNews={savedNews}
-              onSaveClick={onSaveClick}
+              onToggleClick={onToggleClick}
               isArticleSaved={isArticleSaved}
             />
           )}
@@ -44,7 +43,7 @@ function Main({
       </Route>
       <Route exact path="/saved-news">
         <UserArticlesInfo counter={counter} />
-        <SavedNews articles={savedNews} onDeleteClick={onDeleteClick} />
+        <SavedNews articles={savedNews} onToggleClick={onToggleClick} />
       </Route>
 
       <Route exact path="/">

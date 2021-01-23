@@ -4,7 +4,7 @@ import './NewsCardList.css';
 import React, { useState } from 'react';
 import NewsCard from '../NewsCard/NewsCard';
 
-function NewsCardList({ loggedIn, articles, savedNews, onSaveClick }) {
+function NewsCardList({ loggedIn, articles, savedNews, onToggleClick }) {
   const [itemsToShow, setItemsToShow] = useState(3);
 
   const swowMoreCards = () => {
@@ -28,7 +28,7 @@ function NewsCardList({ loggedIn, articles, savedNews, onSaveClick }) {
             key={article.publishedAt}
             article={article}
             loggedIn={loggedIn}
-            onSaveClick={onSaveClick}
+            onToggleClick={onToggleClick}
             isArticleSaved={getIsArticleSaved(article)}
           />
         ))}

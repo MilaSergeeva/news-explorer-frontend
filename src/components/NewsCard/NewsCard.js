@@ -5,20 +5,14 @@ import './NewsCard.css';
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-function NewsCard({
-  article,
-  loggedIn,
-  onSaveClick,
-  onDeleteClick,
-  isArticleSaved,
-}) {
+function NewsCard({ article, loggedIn, onToggleClick, isArticleSaved }) {
   const handleSaveArticle = (e) => {
     loggedIn === true && e.target.classList.toggle('saved');
-    loggedIn === true && onSaveClick(article);
+    loggedIn === true && onToggleClick(article);
   };
 
   const handleDeleteArticleCard = () => {
-    onDeleteClick(article);
+    onToggleClick(article);
   };
 
   return (

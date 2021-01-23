@@ -3,7 +3,7 @@ import './SavedNews.css';
 import React from 'react';
 import NewsCard from '../NewsCard/NewsCard';
 
-function SavedNews({ loggedIn, articles, onDeleteClick }) {
+function SavedNews({ loggedIn, articles, onToggleClick }) {
   return (
     <div className="saved-news">
       <div className="news-card-list">
@@ -12,7 +12,7 @@ function SavedNews({ loggedIn, articles, onDeleteClick }) {
             key={newsCard._id}
             article={newsCard}
             loggedIn={loggedIn}
-            onDeleteClick={onDeleteClick}
+            onToggleClick={onToggleClick}
           />
         ))}
       </div>

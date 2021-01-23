@@ -48,7 +48,6 @@ function App() {
   const pathName = useLocation().pathname;
   const dateTime = new Date();
   const currentDate = dateTime.toISOString().substr(0, 16);
-  // date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
 
   function deductDays(d, days) {
     return new Date(d.getFullYear(), d.getMonth(), d.getDate() - days);
@@ -199,35 +198,34 @@ function App() {
       });
   };
 
-  const handleSaveNews = (newsCard) => {
+  const handleSaveNews = (article) => {
     const newsPayload = {
       keyword,
-      title: newsCard.title,
-      text: newsCard.description,
-      date: newsCard.publishedAt,
-      source: newsCard.source.name,
-      link: newsCard.url,
-      image: newsCard.urlToImage,
+      title: article.title,
+      text: article.description,
+      date: article.publishedAt,
+      source: article.source.name,
+      link: article.url,
+      image: article.urlToImage,
     };
 
     const jwt = getToken();
     const apiJWT = buildApiClient(jwt);
 
-    api
-      .saveNews(newsPayload)
-      .then(() => apiJWT.getSavedNews())
-      .then((result) => setSavedNews(result));
+    const found = savedNews.find((el) => el.title === article.title);
+
+    if (found) {
+      api
+        .deleteSavedNews(found._id)
+        .then(() => apiJWT.getSavedNews())
+        .then((result) => setSavedNews(result));
+    } else {
+      api
+        .saveNews(newsPayload)
+        .then(() => apiJWT.getSavedNews())
+        .then((result) => setSavedNews(result));
+    }
   };
-
-  function handleDeleteArticle(article) {
-    api.deleteSavedNews(article._id).then(() => {
-      //Формируем новый массив на основе имеющегося
-      const newSavedNewsList = savedNews.filter((a) => article._id !== a._id);
-
-      // Обновляем стейт
-      setSavedNews(newSavedNewsList);
-    });
-  }
 
   const handleFindNews = (input) => {
     setPreloaderIsOn(true);
@@ -243,13 +241,6 @@ function App() {
         setPreloaderIsOn(false);
         setSearchSuccess(false);
       });
-  };
-
-  const handleUnsave = (element) => {
-    api.deleteSavedNews(article._id).then(() => {
-      // Обновляем стейт
-      setSavedNews(newSavedNewsList);
-    });
   };
 
   React.useEffect(() => {
@@ -303,8 +294,7 @@ function App() {
               onSearch={handleFindNews}
               searchSuccess={searchSuccess}
               preloaderIsOn={preloaderIsOn}
-              onSaveClick={handleSaveNews}
-              onDeleteClick={handleDeleteArticle}
+              onToggleClick={handleSaveNews}
               counter={savedNewsCount}
             />
           </main>

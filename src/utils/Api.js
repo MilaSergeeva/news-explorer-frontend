@@ -63,13 +63,6 @@ class Api {
     return this.makeRequest(endpoint, httpMethod, newsPayload);
   }
 
-  // changeSaveNewsStatus(newsId, isSaved) {
-  //   if (!isSaved) {
-  //     return this.likeCard(newsId);
-  //   }
-  //   return this.deleteLikeCard(newsId);
-  // }
-
   deleteSavedNews(newsId) {
     const endpoint = `articles/${newsId}`;
     const httpMethod = 'DELETE';
