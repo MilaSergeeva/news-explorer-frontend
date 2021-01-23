@@ -1,24 +1,39 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable no-unused-vars */
 import './NewsCardList.css';
 import React, { useState } from 'react';
 import NewsCard from '../NewsCard/NewsCard';
 
-function NewsCardList({ loggedIn, cards }) {
+function NewsCardList({ loggedIn, articles, savedNews, onSaveClick }) {
   const [itemsToShow, setItemsToShow] = useState(3);
 
   const swowMoreCards = () => {
     setItemsToShow(itemsToShow + 3);
   };
 
+  const getIsArticleSaved = (article) => {
+    const found = savedNews.find(
+      (savedArticle) => savedArticle.title === article.title,
+    );
+
+    return !!found;
+  };
+
   return (
     <div className="search-result-success">
       <h2 className="search-result-success__tile">Результаты поиска</h2>
       <div className="news-card-list">
-        {cards.slice(0, itemsToShow).map((newsCard) => (
-          <NewsCard key={newsCard._id} card={newsCard} loggedIn={loggedIn} />
+        {articles.slice(0, itemsToShow).map((article) => (
+          <NewsCard
+            key={article.publishedAt}
+            article={article}
+            loggedIn={loggedIn}
+            onSaveClick={onSaveClick}
+            isArticleSaved={getIsArticleSaved(article)}
+          />
         ))}
       </div>
-      {itemsToShow <= cards.length ? (
+      {itemsToShow <= articles.length ? (
         <button
           type="button"
           aria-label="Показать еще"

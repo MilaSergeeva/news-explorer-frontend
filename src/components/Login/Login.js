@@ -44,7 +44,7 @@ const Login = ({
       onSubmit={handleLoginSubmit}
       errorMassageOnSubmit={messageOnLogin}
     >
-      <div className="popup__input-container">
+      <fieldset className="popup__input-container">
         <p className="popup__input-title">Email</p>
         <input
           type="email"
@@ -59,9 +59,9 @@ const Login = ({
           required
         />
         <span className="popup__error">{errors.email || ''}</span>
-      </div>
+      </fieldset>
 
-      <div className="popup__input-container">
+      <fieldset className="popup__input-container">
         <p className="popup__input-title">Пароль</p>
         <input
           type="password"
@@ -80,7 +80,7 @@ const Login = ({
             ? 'Пароль должен включать буквы, как минимум 1 цифра, 1 спецсимвол, не менее 8 знаков'
             : ''}
         </span>
-      </div>
+      </fieldset>
     </PopupWithForm>
   );
 };

@@ -1,9 +1,34 @@
+.profile {
+  padding: 80px 104px;
+  box-sizing: border-box;
+  display: block;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile {
+    padding: 7.8vw 10.2vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .profile {
+    padding: 5.1vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .profile {
+    padding: 32px 16px 80px;
+  }
+}
+
 .profile__container {
   display: flex;
   flex-direction: row;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .profile__container {
     flex-direction: column;
   }
@@ -29,10 +54,11 @@
   .profile__avatar {
     height: 30.2vw;
     width: 30.2vw;
+    align-self: center;
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .profile__avatar {
     height: 272px;
     width: 272px;
@@ -66,7 +92,7 @@
 
 .profile__title {
   color: #000;
-  font-family: "Roboto Slab", "Inter", Arial, sans-serif;
+  font-family: 'Roboto Slab', 'Inter', Arial, sans-serif;
   font-weight: 400;
   font-size: 40px;
   line-height: 1.15;
@@ -82,7 +108,7 @@
 
 .profile__context {
   color: #000;
-  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-family: 'Roboto', 'Inter', Arial, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.3;

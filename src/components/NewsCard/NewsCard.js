@@ -1,24 +1,42 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
 import './NewsCard.css';
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-function NewsCard({ card, loggedIn }) {
-  const saveNewsCard = (e) => {
-    loggedIn === true ? e.target.classList.toggle('saved') : ' ';
+function NewsCard({
+  article,
+  loggedIn,
+  onSaveClick,
+  onDeleteClick,
+  isArticleSaved,
+}) {
+  const handleSaveArticle = (e) => {
+    loggedIn === true && e.target.classList.toggle('saved');
+    loggedIn === true && onSaveClick(article);
+  };
+
+  const handleDeleteArticleCard = () => {
+    onDeleteClick(article);
   };
 
   return (
     <figure className="news-card">
-      <img className="news-card__img" src={card.image} alt={card.tag} />
+      {/* <a href={article.url} className="" target="_blank"> */}
+      <img
+        className="news-card__img"
+        src={article.urlToImage || article.image}
+        alt={article.keyword}
+      />
+      {/* </a> */}
       <div className="news-card__lables">
         <Route exact path="/">
           <button
             type="button"
             aria-label="save"
-            className="news-card__save-btn"
-            onClick={saveNewsCard}
+            className={`news-card__save-btn ${isArticleSaved && 'saved'}`}
+            onClick={handleSaveArticle}
           />
           <p
             className="news-card__save-notification"
@@ -28,27 +46,32 @@ function NewsCard({ card, loggedIn }) {
           </p>
         </Route>
         <Route exact path="/saved-news">
-          <p className="news-card__search-tag">{card.tag}</p>
+          <p className="news-card__search-tag">{article.keyword}</p>
           <button
             type="button"
             aria-label="delete"
             className="news-card__delete-btn"
+            onClick={handleDeleteArticleCard}
           />
           <p className="news-card__delete-notification">
             Убрать из сохранённых
           </p>
         </Route>
       </div>
+      {/* <a href={article.url} className="news-card__link-to-news" target="_blank"> */}
       <figcaption className="news-card__inf-container">
         <time className="news-card__date" dateTime="2002-09-15">
-          {card.date}
+          {article.publishedAt || article.date}
         </time>
         <div className="news-card__content">
-          <h3 className="news-card__title">{card.title}</h3>
-          <p className="news-card__text">{card.text}</p>
+          <h3 className="news-card__title">{article.title}</h3>
+          <p className="news-card__text">{article.text}</p>
         </div>
-        <p className="news-card__resource">{card.resource}</p>
+        <p className="news-card__resource">
+          {article.source.name || article.source}
+        </p>
       </figcaption>
+      {/* </a> */}
     </figure>
   );
 }

@@ -1,3 +1,6 @@
+/* eslint-disable operator-linebreak */
+/* eslint-disable function-paren-newline */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable prefer-promise-reject-errors */
 import qs from 'querystring';
@@ -18,8 +21,8 @@ class Api {
     };
 
     if (
-      payload !== undefined
-      && ['POST', 'PUT', 'PATCH'].includes(httpMethod)
+      payload !== undefined &&
+      ['POST', 'PUT', 'PATCH'].includes(httpMethod)
     ) {
       options.body = JSON.stringify(payload);
     } else if (payload !== undefined) {
@@ -36,19 +39,14 @@ class Api {
       if (res.status >= 400 && res.status < 500) {
         return res
           .json()
-          .then((body) => Promise.reject(`Что-то пошло не так: ${body.message}`));
+          .then((body) =>
+            Promise.reject(`Что-то пошло не так: ${body.message}`),
+          );
       }
 
       // server didn't reply 5xx
       return Promise.reject(`Что-то пошло не так: ${res.status}`);
     });
-  }
-
-  findNews() {
-    const endpoint = '/';
-    const httpMethod = 'GET';
-
-    return this.makeRequest(endpoint, httpMethod);
   }
 
   getSavedNews() {
@@ -65,12 +63,12 @@ class Api {
     return this.makeRequest(endpoint, httpMethod, newsPayload);
   }
 
-  changeSaveNewsStatus(newsId, isSaved) {
-    if (!isSaved) {
-      return this.likeCard(newsId);
-    }
-    return this.deleteLikeCard(newsId);
-  }
+  // changeSaveNewsStatus(newsId, isSaved) {
+  //   if (!isSaved) {
+  //     return this.likeCard(newsId);
+  //   }
+  //   return this.deleteLikeCard(newsId);
+  // }
 
   deleteSavedNews(newsId) {
     const endpoint = `articles/${newsId}`;
@@ -84,6 +82,20 @@ class Api {
     const httpMethod = 'GET';
 
     return this.makeRequest(endpoint, httpMethod);
+  }
+
+  getNews(apiKey, query, fromDate, toDate, pageSize) {
+    const endpoint = 'everything';
+    const httpMethod = 'GET';
+    const payload = {
+      apiKey,
+      q: query,
+      from: fromDate,
+      to: toDate,
+      pageSize,
+    };
+
+    return this.makeRequest(endpoint, httpMethod, payload);
   }
 }
 

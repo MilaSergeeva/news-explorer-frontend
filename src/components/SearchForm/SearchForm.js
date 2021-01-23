@@ -4,13 +4,19 @@ import './SearchForm.css';
 import React from 'react';
 import useValidationForForm from '../../hooks/useForm';
 
-function SearchForm() {
+function SearchForm({ onSearch }) {
   const {
     values,
     errors,
     isValid,
     handleChangeSearchForm,
   } = useValidationForForm();
+
+  const handleNewsSearch = (e) => {
+    e.preventDefault();
+
+    onSearch(values.search);
+  };
 
   return (
     <div className="search-form">
@@ -38,6 +44,7 @@ function SearchForm() {
           type="button"
           aria-label="Искать"
           className="search-form__search-button"
+          onClick={handleNewsSearch}
         >
           Искать
         </button>

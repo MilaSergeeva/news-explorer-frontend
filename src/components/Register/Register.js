@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 /* eslint-disable no-unused-vars */
 import './Register.css';
 import React, { useEffect } from 'react';
@@ -24,7 +25,8 @@ const Register = ({
     resetForm();
   }, [isOpen, resetForm]);
 
-  const regPassword = '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&~])[A-Za-z\\d@$!%*#?&~]{8,}$';
+  const regPassword =
+    '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&~])[A-Za-z\\d@$!%*#?&~]{8,}$';
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
@@ -46,7 +48,7 @@ const Register = ({
       onSubmit={handleRegisterSubmit}
       errorMassageOnSubmit={messageOnRegister}
     >
-      <label className="popup__input-container">
+      <fieldset className="popup__input-container">
         <p className="popup__input-title">Email</p>
         <input
           type="email"
@@ -61,9 +63,9 @@ const Register = ({
           required
         />
         <span className="popup__error">{errors.email || ''}</span>
-      </label>
+      </fieldset>
 
-      <label className="popup__input-container">
+      <fieldset className="popup__input-container">
         <p className="popup__input-title">Пароль</p>
         <input
           type="password"
@@ -83,9 +85,9 @@ const Register = ({
             ? 'Пароль должен включать буквы, как минимум 1 цифра, 1 спецсимвол, не менее 8 знаков'
             : ''}
         </span>
-      </label>
+      </fieldset>
 
-      <label className="popup__input-container">
+      <fieldset className="popup__input-container">
         <p className="popup__input-title">Имя</p>
         <input
           type="text"
@@ -100,7 +102,7 @@ const Register = ({
           required
         />
         <span className="popup__error">{errors.name || ''}</span>
-      </label>
+      </fieldset>
     </PopupWithForm>
   );
 };

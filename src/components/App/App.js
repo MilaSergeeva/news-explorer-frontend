@@ -1,3 +1,10 @@
+/* eslint-disable spaced-comment */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-undef */
+/* eslint-disable indent */
+/* eslint-disable prefer-template */
+/* eslint-disable operator-linebreak */
+/* eslint-disable space-infix-ops */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable import/named */
 /* eslint-disable no-unused-vars */
@@ -8,9 +15,8 @@ import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { apiClient, buildApiClient } from '../../utils/MainApi';
-import { newsApi } from '../../utils/NewsApi';
-import cardsList from '../../utils/cardslist';
+import { api, apiClient, buildApiClient } from '../../utils/MainApi';
+import { newsApi as findNews } from '../../utils/NewsApi';
 import * as userAuth from '../../utils/authorization';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
@@ -22,8 +28,8 @@ import backgroundImage from '../../images/header_background.png';
 function App() {
   const [currentUser, setСurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(true);
-  const [savedNewsCards, setSavedNewsCards] = useState([]);
-  const [cards, setCards] = useState(cardsList);
+  const [savedNews, setSavedNews] = useState([]);
+  const [articles, setArticles] = useState([]);
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
   const [isMenuOpened, setIsMenuOpened] = useState(false);
@@ -34,8 +40,22 @@ function App() {
   const [messageOnRegister, setMessageOnRegister] = useState('');
   const [messageOnLogin, setMessageOnLogin] = useState('');
   const [signupSuccess, setSignupSuccess] = useState(false);
+  const [searchSuccess, setSearchSuccess] = useState(null);
+  const [preloaderIsOn, setPreloaderIsOn] = useState(false);
+  const [keyword, setKeyword] = useState('');
 
+  const savedNewsCount = savedNews.length;
   const pathName = useLocation().pathname;
+  const dateTime = new Date();
+  const currentDate = dateTime.toISOString().substr(0, 16);
+  // date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+
+  function deductDays(d, days) {
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate() - days);
+  }
+
+  const dateWeekAgo = deductDays(dateTime, 7).toISOString().substr(0, 16);
+  const apiKey = '670ce72cce9c46b28214a8e2e4e4f7da';
 
   // закрытие модального окна
   function closeAllPopups() {
@@ -140,6 +160,7 @@ function App() {
   }, []);
 
   const handleLogout = () => {
+    localStorage.removeItem(articles);
     removeToken();
     setLoggedIn(false);
   };
@@ -178,6 +199,53 @@ function App() {
       });
   };
 
+  const handleSaveNews = (newsCard) => {
+    const newsPayload = {
+      keyword,
+      title: newsCard.title,
+      text: newsCard.description,
+      date: newsCard.publishedAt,
+      source: newsCard.source.name,
+      link: newsCard.url,
+      image: newsCard.urlToImage,
+    };
+
+    api.saveNews(newsPayload);
+  };
+
+  function handleDeleteArticle(article) {
+    api.deleteSavedNews(article._id).then(() => {
+      //Формируем новый массив на основе имеющегося
+      const newSavedNewsList = savedNews.filter((a) => article._id !== a._id);
+
+      // Обновляем стейт
+      setSavedNews(newSavedNewsList);
+    });
+  }
+
+  const handleFindNews = (input) => {
+    setPreloaderIsOn(true);
+    findNews
+      .getNews(apiKey, input, currentDate, dateWeekAgo, 100)
+      .then((body) => {
+        setPreloaderIsOn(null);
+        setArticles(body.articles);
+        setSearchSuccess(true);
+        setKeyword(input);
+      })
+      .catch((res) => {
+        setPreloaderIsOn(false);
+        setSearchSuccess(false);
+      });
+  };
+
+  const handleUnsave = (element) => {
+    api.deleteSavedNews(article._id).then(() => {
+      // Обновляем стейт
+      setSavedNews(newSavedNewsList);
+    });
+  };
+
   React.useEffect(() => {
     const jwt = getToken();
 
@@ -192,7 +260,7 @@ function App() {
     Promise.all([apiJWT.getUserInfo(), apiJWT.getSavedNews()])
       .then(([userInfo, newsElements]) => {
         setСurrentUser(userInfo);
-        setSavedNewsCards(newsElements);
+        setSavedNews(newsElements);
       })
       .catch((err) => {
         // potenitally need to log out
@@ -207,9 +275,7 @@ function App() {
         <div
           className="page"
           style={{
-            backgroundImage: `${
-              pathName === '/' ? `url(${backgroundImage})` : 'none'
-            }`,
+            backgroundImage: `${pathName === '/' && `url(${backgroundImage})`}`,
           }}
         >
           <Header
@@ -226,8 +292,14 @@ function App() {
           <main className="content">
             <Main
               loggedIn={loggedIn}
-              savedNewsCards={savedNewsCards}
-              cards={cards}
+              savedNews={savedNews}
+              articles={articles}
+              onSearch={handleFindNews}
+              searchSuccess={searchSuccess}
+              preloaderIsOn={preloaderIsOn}
+              onSaveClick={handleSaveNews}
+              onDeleteClick={handleDeleteArticle}
+              counter={savedNewsCount}
             />
           </main>
           <Footer />
