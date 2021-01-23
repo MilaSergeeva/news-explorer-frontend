@@ -6,13 +6,16 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 function NewsCard({ article, loggedIn, onToggleClick, isArticleSaved }) {
-  const handleSaveArticle = (e) => {
-    loggedIn === true && e.target.classList.toggle('saved');
-    loggedIn === true && onToggleClick(article);
+  const handleSaveArticle = () => {
+    if (loggedIn) {
+      onToggleClick(article);
+    }
   };
 
   const handleDeleteArticleCard = () => {
-    onToggleClick(article);
+    if (loggedIn) {
+      onToggleClick(article);
+    }
   };
 
   return (
