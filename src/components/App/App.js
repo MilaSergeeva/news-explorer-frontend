@@ -210,7 +210,13 @@ function App() {
       image: newsCard.urlToImage,
     };
 
-    api.saveNews(newsPayload);
+    const jwt = getToken();
+    const apiJWT = buildApiClient(jwt);
+
+    api
+      .saveNews(newsPayload)
+      .then(() => apiJWT.getSavedNews())
+      .then((result) => setSavedNews(result));
   };
 
   function handleDeleteArticle(article) {
