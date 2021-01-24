@@ -29,6 +29,7 @@ class Api {
       url = `${url}?${qs.encode(payload)}`;
     }
 
+    // TODO add catches
     return fetch(url, options).then((res) => {
       if (res.ok) {
         // status code check

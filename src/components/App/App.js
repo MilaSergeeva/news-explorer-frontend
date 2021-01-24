@@ -9,7 +9,7 @@
 /* eslint-disable import/named */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -25,12 +25,22 @@ import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import { getToken, removeToken, setToken } from '../../utils/token';
 import backgroundImage from '../../images/header_background.png';
 
+const getQuery = () => {
+  if (typeof window !== 'undefined') {
+    return new URLSearchParams(window.location.search);
+  }
+  return new URLSearchParams();
+};
+
 function App() {
+  const showAuth = !!getQuery().get('showAuth');
+
   const [currentUser, setСurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(true);
   const [savedNews, setSavedNews] = useState([]);
   const [articles, setArticles] = useState([]);
-  const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
+
+  const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(showAuth);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [darkBackgroundHeader, setDarkBackgroundHeader] = useState(false);
@@ -40,10 +50,11 @@ function App() {
   const [messageOnRegister, setMessageOnRegister] = useState('');
   const [messageOnLogin, setMessageOnLogin] = useState('');
   const [signupSuccess, setSignupSuccess] = useState(false);
-  const [searchSuccess, setSearchSuccess] = useState(null);
+  const [searchSuccess, setSearchSuccess] = useState(false);
   const [preloaderIsOn, setPreloaderIsOn] = useState(false);
   const [keyword, setKeyword] = useState('');
 
+  const history = useHistory();
   const pathName = useLocation().pathname;
   const dateTime = new Date();
   const currentDate = dateTime.toISOString().substr(0, 16);
@@ -161,10 +172,13 @@ function App() {
 
   const handleLogout = () => {
     localStorage.removeItem('articles');
+
     removeToken();
     setArticles([]);
     setSearchSuccess(null);
     setLoggedIn(false);
+
+    history.push('/');
   };
 
   const handleLogin = (email, password) => {
@@ -175,8 +189,6 @@ function App() {
         setMessageOnLogin('');
         closeAllPopups();
         setLoggedIn(true);
-
-        // history.push("/users/me");
       })
       .catch((err) => {
         setMessageOnLogin('Ошибка авторизации. Повторите попытку.');
@@ -235,7 +247,7 @@ function App() {
     findNews
       .getNews(apiKey, input, currentDate, dateWeekAgo, 100)
       .then((body) => {
-        setPreloaderIsOn(null);
+        setPreloaderIsOn(false);
         localStorage.removeItem('articles');
         setArticles(body.articles);
         if (body.articles.length > 0) {
@@ -287,6 +299,7 @@ function App() {
 
         if (localArticles.length > 0) {
           setSearchSuccess(true);
+          setSearchResultOn(true);
         }
       } catch (err) {
         console.log('Failed to load articles from local storage');

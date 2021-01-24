@@ -3,6 +3,15 @@ import './PopupWithForm.css';
 import React from 'react';
 
 const PopupWithForm = (props) => (
+  // const [isSumitting, setIsSubmitting] = useState(false);
+  // const onSubmitForm = () => {
+  //   setIsSubmitting(true);
+
+  //   props.onSubmit().then(() => {
+  //     setIsSubmitting(false)
+  //   })
+  // }
+
   <div
     className={`popup popup_${props.name} ${props.isOpen && 'popup_opened'} `}
   >
@@ -18,6 +27,7 @@ const PopupWithForm = (props) => (
           method="POST"
           name="user-info"
           className="popup__form"
+          // onSubmit={onSubmitForm}
           onSubmit={props.onSubmit}
           noValidate
         >

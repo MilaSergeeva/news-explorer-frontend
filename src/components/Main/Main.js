@@ -11,6 +11,7 @@ import Preloader from '../Preloader/Preloader';
 import SavedNews from '../SavedNews/SavedNews';
 import GenericNotFound from '../GenericNotFound/GenericNotFound';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 function Main({
   loggedIn,
@@ -42,10 +43,12 @@ function Main({
           {searchSuccess === false && <GenericNotFound />}
         </section>
       </Route>
-      <Route exact path="/saved-news">
-        <UserArticlesInfo articles={savedNews} />
-        <SavedNews articles={savedNews} onToggleClick={onToggleClick} />
-      </Route>
+      <ProtectedRoute
+        exact
+        path="/saved-news"
+        articles={savedNews}
+        onToggleClick={onToggleClick}
+      />
 
       <Route exact path="/">
         <section className="profile">
