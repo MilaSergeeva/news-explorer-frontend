@@ -26,6 +26,7 @@ import { getToken, removeToken, setToken } from '../../utils/token';
 import backgroundImage from '../../images/header_background.png';
 
 function App() {
+  const lastSearchResult = JSON.parse(localStorage.getItem('articles'));
   const [currentUser, setСurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(true);
   const [savedNews, setSavedNews] = useState([]);
@@ -44,7 +45,6 @@ function App() {
   const [preloaderIsOn, setPreloaderIsOn] = useState(false);
   const [keyword, setKeyword] = useState('');
 
-  const savedNewsCount = savedNews.length;
   const pathName = useLocation().pathname;
   const dateTime = new Date();
   const currentDate = dateTime.toISOString().substr(0, 16);
@@ -61,6 +61,8 @@ function App() {
     setIsLoginPopupOpen(false);
     setIsRegisterPopupOpen(false);
     setIsInfoToolsPopupOpen(false);
+    setMessageOnLogin('');
+    setMessageOnRegister('');
   }
 
   // нажатие кнопки авторизации в меню
@@ -159,8 +161,10 @@ function App() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem(articles);
+    localStorage.removeItem('articles');
     removeToken();
+    setArticles([]);
+    setSearchSuccess(null);
     setLoggedIn(false);
   };
 
@@ -233,9 +237,11 @@ function App() {
       .getNews(apiKey, input, currentDate, dateWeekAgo, 100)
       .then((body) => {
         setPreloaderIsOn(null);
+        localStorage.removeItem('articles');
         setArticles(body.articles);
         setSearchSuccess(true);
         setKeyword(input);
+        localStorage.setItem('articles', JSON.stringify(body.articles));
       })
       .catch((res) => {
         setPreloaderIsOn(false);
@@ -254,6 +260,8 @@ function App() {
 
     const apiJWT = buildApiClient(jwt);
 
+    // setArticles(JSON.parse(localStorage.getItem('articles')));
+
     Promise.all([apiJWT.getUserInfo(), apiJWT.getSavedNews()])
       .then(([userInfo, newsElements]) => {
         setСurrentUser(userInfo);
@@ -265,6 +273,22 @@ function App() {
         removeToken();
       });
   }, [loggedIn]);
+
+  React.useEffect(() => {
+    if ('articles' in localStorage) {
+      try {
+        const localArticles = JSON.parse(localStorage.getItem('articles'));
+
+        setArticles(localArticles);
+
+        if (localArticles.length > 0) {
+          setSearchSuccess(true);
+        }
+      } catch (err) {
+        console.log('Failed to load articles from local storage');
+      }
+    }
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -295,7 +319,6 @@ function App() {
               searchSuccess={searchSuccess}
               preloaderIsOn={preloaderIsOn}
               onToggleClick={handleSaveNews}
-              counter={savedNewsCount}
             />
           </main>
           <Footer />

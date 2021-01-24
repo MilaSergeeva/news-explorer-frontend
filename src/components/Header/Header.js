@@ -65,7 +65,7 @@ function Header({
           onMenuTagClick={onMenuTagClick}
           onChangeActiveStatus={onChangeActiveStatus}
           onCloseMenu={onCloseMenu}
-          // loggedIn={loggedIn}
+          onLogout={onLogout}
         />
       </Route>
     </header>

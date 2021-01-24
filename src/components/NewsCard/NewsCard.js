@@ -13,20 +13,18 @@ function NewsCard({ article, loggedIn, onToggleClick, isArticleSaved }) {
   };
 
   const handleDeleteArticleCard = () => {
-    if (loggedIn) {
-      onToggleClick(article);
-    }
+    onToggleClick(article);
   };
 
   return (
     <figure className="news-card">
-      {/* <a href={article.url} className="" target="_blank"> */}
-      <img
-        className="news-card__img"
-        src={article.urlToImage || article.image}
-        alt={article.keyword}
-      />
-      {/* </a> */}
+      <a href={article.url || article.link} className="" target="_blank">
+        <img
+          className="news-card__img"
+          src={article.urlToImage || article.image}
+          alt={article.keyword}
+        />
+      </a>
       <div className="news-card__lables">
         <Route exact path="/">
           <button
@@ -55,20 +53,26 @@ function NewsCard({ article, loggedIn, onToggleClick, isArticleSaved }) {
           </p>
         </Route>
       </div>
-      {/* <a href={article.url} className="news-card__link-to-news" target="_blank"> */}
-      <figcaption className="news-card__inf-container">
-        <time className="news-card__date" dateTime="2002-09-15">
-          {article.publishedAt || article.date}
-        </time>
-        <div className="news-card__content">
-          <h3 className="news-card__title">{article.title}</h3>
-          <p className="news-card__text">{article.text}</p>
-        </div>
-        <p className="news-card__resource">
-          {article.source.name || article.source}
-        </p>
-      </figcaption>
-      {/* </a> */}
+      <a
+        href={article.url || article.link}
+        className="news-card__link-to-news"
+        target="_blank"
+      >
+        <figcaption className="news-card__inf-container">
+          <time className="news-card__date" dateTime="2002-09-15">
+            {article.publishedAt || article.date}
+          </time>
+          <div className="news-card__content">
+            <h3 className="news-card__title">{article.title}</h3>
+            <p className="news-card__text">
+              {article.description || article.text}
+            </p>
+          </div>
+          <p className="news-card__resource">
+            {article.source.name || article.source}
+          </p>
+        </figcaption>
+      </a>
     </figure>
   );
 }

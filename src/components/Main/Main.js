@@ -19,7 +19,6 @@ function Main({
   searchSuccess,
   preloaderIsOn,
   onToggleClick,
-  counter,
   isArticleSaved,
 }) {
   return (
@@ -27,7 +26,6 @@ function Main({
       <Route exact path="/">
         <SearchForm onSearch={onSearch} />
         {preloaderIsOn ? <Preloader /> : ''}
-        {/* <Preloader /> */}
         <section className="search-result">
           {searchSuccess && (
             <NewsCardList
@@ -42,7 +40,7 @@ function Main({
         </section>
       </Route>
       <Route exact path="/saved-news">
-        <UserArticlesInfo counter={counter} />
+        <UserArticlesInfo articles={savedNews} />
         <SavedNews articles={savedNews} onToggleClick={onToggleClick} />
       </Route>
 

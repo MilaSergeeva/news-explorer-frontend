@@ -4,6 +4,7 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import exitImgWhite from '../../images/exitWhite.svg';
 import exitImgBlack from '../../images/exitBlack.svg';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function Navigation({
   isMenuOpened,
@@ -14,6 +15,7 @@ function Navigation({
   onLogout,
   pathName,
 }) {
+  const currentUser = React.useContext(CurrentUserContext);
   const exitProfile = () => {
     onCloseMenu();
     onLogout();
@@ -77,7 +79,7 @@ function Navigation({
             }`}
             onClick={exitProfile}
           >
-            Имя
+            {currentUser.name}
             <img
               className="header-bar__exit-img"
               src={pathName === '/' ? exitImgWhite : exitImgBlack}
