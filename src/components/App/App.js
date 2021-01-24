@@ -26,7 +26,6 @@ import { getToken, removeToken, setToken } from '../../utils/token';
 import backgroundImage from '../../images/header_background.png';
 
 function App() {
-  const lastSearchResult = JSON.parse(localStorage.getItem('articles'));
   const [currentUser, setСurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(true);
   const [savedNews, setSavedNews] = useState([]);
@@ -67,7 +66,7 @@ function App() {
 
   // нажатие кнопки авторизации в меню
   const handleAutorizationClick = () => {
-    setIsLoginPopupOpen(true);
+    setIsRegisterPopupOpen(true);
 
     if (isMenuOpened === true) {
       setIsMenuOpened(false);
@@ -239,7 +238,12 @@ function App() {
         setPreloaderIsOn(null);
         localStorage.removeItem('articles');
         setArticles(body.articles);
-        setSearchSuccess(true);
+        if (body.articles.length > 0) {
+          setSearchSuccess(true);
+        } else {
+          setSearchSuccess(false);
+        }
+
         setKeyword(input);
         localStorage.setItem('articles', JSON.stringify(body.articles));
       })
@@ -306,7 +310,7 @@ function App() {
             isMenuOpened={isMenuOpened}
             onCloseMenu={handleCloseMenu}
             darkBackgroundHeader={darkBackgroundHeader}
-            onLogout={handleLogout}
+            onSignOut={handleLogout}
             loggedIn={loggedIn}
             pathName={pathName}
           />

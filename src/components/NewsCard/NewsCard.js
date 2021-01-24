@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable object-curly-newline */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
@@ -6,6 +7,16 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 function NewsCard({ article, loggedIn, onToggleClick, isArticleSaved }) {
+  const dateFormating = (dateValue) => {
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    // const dateTimeFormat = new Intl.DateTimeFormat('ru-Ru', options);
+    const dateOfArticle = dateValue.toLocaleString('ru-Ru', options);
+    return dateOfArticle;
+    // console.log(publishedDate);
+  };
+
+  console.log(dateFormating(article.publishedAt));
+
   const handleSaveArticle = () => {
     if (loggedIn) {
       onToggleClick(article);

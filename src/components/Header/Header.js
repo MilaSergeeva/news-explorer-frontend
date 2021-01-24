@@ -14,7 +14,7 @@ function Header({
   darkBackgroundHeader,
   onCloseMenu,
   loggedIn,
-  onLogout,
+  onSignOut,
   pathName,
 }) {
   return (
@@ -54,7 +54,7 @@ function Header({
             onChangeActiveStatus={onChangeActiveStatus}
             onCloseMenu={onCloseMenu}
             loggedIn={loggedIn}
-            onLogout={onLogout}
+            onSignOut={onSignOut}
             pathName={pathName}
           />
         </div>
@@ -65,7 +65,7 @@ function Header({
           onMenuTagClick={onMenuTagClick}
           onChangeActiveStatus={onChangeActiveStatus}
           onCloseMenu={onCloseMenu}
-          onLogout={onLogout}
+          onSignOut={onSignOut}
         />
       </Route>
     </header>

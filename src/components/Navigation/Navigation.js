@@ -12,13 +12,13 @@ function Navigation({
   onChangeActiveStatus,
   onCloseMenu,
   loggedIn,
-  onLogout,
+  onSignOut,
   pathName,
 }) {
   const currentUser = React.useContext(CurrentUserContext);
   const exitProfile = () => {
     onCloseMenu();
-    onLogout();
+    onSignOut();
   };
 
   return (

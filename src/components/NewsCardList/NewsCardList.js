@@ -19,6 +19,10 @@ function NewsCardList({ loggedIn, articles, savedNews, onToggleClick }) {
     return !!found;
   };
 
+  React.useEffect(() => {
+    setItemsToShow(3);
+  }, [articles]);
+
   return (
     <div className="search-result-success">
       <h2 className="search-result-success__tile">Результаты поиска</h2>

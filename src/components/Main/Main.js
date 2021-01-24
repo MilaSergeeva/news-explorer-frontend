@@ -10,6 +10,7 @@ import UserArticlesInfo from '../UserArticlesInfo/UserArticlesInfo';
 import Preloader from '../Preloader/Preloader';
 import SavedNews from '../SavedNews/SavedNews';
 import GenericNotFound from '../GenericNotFound/GenericNotFound';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function Main({
   loggedIn,
@@ -21,6 +22,8 @@ function Main({
   onToggleClick,
   isArticleSaved,
 }) {
+  const currentUser = React.useContext(CurrentUserContext);
+
   return (
     <div className="main-content">
       <Route exact path="/">

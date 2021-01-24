@@ -1,21 +1,33 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable no-unused-vars */
 import './SearchForm.css';
-import React from 'react';
-import useValidationForForm from '../../hooks/useForm';
+import React, { useState, useEffect } from 'react';
 
 function SearchForm({ onSearch }) {
-  const {
-    values,
-    errors,
-    isValid,
-    handleChangeSearchForm,
-  } = useValidationForForm();
+  const [placeholderMessage, setPlaceholderMessage] = useState(
+    'Введите тему новости',
+  );
+
+  const [inputValue, setInputValue] = useState('');
+  const [isSearchFormValid, setIsSearchFormValid] = React.useState(false);
+
+  const handleChangeSearchForm = (event) => {
+    const { target } = event;
+    const { value } = target;
+
+    setInputValue(value);
+    setIsSearchFormValid(target.closest('input').checkValidity());
+  };
 
   const handleNewsSearch = (e) => {
     e.preventDefault();
 
-    onSearch(values.search);
+    if (isSearchFormValid) {
+      onSearch(inputValue);
+    } else {
+      setInputValue('');
+      setPlaceholderMessage('Нужно ввести ключевое слово');
+    }
   };
 
   return (
@@ -29,13 +41,13 @@ function SearchForm({ onSearch }) {
         <input
           type="text"
           name="search"
-          placeholder={'Введите тему новости' || errors.search}
           className="search-form__input"
           minLength="2"
           maxLength="40"
           autoComplete="off"
           pattern="^[A-Za-zА-Яа-я]{2,40}$"
-          value={values.search || ''}
+          value={inputValue}
+          placeholder={placeholderMessage}
           onChange={handleChangeSearchForm}
           required
         />

@@ -10,7 +10,7 @@ function SavedNewsHeader({
   onMenuTagClick,
   onChangeActiveStatus,
   onCloseMenu,
-  onLogout,
+  onSignOut,
 }) {
   return (
     <div className="header-bar white-theme">
@@ -28,7 +28,7 @@ function SavedNewsHeader({
         isMenuOpened={isMenuOpened}
         onChangeActiveStatus={onChangeActiveStatus}
         onCloseMenu={onCloseMenu}
-        onLogout={onLogout}
+        onSignOut={onSignOut}
       />
     </div>
   );
