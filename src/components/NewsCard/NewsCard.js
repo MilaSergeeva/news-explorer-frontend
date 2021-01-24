@@ -8,14 +8,17 @@ import { Route } from 'react-router-dom';
 
 function NewsCard({ article, loggedIn, onToggleClick, isArticleSaved }) {
   const dateFormating = (dateValue) => {
-    const options = { day: 'numeric', month: 'long', year: 'numeric' };
-    // const dateTimeFormat = new Intl.DateTimeFormat('ru-Ru', options);
-    const dateOfArticle = dateValue.toLocaleString('ru-Ru', options);
-    return dateOfArticle;
-    // console.log(publishedDate);
+    const date = new Date(dateValue);
+    const year = date.toLocaleString('ru-Ru', { year: 'numeric' });
+    const dateMonth = date.toLocaleString('ru-Ru', {
+      day: '2-digit',
+      month: 'long',
+    });
+
+    return `${dateMonth}, ${year}`;
   };
 
-  console.log(dateFormating(article.publishedAt));
+  const datePublishing = dateFormating(article.publishedAt || article.date);
 
   const handleSaveArticle = () => {
     if (loggedIn) {
@@ -70,9 +73,7 @@ function NewsCard({ article, loggedIn, onToggleClick, isArticleSaved }) {
         target="_blank"
       >
         <figcaption className="news-card__inf-container">
-          <time className="news-card__date" dateTime="2002-09-15">
-            {article.publishedAt || article.date}
-          </time>
+          <time className="news-card__date">{datePublishing}</time>
           <div className="news-card__content">
             <h3 className="news-card__title">{article.title}</h3>
             <p className="news-card__text">
