@@ -1,8 +1,3 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable function-paren-newline */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable prefer-promise-reject-errors */
 import qs from 'querystring';
 
 class Api {
@@ -93,4 +88,4 @@ class Api {
   }
 }
 
-export { Api };
+export default Api;

@@ -1,4 +1,6 @@
 import React from 'react';
+import UserArticlesInfo from '../UserArticlesInfo/UserArticlesInfo';
+import SavedNews from '../SavedNews/SavedNews';
 
 function SavedArticlesWithInfo({ articles, onToggleClick }) {
   return (

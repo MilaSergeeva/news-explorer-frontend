@@ -1,6 +1,5 @@
-/* eslint-disable prefer-promise-reject-errors */
-/* eslint-disable implicit-arrow-linebreak */
-// export const BASE_URL = 'https://news-exploer.herokuapp.com';
+// import BASE_URL from '../config';
+//TO DO chsnge
 export const BASE_URL = 'http://localhost:3001/api';
 
 export const register = (email, password, name) =>

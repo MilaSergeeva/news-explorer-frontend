@@ -1,16 +1,12 @@
-/* eslint-disable object-curly-newline */
-/* eslint-disable no-unused-vars */
 import './Main.css';
 import React from 'react';
 import { Route } from 'react-router-dom';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import About from '../About/About';
 import SearchForm from '../SearchForm/SearchForm';
-import UserArticlesInfo from '../UserArticlesInfo/UserArticlesInfo';
 import Preloader from '../Preloader/Preloader';
-import SavedNews from '../SavedNews/SavedNews';
 import GenericNotFound from '../GenericNotFound/GenericNotFound';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 function Main({

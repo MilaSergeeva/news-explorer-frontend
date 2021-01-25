@@ -1,9 +1,8 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable no-unused-vars */
 import './Register.css';
 import React, { useEffect } from 'react';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import useValidationForForm from '../../hooks/useForm';
+import REG_PASSWORD from '../../config';
 
 const Register = ({
   onClose,
@@ -12,6 +11,7 @@ const Register = ({
   onClick,
   onRegister,
   messageOnRegister,
+  isSubmitting,
 }) => {
   const {
     values,
@@ -24,9 +24,6 @@ const Register = ({
   useEffect(() => {
     resetForm();
   }, [isOpen, resetForm]);
-
-  const regPassword =
-    '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&~])[A-Za-z\\d@$!%*#?&~]{8,}$';
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
@@ -47,6 +44,7 @@ const Register = ({
       onRedirect={onRedirect}
       onSubmit={handleRegisterSubmit}
       errorMassageOnSubmit={messageOnRegister}
+      isSubmitting={isSubmitting}
     >
       <fieldset className="popup__input-container">
         <p className="popup__input-title">Email</p>
@@ -61,6 +59,7 @@ const Register = ({
           value={values.email || ''}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         />
         <span className="popup__error">{errors.email || ''}</span>
       </fieldset>
@@ -75,10 +74,11 @@ const Register = ({
           minLength="8"
           maxLength="30"
           autoComplete="off"
-          pattern={regPassword}
+          pattern={REG_PASSWORD}
           value={values.password || ''}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         />
         <span className="popup__error">
           {errors.password
@@ -100,6 +100,7 @@ const Register = ({
           value={values.name || ''}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         />
         <span className="popup__error">{errors.name || ''}</span>
       </fieldset>

@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-vars */
 import './Navigation.css';
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import exitImgWhite from '../../images/exitWhite.svg';
 import exitImgBlack from '../../images/exitBlack.svg';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 function Navigation({
   isMenuOpened,

@@ -1,22 +1,12 @@
-/* eslint-disable spaced-comment */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-undef */
-/* eslint-disable indent */
-/* eslint-disable prefer-template */
-/* eslint-disable operator-linebreak */
-/* eslint-disable space-infix-ops */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable import/named */
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { api, apiClient, buildApiClient } from '../../utils/MainApi';
-import { newsApi as findNews } from '../../utils/NewsApi';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+import { api, buildApiClient } from '../../utils/MainApi';
+import newsApi from '../../utils/NewsApi';
 import * as userAuth from '../../utils/authorization';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
@@ -24,6 +14,7 @@ import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import { getToken, removeToken, setToken } from '../../utils/token';
 import backgroundImage from '../../images/header_background.png';
+import API_KEY from '../../config';
 
 const getQuery = () => {
   if (typeof window !== 'undefined') {
@@ -50,9 +41,10 @@ function App() {
   const [messageOnRegister, setMessageOnRegister] = useState('');
   const [messageOnLogin, setMessageOnLogin] = useState('');
   const [signupSuccess, setSignupSuccess] = useState(false);
-  const [searchSuccess, setSearchSuccess] = useState(false);
+  const [searchSuccess, setSearchSuccess] = useState(null);
   const [preloaderIsOn, setPreloaderIsOn] = useState(false);
   const [keyword, setKeyword] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const history = useHistory();
   const pathName = useLocation().pathname;
@@ -64,7 +56,6 @@ function App() {
   }
 
   const dateWeekAgo = deductDays(dateTime, 7).toISOString().substr(0, 16);
-  const apiKey = '670ce72cce9c46b28214a8e2e4e4f7da';
 
   // закрытие модального окна
   function closeAllPopups() {
@@ -182,6 +173,7 @@ function App() {
   };
 
   const handleLogin = (email, password) => {
+    setIsSubmitting(true);
     userAuth
       .authorize(email, password)
       .then((data) => {
@@ -189,9 +181,11 @@ function App() {
         setMessageOnLogin('');
         closeAllPopups();
         setLoggedIn(true);
+        setIsSubmitting(false);
       })
       .catch((err) => {
         setMessageOnLogin('Ошибка авторизации. Повторите попытку.');
+        setIsSubmitting(false);
       });
   };
 
@@ -203,8 +197,6 @@ function App() {
         setSignupSuccess(true);
         setIsInfoToolsPopupOpen(true);
         setMessageOnRegister('');
-
-        // history.push("/signin");
       })
       .catch((res) => {
         setIsInfoToolsPopupOpen(true);
@@ -244,8 +236,8 @@ function App() {
 
   const handleFindNews = (input) => {
     setPreloaderIsOn(true);
-    findNews
-      .getNews(apiKey, input, currentDate, dateWeekAgo, 100)
+    newsApi
+      .getNews(API_KEY, input, currentDate, dateWeekAgo, 100)
       .then((body) => {
         setPreloaderIsOn(false);
         localStorage.removeItem('articles');
@@ -351,6 +343,7 @@ function App() {
             onClick={handleClickInside}
             onLogin={handleLogin}
             messageOnLogin={messageOnLogin}
+            isSubmitting={isSubmitting}
           />
 
           <Register
@@ -360,6 +353,7 @@ function App() {
             onClick={handleClickInside}
             onRegister={handleRegister}
             messageOnRegister={messageOnRegister}
+            isSubmitting={isSubmitting}
           />
 
           <InfoTooltip

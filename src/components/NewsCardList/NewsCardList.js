@@ -1,5 +1,3 @@
-/* eslint-disable object-curly-newline */
-/* eslint-disable no-unused-vars */
 import './NewsCardList.css';
 import React, { useState } from 'react';
 import NewsCard from '../NewsCard/NewsCard';

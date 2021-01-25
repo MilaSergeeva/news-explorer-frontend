@@ -1,4 +1,5 @@
-const TOKEN_KEY = 'jwt';
+import TOKEN_KEY from '../config';
+
 const setToken = (token) => {
   localStorage.setItem(TOKEN_KEY, token);
 };

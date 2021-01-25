@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import './Login.css';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
@@ -11,6 +10,7 @@ const Login = ({
   onClick,
   onLogin,
   messageOnLogin,
+  isSubmitting,
 }) => {
   const {
     values,
@@ -43,6 +43,7 @@ const Login = ({
       redirectTo="Зарегистрироваться"
       onSubmit={handleLoginSubmit}
       errorMassageOnSubmit={messageOnLogin}
+      isSubmitting={isSubmitting}
     >
       <fieldset className="popup__input-container">
         <p className="popup__input-title">Email</p>
@@ -57,6 +58,7 @@ const Login = ({
           value={values.email || ''}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         />
         <span className="popup__error">{errors.email || ''}</span>
       </fieldset>
@@ -74,6 +76,7 @@ const Login = ({
           value={values.password || ''}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         />
         <span className="popup__error">
           {errors.password

@@ -1,7 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable object-curly-newline */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-unused-vars */
 import './NewsCard.css';
 import React from 'react';
 import { Route } from 'react-router-dom';

@@ -1,17 +1,7 @@
-/* eslint-disable no-unused-vars */
 import './PopupWithForm.css';
 import React from 'react';
 
 const PopupWithForm = (props) => (
-  // const [isSumitting, setIsSubmitting] = useState(false);
-  // const onSubmitForm = () => {
-  //   setIsSubmitting(true);
-
-  //   props.onSubmit().then(() => {
-  //     setIsSubmitting(false)
-  //   })
-  // }
-
   <div
     className={`popup popup_${props.name} ${props.isOpen && 'popup_opened'} `}
   >
@@ -27,9 +17,9 @@ const PopupWithForm = (props) => (
           method="POST"
           name="user-info"
           className="popup__form"
-          // onSubmit={onSubmitForm}
           onSubmit={props.onSubmit}
           noValidate
+          disabled={props.isSubmitting}
         >
           <h3 className="popup__title">{props.title}</h3>
           {props.children}
@@ -38,9 +28,11 @@ const PopupWithForm = (props) => (
           </span>
           <button
             type="submit"
-            className={`popup__btn-save ${props.isValid ? 'active-btn' : ''}`}
+            className={`popup__btn-save ${
+              props.isValid && props.isSubmitting !== true ? 'active-btn' : ''
+            }`}
             data-submitting-label="Сохраняется..."
-            disabled={props.isValid !== true}
+            disabled={props.isValid !== true || props.isSubmitting}
           >
             {props.savebtn}
           </button>

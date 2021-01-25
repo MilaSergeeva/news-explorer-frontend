@@ -1,10 +1,7 @@
-/* eslint-disable no-unused-vars */
 import './InfoTooltip.css';
 import React from 'react';
 
-const InfoTooltip = ({
-  success, isOpen, onClose, onClick, onRedirect,
-}) => (
+const InfoTooltip = ({ success, isOpen, onClose, onClick, onRedirect }) => (
   <div className={`popup popup-info-tools ${isOpen && 'popup_opened'}`}>
     <div className="info-tools">
       <button

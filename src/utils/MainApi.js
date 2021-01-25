@@ -1,6 +1,7 @@
-import { Api } from './Api';
+import Api from './Api';
 import { getToken } from './token';
 
+//TO DO change
 const api = new Api({
   // baseUrl: 'https://news-exploer.herokuapp.com/api',
   baseUrl: 'http://localhost:3000/api',
