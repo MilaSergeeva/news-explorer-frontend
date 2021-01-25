@@ -1,5 +1,3 @@
-/* eslint-disable arrow-body-style */
-/* eslint-disable no-unused-vars */
 import './UserArticlesInfo.css';
 import React from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -37,6 +35,8 @@ function UserArticlesInfo({ articles }) {
     }
   }, [articles]);
 
+  console.log(savedArticlesInfo);
+
   return (
     <div className="user-info">
       <h5 className="user-info__title">Сохранённые статьи</h5>
@@ -48,7 +48,7 @@ function UserArticlesInfo({ articles }) {
         <span className="user-info__additional-info_font_bold">
           {savedArticlesInfo}
         </span>
-        и
+        {counter > 2 && 'и'}
         <span className="user-info__additional-info_font_bold">
           {articleCount}
         </span>

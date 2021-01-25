@@ -24,25 +24,31 @@ class Api {
       url = `${url}?${qs.encode(payload)}`;
     }
 
-    // TODO add catches
-    return fetch(url, options).then((res) => {
-      if (res.ok) {
-        // status code check
-        return res.json(); // process response
-      }
+    return fetch(url, options)
+      .then((res) => {
+        if (res.ok) {
+          // status code check
+          return res.json(); // process response
+        }
 
-      // server respond with error 4xx
-      if (res.status >= 400 && res.status < 500) {
-        return res
-          .json()
-          .then((body) =>
-            Promise.reject(`Что-то пошло не так: ${body.message}`),
-          );
-      }
+        // server respond with error 4xx
+        if (res.status >= 400 && res.status < 500) {
+          return res
+            .json()
+            .then((body) =>
+              Promise.reject(`Что-то пошло не так: ${body.message}`),
+            )
+            .catch((err) => {
+              console.log(err.message, `Ошибка: ${err.status}`);
+            });
+        }
 
-      // server didn't reply 5xx
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    });
+        // server didn't reply 5xx
+        return Promise.reject(`Что-то пошло не так: ${res.status}`);
+      })
+      .catch((err) => {
+        console.log(err.message, `Ошибка: ${err.status}`);
+      });
   }
 
   getSavedNews() {

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import './SavedNewsHeader.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -11,6 +10,7 @@ function SavedNewsHeader({
   onChangeActiveStatus,
   onCloseMenu,
   onSignOut,
+  currentUser,
 }) {
   return (
     <div className="header-bar white-theme">
@@ -29,6 +29,7 @@ function SavedNewsHeader({
         onChangeActiveStatus={onChangeActiveStatus}
         onCloseMenu={onCloseMenu}
         onSignOut={onSignOut}
+        currentUser={currentUser}
       />
     </div>
   );

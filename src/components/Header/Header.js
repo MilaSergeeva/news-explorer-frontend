@@ -15,6 +15,7 @@ function Header({
   loggedIn,
   onSignOut,
   pathName,
+  currentUser,
 }) {
   return (
     <header
@@ -55,6 +56,7 @@ function Header({
             loggedIn={loggedIn}
             onSignOut={onSignOut}
             pathName={pathName}
+            currentUser={currentUser}
           />
         </div>
       </Route>
@@ -65,6 +67,7 @@ function Header({
           onChangeActiveStatus={onChangeActiveStatus}
           onCloseMenu={onCloseMenu}
           onSignOut={onSignOut}
+          currentUser={currentUser}
         />
       </Route>
     </header>

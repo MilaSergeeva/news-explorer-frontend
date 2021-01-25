@@ -4,7 +4,7 @@ import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
-import CurrentUserContext from '../../contexts/CurrentUserContext';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { api, buildApiClient } from '../../utils/MainApi';
 import newsApi from '../../utils/NewsApi';
 import * as userAuth from '../../utils/authorization';
@@ -14,7 +14,7 @@ import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import { getToken, removeToken, setToken } from '../../utils/token';
 import backgroundImage from '../../images/header_background.png';
-import API_KEY from '../../config';
+import { API_KEY } from '../../config';
 
 const getQuery = () => {
   if (typeof window !== 'undefined') {
@@ -24,14 +24,12 @@ const getQuery = () => {
 };
 
 function App() {
-  const showAuth = !!getQuery().get('showAuth');
-
   const [currentUser, setСurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(true);
   const [savedNews, setSavedNews] = useState([]);
   const [articles, setArticles] = useState([]);
 
-  const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(showAuth);
+  const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [darkBackgroundHeader, setDarkBackgroundHeader] = useState(false);
@@ -64,6 +62,8 @@ function App() {
     setIsInfoToolsPopupOpen(false);
     setMessageOnLogin('');
     setMessageOnRegister('');
+
+    history.push('/');
   }
 
   // нажатие кнопки авторизации в меню
@@ -163,6 +163,7 @@ function App() {
 
   const handleLogout = () => {
     localStorage.removeItem('articles');
+    localStorage.removeItem('query');
 
     removeToken();
     setArticles([]);
@@ -193,6 +194,7 @@ function App() {
     userAuth
       .register(email, password, name)
       .then(() => {
+        console.log('success here');
         closeAllPopups();
         setSignupSuccess(true);
         setIsInfoToolsPopupOpen(true);
@@ -250,6 +252,7 @@ function App() {
 
         setKeyword(input);
         localStorage.setItem('articles', JSON.stringify(body.articles));
+        localStorage.setItem('query', input);
       })
       .catch((res) => {
         setPreloaderIsOn(false);
@@ -291,13 +294,22 @@ function App() {
 
         if (localArticles.length > 0) {
           setSearchSuccess(true);
-          setSearchResultOn(true);
         }
       } catch (err) {
-        console.log('Failed to load articles from local storage');
+        console.error(
+          `Failed to load articles from local storage. Error ${err.message}`,
+        );
       }
     }
+
+    if ('query' in localStorage) {
+      setKeyword(localStorage.getItem('query'));
+    }
   }, []);
+
+  useEffect(() => {
+    setIsLoginPopupOpen(!!getQuery().get('showAuth'));
+  }, [!!getQuery().get('showAuth')]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -318,6 +330,7 @@ function App() {
             onSignOut={handleLogout}
             loggedIn={loggedIn}
             pathName={pathName}
+            currentUser={currentUser}
           />
           <main className="content">
             <Main
@@ -328,6 +341,7 @@ function App() {
               searchSuccess={searchSuccess}
               preloaderIsOn={preloaderIsOn}
               onToggleClick={handleSaveNews}
+              currentUser={currentUser}
             />
           </main>
           <Footer />

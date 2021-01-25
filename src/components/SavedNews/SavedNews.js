@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import './SavedNews.css';
 import React from 'react';
 import NewsCard from '../NewsCard/NewsCard';

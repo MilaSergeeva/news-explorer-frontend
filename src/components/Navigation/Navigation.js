@@ -3,7 +3,6 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import exitImgWhite from '../../images/exitWhite.svg';
 import exitImgBlack from '../../images/exitBlack.svg';
-import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 function Navigation({
   isMenuOpened,
@@ -13,8 +12,8 @@ function Navigation({
   loggedIn,
   onSignOut,
   pathName,
+  currentUser,
 }) {
-  const currentUser = React.useContext(CurrentUserContext);
   const exitProfile = () => {
     onCloseMenu();
     onSignOut();

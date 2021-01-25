@@ -6,8 +6,8 @@ import About from '../About/About';
 import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import GenericNotFound from '../GenericNotFound/GenericNotFound';
-import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import SavedArticlesWithInfo from '../SavedArticlesWithInfo/SavedArticlesWithInfo';
 
 function Main({
   loggedIn,
@@ -18,9 +18,8 @@ function Main({
   preloaderIsOn,
   onToggleClick,
   isArticleSaved,
+  currentUser,
 }) {
-  const currentUser = React.useContext(CurrentUserContext);
-
   return (
     <div className="main-content">
       <Route exact path="/">
@@ -44,6 +43,8 @@ function Main({
         path="/saved-news"
         articles={savedNews}
         onToggleClick={onToggleClick}
+        loggedIn={loggedIn}
+        component={SavedArticlesWithInfo}
       />
 
       <Route exact path="/">

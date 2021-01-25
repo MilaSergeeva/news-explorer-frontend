@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import './Preloader.css';
 import React from 'react';
 

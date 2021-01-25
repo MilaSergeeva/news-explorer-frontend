@@ -2,7 +2,6 @@ import './Register.css';
 import React, { useEffect } from 'react';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import useValidationForForm from '../../hooks/useForm';
-import REG_PASSWORD from '../../config';
 
 const Register = ({
   onClose,
@@ -21,6 +20,9 @@ const Register = ({
     resetForm,
   } = useValidationForForm();
 
+  const regPassword =
+    '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&~])[A-Za-z\\d@$!%*#?&~]{8,}$';
+
   useEffect(() => {
     resetForm();
   }, [isOpen, resetForm]);
@@ -30,6 +32,8 @@ const Register = ({
 
     onRegister(values.email, values.password, values.name);
   };
+
+  console.log(isValid);
 
   return (
     <PopupWithForm
@@ -74,7 +78,7 @@ const Register = ({
           minLength="8"
           maxLength="30"
           autoComplete="off"
-          pattern={REG_PASSWORD}
+          pattern={regPassword}
           value={values.password || ''}
           onChange={handleChange}
           required

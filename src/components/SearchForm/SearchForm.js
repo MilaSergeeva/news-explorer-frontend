@@ -1,5 +1,3 @@
-/* eslint-disable object-curly-newline */
-/* eslint-disable no-unused-vars */
 import './SearchForm.css';
 import React, { useState, useEffect } from 'react';
 
