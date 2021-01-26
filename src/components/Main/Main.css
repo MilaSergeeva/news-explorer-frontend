@@ -1,0 +1,38 @@
+.search-result {
+  background-color: #f5f6f7;
+  padding: 0 104px;
+}
+
+@media screen and (max-width: 1024px) {
+  .search-result {
+    padding: 0 10.2vw;
+  }
+}
+@media screen and (max-width: 768px) {
+  .search-result {
+    padding: 0 5.21vw;
+  }
+}
+
+.profile {
+  padding: 80px 104px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile {
+    padding: 7.8vw 10.2vw;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .profile {
+    padding: 5.1vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .profile {
+    padding: 32px 16px 80px;
+  }
+}

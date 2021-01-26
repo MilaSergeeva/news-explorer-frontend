@@ -1,0 +1,130 @@
+.footer {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.4;
+  flex-wrap: wrap;
+  padding: 0 104px;
+  align-items: center;
+  min-height: 81px;
+}
+
+@media screen and (max-width: 1400px) {
+  .footer {
+    padding: 0 7.43vw;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .footer {
+    padding: 0 5.21vw;
+    min-height: 64px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .footer {
+    padding: 20px 16px;
+  }
+}
+
+.footer__copyright {
+  color: #b6bcbf;
+}
+
+@media screen and (max-width: 780px) {
+  .footer__copyright {
+    font-size: 16px;
+    margin-top: 2px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .footer__copyright {
+    font-size: 15.9px;
+    margin-top: 0;
+    position: absolute;
+    bottom: 20px;
+    left: 16px;
+  }
+}
+
+.footer__nav {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 400px) {
+  .footer__nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.footer__nav-links {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  list-style: none;
+  outline: none;
+}
+
+@media screen and (max-width: 400px) {
+  .footer__nav-links {
+    flex-direction: column;
+    min-height: 72px;
+    justify-content: space-between;
+    margin: 0;
+    padding-bottom: 62px;
+  }
+}
+
+.footer__nav-link {
+  text-decoration: none;
+  color: #1a1b22;
+}
+
+.footer__link-to-praktikum {
+  margin-left: 28px;
+}
+
+@media screen and (max-width: 780px) {
+  .footer__link-to-praktikum {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .footer__link-to-praktikum {
+    margin-left: 0;
+  }
+}
+
+.footer__sosial-links {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  list-style: none;
+  outline: none;
+  align-items: center;
+  padding-left: 41px;
+  width: 67px;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 780px) {
+  .footer__sosial-links {
+    padding-left: 26px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .footer__sosial-links {
+    align-items: start;
+  }
+}

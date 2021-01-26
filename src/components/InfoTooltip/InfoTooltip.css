@@ -1,0 +1,22 @@
+.info-tools {
+  position: relative;
+}
+
+.popup__container {
+  max-width: 430px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  padding: 43px 36px 51px;
+  box-sizing: border-box;
+}
+
+.popup__title_position {
+  margin-bottom: 14px;
+}
+
+.popup__redirect-to_font-size {
+  display: block;
+  font-size: 18px;
+}
