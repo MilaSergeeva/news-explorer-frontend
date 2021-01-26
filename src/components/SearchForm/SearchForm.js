@@ -25,8 +25,15 @@ function SearchForm({ onSearch }) {
     } else {
       setInputValue('');
       setPlaceholderMessage('Нужно ввести ключевое слово');
+      localStorage.removeItem('query');
     }
   };
+
+  React.useEffect(() => {
+    if ('query' in localStorage) {
+      setInputValue(localStorage.getItem('query'));
+    }
+  }, []);
 
   return (
     <div className="search-form">

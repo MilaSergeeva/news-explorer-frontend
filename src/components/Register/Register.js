@@ -33,8 +33,6 @@ const Register = ({
     onRegister(values.email, values.password, values.name);
   };
 
-  console.log(isValid);
-
   return (
     <PopupWithForm
       name="regstration"

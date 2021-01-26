@@ -9,12 +9,13 @@ function NewsCardList({ loggedIn, articles, savedNews, onToggleClick }) {
     setItemsToShow(itemsToShow + 3);
   };
 
-  const getIsArticleSaved = (article) => {
-    const found = savedNews.find(
-      (savedArticle) => savedArticle.title === article.title,
-    );
-
-    return !!found;
+  const markAsSaved = (article) => {
+    if (loggedIn) {
+      const found = savedNews.find(
+        (savedArticle) => savedArticle.title === article.title,
+      );
+      return !!found;
+    }
   };
 
   React.useEffect(() => {
@@ -31,7 +32,7 @@ function NewsCardList({ loggedIn, articles, savedNews, onToggleClick }) {
             article={article}
             loggedIn={loggedIn}
             onToggleClick={onToggleClick}
-            isArticleSaved={getIsArticleSaved(article)}
+            isArticleSaved={markAsSaved(article)}
           />
         ))}
       </div>

@@ -6,6 +6,7 @@ function UserArticlesInfo({ articles }) {
   const currentUser = React.useContext(CurrentUserContext);
   const [savedArticlesInfo, setSavedArticlesInfo] = React.useState('');
   const [articleCount, setArticleCount] = React.useState('');
+  const [articlesSortedTags, setArticlesSortedTags] = React.useState({});
 
   const counter = articles.length;
 
@@ -24,18 +25,18 @@ function UserArticlesInfo({ articles }) {
       return keywords[b] - keywords[a];
     });
 
+    setArticlesSortedTags(articlesSorted);
+
     if (articlesSorted.length <= 3) {
-      const articlesKeyword = articlesSorted.toString();
+      const articlesKeyword = articlesSorted.join(', ');
       setSavedArticlesInfo(articlesKeyword);
     } else {
-      const articlesKeyword = ` ${articlesSorted[0]}, ${articlesSorted[1]} `;
+      const articlesKeyword = `${articlesSorted[0]}, ${articlesSorted[1]} `;
       const articleCountElse = ` ${articlesSorted.length - 2}-м другим`;
       setSavedArticlesInfo(articlesKeyword);
       setArticleCount(articleCountElse);
     }
   }, [articles]);
-
-  console.log(savedArticlesInfo);
 
   return (
     <div className="user-info">
@@ -46,12 +47,14 @@ function UserArticlesInfo({ articles }) {
       <p className="user-info__additional-info">
         По ключевым словам:
         <span className="user-info__additional-info_font_bold">
+          {' '}
           {savedArticlesInfo}
         </span>
-        {counter > 2 && 'и'}
-        <span className="user-info__additional-info_font_bold">
-          {articleCount}
-        </span>
+        {articlesSortedTags.length > 3 && 'и' && (
+          <span className="user-info__additional-info_font_bold">
+            {articleCount}
+          </span>
+        )}
       </p>
     </div>
   );

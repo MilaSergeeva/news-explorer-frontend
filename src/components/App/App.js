@@ -194,7 +194,6 @@ function App() {
     userAuth
       .register(email, password, name)
       .then(() => {
-        console.log('success here');
         closeAllPopups();
         setSignupSuccess(true);
         setIsInfoToolsPopupOpen(true);
