@@ -209,12 +209,14 @@ function App() {
   const handleSaveNews = (article) => {
     const newsPayload = {
       keyword,
-      title: article.title,
-      text: article.description,
-      date: article.publishedAt,
-      source: article.source.name,
+      title: article.title || '',
+      text: article.description || '',
+      date: article.publishedAt || '',
+      source: article.source.name || '',
       link: article.url,
-      image: article.urlToImage,
+      image:
+        article.urlToImage ||
+        'https://s1.reutersmedia.net/resources_v2/images/rcom-default.png?w=800',
     };
 
     const jwt = getToken();
@@ -223,12 +225,12 @@ function App() {
     const found = savedNews.find((el) => el.title === article.title);
 
     if (found) {
-      api
+      apiJWT
         .deleteSavedNews(found._id)
         .then(() => apiJWT.getSavedNews())
         .then((result) => setSavedNews(result));
     } else {
-      api
+      apiJWT
         .saveNews(newsPayload)
         .then(() => apiJWT.getSavedNews())
         .then((result) => setSavedNews(result));
@@ -269,8 +271,6 @@ function App() {
     }
 
     const apiJWT = buildApiClient(jwt);
-
-    // setArticles(JSON.parse(localStorage.getItem('articles')));
 
     Promise.all([apiJWT.getUserInfo(), apiJWT.getSavedNews()])
       .then(([userInfo, newsElements]) => {

@@ -204,22 +204,22 @@
 }
 
 .news-card__delete-notification {
-  display: block;
   border-radius: 10px;
   background-color: #fff;
-  padding: 13px 10px;
   font-size: 12px;
   position: absolute;
   top: 0;
   right: 45px;
   opacity: 0;
   transition: opacity 1s ease 0.1s;
+  height: 40px;
+  display: flex;
+  align-items: center;
 }
 
 @media screen and (max-width: 780px) {
   .news-card__delete-notification {
     display: none;
-    padding: 8px 0;
     font-size: 10px;
     width: 90px;
   }
