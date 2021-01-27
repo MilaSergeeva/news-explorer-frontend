@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import './Footer.css';
 import React from 'react';
 import { Link, Route } from 'react-router-dom';

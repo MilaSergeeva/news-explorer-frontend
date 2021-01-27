@@ -4,7 +4,7 @@
   flex-direction: row;
   justify-content: space-between;
   box-sizing: border-box;
-  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-family: 'Roboto', 'Inter', Arial, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.4;
@@ -12,6 +12,7 @@
   padding: 0 104px;
   align-items: center;
   min-height: 81px;
+  background-color: #fff;
 }
 
 @media screen and (max-width: 1400px) {

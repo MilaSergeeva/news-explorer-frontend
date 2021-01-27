@@ -1,7 +1,4 @@
-/* eslint-disable prefer-promise-reject-errors */
-/* eslint-disable implicit-arrow-linebreak */
-export const BASE_URL = 'https://news-exploer.herokuapp.com';
-// export const BASE_URL = 'http://localhost:3001/api';
+import { BASE_URL } from '../config';
 
 export const register = (email, password, name) =>
   fetch(`${BASE_URL}/signup`, {
@@ -11,13 +8,19 @@ export const register = (email, password, name) =>
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ email, password, name }),
-  }).then((res) => {
-    if (!res.ok) {
-      return Promise.reject(`Ошибка: ${res.status}`);
-    }
+  })
+    .then((res) => {
+      if (!res.ok) {
+        return Promise.reject(`Ошибка: ${res.status}`);
+      }
 
-    return res.json();
-  });
+      return res.json();
+    })
+    .catch((err) => {
+      console.log(err, `Ошибкa авторизации на signup`);
+
+      throw new Error(err);
+    });
 
 export const authorize = (email, password) =>
   fetch(`${BASE_URL}/signin`, {
@@ -27,13 +30,19 @@ export const authorize = (email, password) =>
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ email, password }),
-  }).then((res) => {
-    if (!res.ok) {
-      return Promise.reject(`Ошибка: ${res.status}`);
-    }
+  })
+    .then((res) => {
+      if (!res.ok) {
+        return Promise.reject(`Ошибка: ${res.status}`);
+      }
 
-    return res.json();
-  });
+      return res.json();
+    })
+    .catch((err) => {
+      console.log(err, `Ошибкa авторизации на signin`);
+
+      throw new Error(err);
+    });
 
 export const getContent = (token) =>
   fetch(`${BASE_URL}`, {
@@ -43,10 +52,16 @@ export const getContent = (token) =>
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
-  }).then((res) => {
-    if (!res.ok) {
-      return Promise.reject(`Ошибка: ${res.status}`);
-    }
+  })
+    .then((res) => {
+      if (!res.ok) {
+        return Promise.reject(`Ошибка: ${res.status}`);
+      }
 
-    return res.json();
-  });
+      return res.json();
+    })
+    .catch((err) => {
+      console.log(err, `Ошибкa запроса контента`);
+
+      throw new Error(err);
+    });

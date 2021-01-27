@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import './Login.css';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
@@ -11,6 +10,7 @@ const Login = ({
   onClick,
   onLogin,
   messageOnLogin,
+  isSubmitting,
 }) => {
   const {
     values,
@@ -43,8 +43,9 @@ const Login = ({
       redirectTo="Зарегистрироваться"
       onSubmit={handleLoginSubmit}
       errorMassageOnSubmit={messageOnLogin}
+      isSubmitting={isSubmitting}
     >
-      <div className="popup__input-container">
+      <fieldset className="popup__input-container">
         <p className="popup__input-title">Email</p>
         <input
           type="email"
@@ -57,11 +58,12 @@ const Login = ({
           value={values.email || ''}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         />
         <span className="popup__error">{errors.email || ''}</span>
-      </div>
+      </fieldset>
 
-      <div className="popup__input-container">
+      <fieldset className="popup__input-container">
         <p className="popup__input-title">Пароль</p>
         <input
           type="password"
@@ -74,13 +76,14 @@ const Login = ({
           value={values.password || ''}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         />
         <span className="popup__error">
           {errors.password
-            ? 'Пароль должен включать буквы, как минимум 1 цифра, 1 спецсимвол, не менее 8 знаков'
+            ? 'Пароль должен включать буквы, цыфры, спецсимволы (@$!%*#?&~), не менее 8 знаков'
             : ''}
         </span>
-      </div>
+      </fieldset>
     </PopupWithForm>
   );
 };

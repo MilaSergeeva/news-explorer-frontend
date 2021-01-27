@@ -26,7 +26,11 @@ function useValidationForForm() {
   );
 
   return {
-    values, handleChange, errors, isValid, resetForm,
+    values,
+    handleChange,
+    errors,
+    isValid,
+    resetForm,
   };
 }
 

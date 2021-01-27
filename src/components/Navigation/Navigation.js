@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import './Navigation.css';
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
@@ -11,12 +10,13 @@ function Navigation({
   onChangeActiveStatus,
   onCloseMenu,
   loggedIn,
-  onLogout,
+  onSignOut,
   pathName,
+  currentUser,
 }) {
   const exitProfile = () => {
     onCloseMenu();
-    onLogout();
+    onSignOut();
   };
 
   return (
@@ -77,7 +77,7 @@ function Navigation({
             }`}
             onClick={exitProfile}
           >
-            Имя
+            {currentUser.name}
             <img
               className="header-bar__exit-img"
               src={pathName === '/' ? exitImgWhite : exitImgBlack}

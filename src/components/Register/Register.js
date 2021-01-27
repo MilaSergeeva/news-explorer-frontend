@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import './Register.css';
 import React, { useEffect } from 'react';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
@@ -11,6 +10,7 @@ const Register = ({
   onClick,
   onRegister,
   messageOnRegister,
+  isSubmitting,
 }) => {
   const {
     values,
@@ -20,11 +20,12 @@ const Register = ({
     resetForm,
   } = useValidationForForm();
 
+  const regPassword =
+    '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&~])[A-Za-z\\d@$!%*#?&~]{8,}$';
+
   useEffect(() => {
     resetForm();
   }, [isOpen, resetForm]);
-
-  const regPassword = '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&~])[A-Za-z\\d@$!%*#?&~]{8,}$';
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
@@ -45,8 +46,9 @@ const Register = ({
       onRedirect={onRedirect}
       onSubmit={handleRegisterSubmit}
       errorMassageOnSubmit={messageOnRegister}
+      isSubmitting={isSubmitting}
     >
-      <label className="popup__input-container">
+      <fieldset className="popup__input-container">
         <p className="popup__input-title">Email</p>
         <input
           type="email"
@@ -59,11 +61,12 @@ const Register = ({
           value={values.email || ''}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         />
         <span className="popup__error">{errors.email || ''}</span>
-      </label>
+      </fieldset>
 
-      <label className="popup__input-container">
+      <fieldset className="popup__input-container">
         <p className="popup__input-title">Пароль</p>
         <input
           type="password"
@@ -77,15 +80,16 @@ const Register = ({
           value={values.password || ''}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         />
         <span className="popup__error">
           {errors.password
-            ? 'Пароль должен включать буквы, как минимум 1 цифра, 1 спецсимвол, не менее 8 знаков'
+            ? 'Пароль должен включать буквы, цыфры, спецсимволы (@$!%*#?&~), не менее 8 знаков'
             : ''}
         </span>
-      </label>
+      </fieldset>
 
-      <label className="popup__input-container">
+      <fieldset className="popup__input-container">
         <p className="popup__input-title">Имя</p>
         <input
           type="text"
@@ -98,9 +102,10 @@ const Register = ({
           value={values.name || ''}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         />
         <span className="popup__error">{errors.name || ''}</span>
-      </label>
+      </fieldset>
     </PopupWithForm>
   );
 };

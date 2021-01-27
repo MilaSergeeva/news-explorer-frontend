@@ -1,16 +1,12 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable import/named */
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { apiClient, buildApiClient } from '../../utils/MainApi';
-import { newsApi } from '../../utils/NewsApi';
-import cardsList from '../../utils/cardslist';
+import { api, buildApiClient } from '../../utils/MainApi';
+import newsApi from '../../utils/NewsApi';
 import * as userAuth from '../../utils/authorization';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
@@ -18,12 +14,21 @@ import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import { getToken, removeToken, setToken } from '../../utils/token';
 import backgroundImage from '../../images/header_background.png';
+import { API_KEY } from '../../config';
+
+const getQuery = () => {
+  if (typeof window !== 'undefined') {
+    return new URLSearchParams(window.location.search);
+  }
+  return new URLSearchParams();
+};
 
 function App() {
   const [currentUser, setСurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(true);
-  const [savedNewsCards, setSavedNewsCards] = useState([]);
-  const [cards, setCards] = useState(cardsList);
+  const [savedNews, setSavedNews] = useState([]);
+  const [articles, setArticles] = useState([]);
+
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
   const [isMenuOpened, setIsMenuOpened] = useState(false);
@@ -34,19 +39,36 @@ function App() {
   const [messageOnRegister, setMessageOnRegister] = useState('');
   const [messageOnLogin, setMessageOnLogin] = useState('');
   const [signupSuccess, setSignupSuccess] = useState(false);
+  const [searchSuccess, setSearchSuccess] = useState(null);
+  const [preloaderIsOn, setPreloaderIsOn] = useState(false);
+  const [keyword, setKeyword] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const history = useHistory();
   const pathName = useLocation().pathname;
+  const dateTime = new Date();
+  const currentDate = dateTime.toISOString().substr(0, 16);
+
+  function deductDays(d, days) {
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate() - days);
+  }
+
+  const dateWeekAgo = deductDays(dateTime, 7).toISOString().substr(0, 16);
 
   // закрытие модального окна
   function closeAllPopups() {
     setIsLoginPopupOpen(false);
     setIsRegisterPopupOpen(false);
     setIsInfoToolsPopupOpen(false);
+    setMessageOnLogin('');
+    setMessageOnRegister('');
+
+    history.push('/');
   }
 
   // нажатие кнопки авторизации в меню
   const handleAutorizationClick = () => {
-    setIsLoginPopupOpen(true);
+    setIsRegisterPopupOpen(true);
 
     if (isMenuOpened === true) {
       setIsMenuOpened(false);
@@ -140,11 +162,19 @@ function App() {
   }, []);
 
   const handleLogout = () => {
+    localStorage.removeItem('articles');
+    localStorage.removeItem('query');
+
     removeToken();
+    setArticles([]);
+    setSearchSuccess(null);
     setLoggedIn(false);
+
+    history.push('/');
   };
 
   const handleLogin = (email, password) => {
+    setIsSubmitting(true);
     userAuth
       .authorize(email, password)
       .then((data) => {
@@ -152,11 +182,11 @@ function App() {
         setMessageOnLogin('');
         closeAllPopups();
         setLoggedIn(true);
-
-        // history.push("/users/me");
+        setIsSubmitting(false);
       })
       .catch((err) => {
         setMessageOnLogin('Ошибка авторизации. Повторите попытку.');
+        setIsSubmitting(false);
       });
   };
 
@@ -168,13 +198,66 @@ function App() {
         setSignupSuccess(true);
         setIsInfoToolsPopupOpen(true);
         setMessageOnRegister('');
-
-        // history.push("/signin");
       })
       .catch((res) => {
         setIsInfoToolsPopupOpen(true);
         setSignupSuccess(false);
         setMessageOnRegister('Ошибка регистрации. Повторите попытку.');
+      });
+  };
+
+  const handleSaveNews = (article) => {
+    const newsPayload = {
+      keyword,
+      title: article.title || '',
+      text: article.description || '',
+      date: article.publishedAt || '',
+      source: article.source.name || '',
+      link: article.url,
+      image:
+        article.urlToImage ||
+        'https://s1.reutersmedia.net/resources_v2/images/rcom-default.png?w=800',
+    };
+
+    const jwt = getToken();
+    const apiJWT = buildApiClient(jwt);
+
+    const found = savedNews.find((el) => el.title === article.title);
+
+    if (found) {
+      apiJWT
+        .deleteSavedNews(found._id)
+        .then(() => apiJWT.getSavedNews())
+        .then((result) => setSavedNews(result));
+    } else {
+      apiJWT
+        .saveNews(newsPayload)
+        .then(() => apiJWT.getSavedNews())
+        .then((result) => setSavedNews(result));
+    }
+  };
+
+  const handleFindNews = (input) => {
+    setPreloaderIsOn(true);
+    newsApi
+      .getNews(API_KEY, input, currentDate, dateWeekAgo, 100)
+      .then((body) => {
+        setPreloaderIsOn(false);
+        localStorage.removeItem('articles');
+        setArticles(body.articles);
+        if (body.articles.length > 0) {
+          setSearchSuccess(true);
+        } else {
+          setSearchSuccess(false);
+        }
+
+        setKeyword(input);
+        localStorage.setItem('articles', JSON.stringify(body.articles));
+        localStorage.setItem('query', input);
+      })
+      .catch((res) => {
+        setPreloaderIsOn(false);
+        setSearchSuccess(false);
       });
   };
 
@@ -192,7 +275,7 @@ function App() {
     Promise.all([apiJWT.getUserInfo(), apiJWT.getSavedNews()])
       .then(([userInfo, newsElements]) => {
         setСurrentUser(userInfo);
-        setSavedNewsCards(newsElements);
+        setSavedNews(newsElements);
       })
       .catch((err) => {
         // potenitally need to log out
@@ -201,15 +284,39 @@ function App() {
       });
   }, [loggedIn]);
 
+  React.useEffect(() => {
+    if ('articles' in localStorage) {
+      try {
+        const localArticles = JSON.parse(localStorage.getItem('articles'));
+
+        setArticles(localArticles);
+
+        if (localArticles.length > 0) {
+          setSearchSuccess(true);
+        }
+      } catch (err) {
+        console.error(
+          `Failed to load articles from local storage. Error ${err.message}`,
+        );
+      }
+    }
+
+    if ('query' in localStorage) {
+      setKeyword(localStorage.getItem('query'));
+    }
+  }, []);
+
+  useEffect(() => {
+    setIsLoginPopupOpen(!!getQuery().get('showAuth'));
+  }, [!!getQuery().get('showAuth')]);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="root">
         <div
           className="page"
           style={{
-            backgroundImage: `${
-              pathName === '/' ? `url(${backgroundImage})` : 'none'
-            }`,
+            backgroundImage: `${pathName === '/' && `url(${backgroundImage})`}`,
           }}
         >
           <Header
@@ -219,15 +326,21 @@ function App() {
             isMenuOpened={isMenuOpened}
             onCloseMenu={handleCloseMenu}
             darkBackgroundHeader={darkBackgroundHeader}
-            onLogout={handleLogout}
+            onSignOut={handleLogout}
             loggedIn={loggedIn}
             pathName={pathName}
+            currentUser={currentUser}
           />
           <main className="content">
             <Main
               loggedIn={loggedIn}
-              savedNewsCards={savedNewsCards}
-              cards={cards}
+              savedNews={savedNews}
+              articles={articles}
+              onSearch={handleFindNews}
+              searchSuccess={searchSuccess}
+              preloaderIsOn={preloaderIsOn}
+              onToggleClick={handleSaveNews}
+              currentUser={currentUser}
             />
           </main>
           <Footer />
@@ -243,6 +356,7 @@ function App() {
             onClick={handleClickInside}
             onLogin={handleLogin}
             messageOnLogin={messageOnLogin}
+            isSubmitting={isSubmitting}
           />
 
           <Register
@@ -252,6 +366,7 @@ function App() {
             onClick={handleClickInside}
             onRegister={handleRegister}
             messageOnRegister={messageOnRegister}
+            isSubmitting={isSubmitting}
           />
 
           <InfoTooltip

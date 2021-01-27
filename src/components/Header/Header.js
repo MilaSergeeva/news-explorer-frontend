@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import './Header.css';
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
@@ -14,8 +13,9 @@ function Header({
   darkBackgroundHeader,
   onCloseMenu,
   loggedIn,
-  onLogout,
+  onSignOut,
   pathName,
+  currentUser,
 }) {
   return (
     <header
@@ -54,8 +54,9 @@ function Header({
             onChangeActiveStatus={onChangeActiveStatus}
             onCloseMenu={onCloseMenu}
             loggedIn={loggedIn}
-            onLogout={onLogout}
+            onSignOut={onSignOut}
             pathName={pathName}
+            currentUser={currentUser}
           />
         </div>
       </Route>
@@ -65,7 +66,8 @@ function Header({
           onMenuTagClick={onMenuTagClick}
           onChangeActiveStatus={onChangeActiveStatus}
           onCloseMenu={onCloseMenu}
-          // loggedIn={loggedIn}
+          onSignOut={onSignOut}
+          currentUser={currentUser}
         />
       </Route>
     </header>
