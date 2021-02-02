@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b963540f.chunk.css",
+    "main.js": "/static/js/main.a137fa05.chunk.js",
+    "main.js.map": "/static/js/main.a137fa05.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.7dd672cd.js",
+    "runtime-main.js.map": "/static/js/runtime-main.7dd672cd.js.map",
+    "static/js/2.49a9bab0.chunk.js": "/static/js/2.49a9bab0.chunk.js",
+    "static/js/2.49a9bab0.chunk.js.map": "/static/js/2.49a9bab0.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.b963540f.chunk.css.map": "/static/css/main.b963540f.chunk.css.map",
+    "static/js/2.49a9bab0.chunk.js.LICENSE.txt": "/static/js/2.49a9bab0.chunk.js.LICENSE.txt",
+    "static/media/avatar.c8d70603.png": "/static/media/avatar.c8d70603.png",
+    "static/media/PopupWithForm.css": "/static/media/header_background.eac7a5b1.png",
+    "static/media/exitBlack.6808b0a9.svg": "/static/media/exitBlack.6808b0a9.svg",
+    "static/media/exitWhite.14e8b541.svg": "/static/media/exitWhite.14e8b541.svg",
+    "static/media/facebook.ce8865e2.svg": "/static/media/facebook.ce8865e2.svg",
+    "static/media/gitHub.2699c069.svg": "/static/media/gitHub.2699c069.svg",
+    "static/media/index.css": "/static/media/sourcesanspro-regular.95f3ed41.woff",
+    "static/media/newsExplorerBlack.ddd1bf25.svg": "/static/media/newsExplorerBlack.ddd1bf25.svg",
+    "static/media/newsExplorerWhite.16fd9b4d.svg": "/static/media/newsExplorerWhite.16fd9b4d.svg",
+    "static/media/not-found.8fabc218.svg": "/static/media/not-found.8fabc218.svg",
+    "static/media/NewsCard.css": "/static/media/trashBlack.810399a3.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7dd672cd.js",
+    "static/js/2.49a9bab0.chunk.js",
+    "static/css/main.b963540f.chunk.css",
+    "static/js/main.a137fa05.chunk.js"
+  ]
+}
