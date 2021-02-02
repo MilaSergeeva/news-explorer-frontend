@@ -80,7 +80,7 @@ const Login = ({
         />
         <span className="popup__error">
           {errors.password
-            ? 'Пароль должен включать буквы, цыфры, спецсимволы (@$!%*#?&~), не менее 8 знаков'
+            ? 'Password must contain letters, numbers and spesial characters (@$!%*#?&~), and be between 8 and 30 characters'
             : ''}
         </span>
       </fieldset>
