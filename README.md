@@ -22,6 +22,5 @@
 npm run start
 
 Проек собрат с помощью Webpack
-Разные состояния нотификаций карточек можно увидеть меняя сначения стейта
-const [loggedIn, setLoggedIn] = useState(true);
+
 https://milasergeeva.github.io/news-explorer-frontend/
