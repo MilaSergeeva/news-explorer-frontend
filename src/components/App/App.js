@@ -63,7 +63,7 @@ function App() {
     setMessageOnLogin('');
     setMessageOnRegister('');
 
-    history.push('/');
+    history.push('/news-explorer-frontend');
   }
 
   // нажатие кнопки авторизации в меню
@@ -170,7 +170,7 @@ function App() {
     setSearchSuccess(null);
     setLoggedIn(false);
 
-    history.push('/');
+    history.push('/news-explorer-frontend');
   };
 
   const handleLogin = (email, password) => {
@@ -316,7 +316,10 @@ function App() {
         <div
           className="page"
           style={{
-            backgroundImage: `${pathName === '/' && `url(${backgroundImage})`}`,
+            backgroundImage: `${
+              pathName === '/news-explorer-frontend' &&
+              `url(${backgroundImage})`
+            }`,
           }}
         >
           <Header

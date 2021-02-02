@@ -22,7 +22,7 @@ function Main({
 }) {
   return (
     <div className="main-content">
-      <Route exact path="/">
+      <Route exact path="/news-explorer-frontend">
         <SearchForm onSearch={onSearch} />
         {preloaderIsOn ? <Preloader /> : ''}
         <section className="search-result">
@@ -40,14 +40,14 @@ function Main({
       </Route>
       <ProtectedRoute
         exact
-        path="/saved-news"
+        path="/news-explorer-frontend/saved-news"
         articles={savedNews}
         onToggleClick={onToggleClick}
         loggedIn={loggedIn}
         component={SavedArticlesWithInfo}
       />
 
-      <Route exact path="/">
+      <Route exact path="/news-explorer-frontend">
         <section className="profile">
           <About />
         </section>

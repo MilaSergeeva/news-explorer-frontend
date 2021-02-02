@@ -14,7 +14,7 @@ function SavedNewsHeader({
 }) {
   return (
     <div className="header-bar white-theme">
-      <Link to="/" className="header-bar__logo-link">
+      <Link to="/news-explorer-frontend" className="header-bar__logo-link">
         <img className="header-bar__logo" src={headerLogoBlack} alt="Логотип" />
       </Link>
       <div className="header-bar__menu-icon-container">

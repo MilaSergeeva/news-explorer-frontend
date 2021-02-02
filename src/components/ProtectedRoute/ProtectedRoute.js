@@ -8,7 +8,9 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
       rest.loggedIn === true ? (
         <Component {...props} {...rest} />
       ) : (
-        <Redirect to={{ pathname: '/', search: '?showAuth=1' }} />
+        <Redirect
+          to={{ pathname: '/news-explorer-frontend', search: '?showAuth=1' }}
+        />
       )
     }
   />

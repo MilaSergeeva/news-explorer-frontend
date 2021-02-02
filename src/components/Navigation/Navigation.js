@@ -29,7 +29,7 @@ function Navigation({
         >
           <NavLink
             exact
-            to="/"
+            to="/news-explorer-frontend"
             activeClassName="activeMain"
             className="header-bar__nav-link color-black"
             onClick={onChangeActiveStatus}
@@ -53,7 +53,7 @@ function Navigation({
         >
           <NavLink
             exact
-            to="/"
+            to="/news-explorer-frontend"
             activeClassName="activeMain"
             className="header-bar__nav-link color-black"
             onClick={onChangeActiveStatus}
@@ -62,7 +62,7 @@ function Navigation({
           </NavLink>
           <NavLink
             exact
-            to="/saved-news"
+            to="/news-explorer-frontend/saved-news"
             activeClassName="activeSavedNews"
             className="header-bar__nav-link color-white"
             onClick={onChangeActiveStatus}
@@ -71,16 +71,20 @@ function Navigation({
           </NavLink>
 
           <Link
-            to="/"
+            to="/news-explorer-frontend"
             className={`header-bar__button ${
-              pathName === '/' ? ' ' : 'color-black'
+              pathName === '/news-explorer-frontend' ? ' ' : 'color-black'
             }`}
             onClick={exitProfile}
           >
             {currentUser.name}
             <img
               className="header-bar__exit-img"
-              src={pathName === '/' ? exitImgWhite : exitImgBlack}
+              src={
+                pathName === '/news-explorer-frontend'
+                  ? exitImgWhite
+                  : exitImgBlack
+              }
               alt="знак выхода"
             />
           </Link>

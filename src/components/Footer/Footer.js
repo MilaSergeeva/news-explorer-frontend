@@ -10,11 +10,11 @@ function Footer() {
       <p className="footer__copyright">
         &copy; 2020 Supersite, Powered by News API
       </p>
-      <Route path="/*">
+      <Route path="/news-explorer-frontend/*">
         <nav className="footer__nav">
           <ul className="footer__nav-links">
             <li>
-              <Link to="/" className="footer__nav-link">
+              <Link to="/news-explorer-frontend" className="footer__nav-link">
                 <p className="footer__link-to-main">Главная</p>
               </Link>
             </li>

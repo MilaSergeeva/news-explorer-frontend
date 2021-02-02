@@ -23,13 +23,13 @@ function Header({
         isMenuOpened === true ? 'header__border-radius' : ' '
       }`}
     >
-      <Route exact path="/">
+      <Route exact path="/news-explorer-frontend">
         <div
           className={`header-bar ${
             darkBackgroundHeader === true ? 'dark-theme' : ' '
           }`}
         >
-          <Link to="/" className="header-bar__logo-link">
+          <Link to="/news-explorer-frontend" className="header-bar__logo-link">
             <img
               className="header-bar__logo"
               src={headerLogoWhite}
