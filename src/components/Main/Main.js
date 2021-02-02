@@ -22,7 +22,7 @@ function Main({
 }) {
   return (
     <div className="main-content">
-      <Route exact path="/news-explorer-frontend">
+      <Route exact path="/news-explorer-frontend/">
         <SearchForm onSearch={onSearch} />
         {preloaderIsOn ? <Preloader /> : ''}
         <section className="search-result">
@@ -47,7 +47,7 @@ function Main({
         component={SavedArticlesWithInfo}
       />
 
-      <Route exact path="/news-explorer-frontend">
+      <Route exact path="/news-explorer-frontend/">
         <section className="profile">
           <About />
         </section>

@@ -36,7 +36,7 @@ function NewsCard({ article, loggedIn, onToggleClick, isArticleSaved }) {
         />
       </a>
       <div className="news-card__lables">
-        <Route exact path="/news-explorer-frontend">
+        <Route exact path="/news-explorer-frontend/">
           <button
             type="button"
             aria-label="save"

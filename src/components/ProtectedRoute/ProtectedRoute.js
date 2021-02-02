@@ -9,7 +9,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
         <Component {...props} {...rest} />
       ) : (
         <Redirect
-          to={{ pathname: '/news-explorer-frontend', search: '?showAuth=1' }}
+          to={{ pathname: '/news-explorer-frontend/', search: '?showAuth=1' }}
         />
       )
     }

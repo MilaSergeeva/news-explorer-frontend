@@ -14,7 +14,7 @@ function Footer() {
         <nav className="footer__nav">
           <ul className="footer__nav-links">
             <li>
-              <Link to="/news-explorer-frontend" className="footer__nav-link">
+              <Link to="/news-explorer-frontend/" className="footer__nav-link">
                 <p className="footer__link-to-main">Главная</p>
               </Link>
             </li>
