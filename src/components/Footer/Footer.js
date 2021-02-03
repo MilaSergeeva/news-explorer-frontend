@@ -15,7 +15,7 @@ function Footer() {
           <ul className="footer__nav-links">
             <li>
               <Link to="/news-explorer-frontend/" className="footer__nav-link">
-                <p className="footer__link-to-main">Главная</p>
+                <p className="footer__link-to-main">Main</p>
               </Link>
             </li>
             <li>
@@ -24,7 +24,7 @@ function Footer() {
                 className="footer__nav-link"
                 target="_blank"
               >
-                <p className="footer__link-to-praktikum">Яндекс.Практикум</p>
+                <p className="footer__link-to-praktikum">Яндекс.Praktikum</p>
               </a>
             </li>
           </ul>

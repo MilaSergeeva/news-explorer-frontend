@@ -31,13 +31,13 @@ const PopupWithForm = (props) => (
             className={`popup__btn-save ${
               props.isValid && props.isSubmitting !== true ? 'active-btn' : ''
             }`}
-            data-submitting-label="Сохраняется..."
+            data-submitting-label="Saving..."
             disabled={props.isValid !== true || props.isSubmitting}
           >
             {props.savebtn}
           </button>
           <p className="popup__redirect">
-            или&nbsp;
+            or&nbsp;
             <span className="popup__redirect-to" onClick={props.onRedirect}>
               {props.redirectTo}
             </span>
