@@ -47,7 +47,8 @@ function NewsCard({ article, loggedIn, onToggleClick, isArticleSaved }) {
             className="news-card__save-notification"
             style={{ display: loggedIn ? 'none' : 'inline-block' }}
           >
-            Войдите, чтобы сохранять статьи
+            Login, to save news
+            {/* Войдите, чтобы сохранять статьи */}
           </p>
         </Route>
         <Route exact path="/news-explorer-frontend/saved-news">
@@ -58,9 +59,7 @@ function NewsCard({ article, loggedIn, onToggleClick, isArticleSaved }) {
             className="news-card__delete-btn"
             onClick={handleDeleteArticleCard}
           />
-          <p className="news-card__delete-notification">
-            Убрать из сохранённых
-          </p>
+          <p className="news-card__delete-notification">Remove from saved</p>
         </Route>
       </div>
       <a
