@@ -6,9 +6,10 @@ function GenericNotFound() {
   return (
     <div className="search-result-fail">
       <img className="search-result-fail__img" src={notFound} alt="not-found" />
-      <h3 className="search-result-fail__title">Ничего не найдено</h3>
+      <h3 className="search-result-fail__title">Nothing found</h3>
       <p className="search-result-fail__paragraph">
-        К сожалению по вашему запросу ничего не найдено.
+        Unfortunately, your search returned no results.
+        {/* К сожалению по вашему запросу ничего не найдено. */}
       </p>
     </div>
   );

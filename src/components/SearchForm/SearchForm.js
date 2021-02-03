@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 function SearchForm({ onSearch }) {
   const [placeholderMessage, setPlaceholderMessage] = useState(
-    'Введите тему новости',
+    'Enter news subject',
   );
 
   const [inputValue, setInputValue] = useState('');
@@ -24,7 +24,7 @@ function SearchForm({ onSearch }) {
       onSearch(inputValue);
     } else {
       setInputValue('');
-      setPlaceholderMessage('Нужно ввести ключевое слово');
+      setPlaceholderMessage('You need to enter a keyword');
       localStorage.removeItem('query');
     }
   };
@@ -37,10 +37,9 @@ function SearchForm({ onSearch }) {
 
   return (
     <div className="search-form">
-      <h1 className="search-form__title">Что творится в мире?</h1>
+      <h1 className="search-form__title">What's going on in the world?</h1>
       <p className="search-form__text">
-        Находите самые свежие статьи на любую тему и сохраняйте в своём личном
-        кабинете.
+        Find the latest news on any topic and save it in your profile.
       </p>
       <div className="search-form__input-fild">
         <input
@@ -63,7 +62,7 @@ function SearchForm({ onSearch }) {
           className="search-form__search-button"
           onClick={handleNewsSearch}
         >
-          Искать
+          Search
         </button>
       </div>
     </div>

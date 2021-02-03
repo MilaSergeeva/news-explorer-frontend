@@ -40,17 +40,17 @@ function UserArticlesInfo({ articles }) {
 
   return (
     <div className="user-info">
-      <h5 className="user-info__title">Сохранённые статьи</h5>
+      <h5 className="user-info__title">Saved news</h5>
       <h2 className="user-info__main-info">
-        {currentUser.name}, у вас {counter} сохранённых статей
+        {currentUser.name}, you have {counter} saved news.
       </h2>
       <p className="user-info__additional-info">
-        По ключевым словам:
+        With keywords:
         <span className="user-info__additional-info_font_bold">
           {' '}
           {savedArticlesInfo}
         </span>
-        {articlesSortedTags.length > 3 && 'и' && (
+        {articlesSortedTags.length > 3 && 'and' && (
           <span className="user-info__additional-info_font_bold">
             {articleCount}
           </span>

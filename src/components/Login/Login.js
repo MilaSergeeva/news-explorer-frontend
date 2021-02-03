@@ -33,14 +33,14 @@ const Login = ({
   return (
     <PopupWithForm
       name="login"
-      title="Вход"
-      savebtn="Войти"
+      title="Ligin"
+      savebtn="Login"
       isOpen={isOpen}
       onClose={onClose}
       onRedirect={onRedirect}
       onClick={onClick}
       isValid={isValid}
-      redirectTo="Зарегистрироваться"
+      redirectTo="Register"
       onSubmit={handleLoginSubmit}
       errorMassageOnSubmit={messageOnLogin}
       isSubmitting={isSubmitting}
@@ -50,7 +50,7 @@ const Login = ({
         <input
           type="email"
           name="email"
-          placeholder="Введите email"
+          placeholder="Fill your email"
           className="popup__input"
           minLength="5"
           maxLength="40"
@@ -64,11 +64,11 @@ const Login = ({
       </fieldset>
 
       <fieldset className="popup__input-container">
-        <p className="popup__input-title">Пароль</p>
+        <p className="popup__input-title">Password</p>
         <input
           type="password"
           name="password"
-          placeholder="Введите пароль"
+          placeholder="Fill your password"
           className="popup__input"
           minLength="8"
           maxLength="30"

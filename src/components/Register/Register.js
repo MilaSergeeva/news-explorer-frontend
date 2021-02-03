@@ -36,13 +36,13 @@ const Register = ({
   return (
     <PopupWithForm
       name="regstration"
-      title="Регистрация"
-      savebtn="Зарегистрироваться"
+      title="Registration"
+      savebtn="Register"
       onClose={onClose}
       onClick={onClick}
       isOpen={isOpen}
       isValid={isValid}
-      redirectTo="Войти"
+      redirectTo="Login"
       onRedirect={onRedirect}
       onSubmit={handleRegisterSubmit}
       errorMassageOnSubmit={messageOnRegister}
@@ -53,7 +53,7 @@ const Register = ({
         <input
           type="email"
           name="email"
-          placeholder="Введите email"
+          placeholder="Fill your email"
           className="popup__input"
           minLength="5"
           maxLength="40"
@@ -67,11 +67,11 @@ const Register = ({
       </fieldset>
 
       <fieldset className="popup__input-container">
-        <p className="popup__input-title">Пароль</p>
+        <p className="popup__input-title">Password</p>
         <input
           type="password"
           name="password"
-          placeholder="Введите пароль"
+          placeholder="Fill your password"
           className="popup__input"
           minLength="8"
           maxLength="30"
@@ -90,11 +90,11 @@ const Register = ({
       </fieldset>
 
       <fieldset className="popup__input-container">
-        <p className="popup__input-title">Имя</p>
+        <p className="popup__input-title">Name</p>
         <input
           type="text"
           name="name"
-          placeholder="Введите своё имя"
+          placeholder="Fill your name"
           className="popup__input"
           minLength="2"
           maxLength="30"

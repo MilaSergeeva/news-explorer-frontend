@@ -34,7 +34,7 @@ function Navigation({
             className="header-bar__nav-link color-black"
             onClick={onChangeActiveStatus}
           >
-            <p>Главная</p>
+            <p>Main</p>
           </NavLink>
           <button
             type="button"
@@ -42,7 +42,7 @@ function Navigation({
             className="header-bar__button"
             onClick={onAutorizationClick}
           >
-            Авторизация
+            Register
           </button>
         </div>
       ) : (
@@ -58,7 +58,7 @@ function Navigation({
             className="header-bar__nav-link color-black"
             onClick={onChangeActiveStatus}
           >
-            <p>Главная</p>
+            <p>Main</p>
           </NavLink>
           <NavLink
             exact
@@ -67,7 +67,7 @@ function Navigation({
             className="header-bar__nav-link color-white"
             onClick={onChangeActiveStatus}
           >
-            <p className="header-bar__saved-news">Сохраненные статьи</p>
+            <p className="header-bar__saved-news">Saved news</p>
           </NavLink>
 
           <Link

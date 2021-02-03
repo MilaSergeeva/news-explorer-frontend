@@ -14,19 +14,21 @@ function InfoTooltip({ success, isOpen, onClose, onClick, onRedirect }) {
         {success === true ? (
           <div className="popup__container" onClick={onClick}>
             <h3 className="popup__title popup__title_position">
-              Пользователь успешно зарегистрирован!
+              User registered successfully!
+              {/* Пользователь успешно зарегистрирован! */}
             </h3>
             <span
               className="popup__redirect-to popup__redirect-to_font-size"
               onClick={onRedirect}
             >
-              Войти
+              Login
             </span>
           </div>
         ) : (
           <div className="popup__container" onClick={onClick}>
             <h3 className="popup__title popup__title_position">
-              Что-то пошло не так! Попробуйте еще раз.
+              Something went wrong! Please try again.
+              {/* Что-то пошло не так! Попробуйте еще раз. */}
             </h3>
           </div>
         )}
