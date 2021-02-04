@@ -24,7 +24,7 @@ function Footer() {
                 className="footer__nav-link"
                 target="_blank"
               >
-                <p className="footer__link-to-praktikum">Яндекс.Praktikum</p>
+                <p className="footer__link-to-praktikum">Yandex.Praktikum</p>
               </a>
             </li>
           </ul>
