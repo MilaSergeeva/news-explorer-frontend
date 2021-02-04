@@ -317,8 +317,9 @@ function App() {
           className="page"
           style={{
             backgroundImage: `${
-              pathName === '/news-explorer-frontend/' &&
-              `url(${backgroundImage})`
+              (pathName === '/news-explorer-frontend/' &&
+                `url(${backgroundImage})`) ||
+              (pathName !== '/news-explorer-frontend/saved-news' && `none`)
             }`,
           }}
         >

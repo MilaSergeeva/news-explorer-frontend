@@ -1,6 +1,9 @@
 .footer {
+  /* position: absolute; */
+  /* left: 0; */
+  /* bottom: 0; */
   display: flex;
-  position: relative;
+  /* position: relative; */
   flex-direction: row;
   justify-content: space-between;
   box-sizing: border-box;
@@ -13,6 +16,7 @@
   align-items: center;
   min-height: 81px;
   background-color: #fff;
+  width: 100%;
 }
 
 @media screen and (max-width: 1400px) {
@@ -45,12 +49,18 @@
   }
 }
 
+@media screen and (max-width: 700px) {
+  .footer__copyright {
+    position: absolute;
+    bottom: 20px;
+    left: 36px;
+  }
+}
+
 @media screen and (max-width: 400px) {
   .footer__copyright {
     font-size: 15.9px;
     margin-top: 0;
-    position: absolute;
-    bottom: 20px;
     left: 16px;
   }
 }
@@ -60,10 +70,11 @@
   flex-direction: row;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 700px) {
   .footer__nav {
     width: 100%;
     justify-content: space-between;
+    padding-top: 15px;
   }
 }
 
@@ -75,7 +86,7 @@
   outline: none;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 700px) {
   .footer__nav-links {
     flex-direction: column;
     min-height: 72px;
@@ -100,7 +111,7 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 700px) {
   .footer__link-to-praktikum {
     margin-left: 0;
   }
@@ -124,7 +135,7 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 700px) {
   .footer__sosial-links {
     align-items: start;
   }

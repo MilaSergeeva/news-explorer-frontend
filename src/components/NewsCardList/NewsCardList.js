@@ -24,7 +24,7 @@ function NewsCardList({ loggedIn, articles, savedNews, onToggleClick }) {
 
   return (
     <div className="search-result-success">
-      <h2 className="search-result-success__tile">Результаты поиска</h2>
+      <h2 className="search-result-success__tile">Search results</h2>
       <div className="news-card-list">
         {articles.slice(0, itemsToShow).map((article) => (
           <NewsCard
@@ -43,7 +43,7 @@ function NewsCardList({ loggedIn, articles, savedNews, onToggleClick }) {
           className="search-result-success__button"
           onClick={swowMoreCards}
         >
-          Показать ещё
+          Show more
         </button>
       ) : (
         ''

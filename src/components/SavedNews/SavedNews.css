@@ -7,11 +7,13 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  flex: 1;
+  height: 100%;
 }
 
 @media screen and (max-width: 780px) {
   .saved-news {
-    padding: 40px 0;
+    padding: 40px;
   }
 }
 

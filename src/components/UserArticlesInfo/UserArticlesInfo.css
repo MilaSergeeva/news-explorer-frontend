@@ -2,7 +2,7 @@
   padding: 40px 104px 56px 104px;
   background-color: #fff;
   color: #000;
-  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-family: 'Roboto', 'Inter', Arial, sans-serif;
   font-weight: 400;
 }
 
@@ -28,11 +28,17 @@
 }
 
 .user-info__main-info {
-  font-family: "Roboto Slab", "Inter", Arial, sans-serif;
+  font-family: 'Roboto Slab', 'Inter', Arial, sans-serif;
   font-size: 40px;
   line-height: 1.15;
   margin-bottom: 30px;
   max-width: 50%;
+}
+
+@media screen and (max-width: 800px) {
+  .user-info__main-info {
+    max-width: 80%;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -40,6 +46,7 @@
     font-size: 30px;
     max-width: 100%;
     margin-bottom: 16px;
+    max-width: 80%;
   }
 }
 

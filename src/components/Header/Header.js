@@ -60,7 +60,7 @@ function Header({
           />
         </div>
       </Route>
-      <Route exact path="/saved-news">
+      <Route exact path="/news-explorer-frontend/saved-news">
         <SavedNewsHeader
           isMenuOpened={isMenuOpened}
           onMenuTagClick={onMenuTagClick}

@@ -5,7 +5,7 @@ function Preloader() {
   return (
     <div className="preloader">
       <div className="preloader__icon" />
-      <p className="preloader__text">Идет поиск новостей...</p>
+      <p className="preloader__text">Searching...</p>
     </div>
   );
 }

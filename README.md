@@ -1,26 +1,66 @@
-# Дипломный проект
+# NEWS EXPLORER
 
-Описание
+## Study project at Practicum by Yandex
 
-Двучстраничный сайт 'News explorer', позполяет пользователям находить новасти по ключевому слову и сохранять нужные ссылки в своем аккаунте.
+It is a full-stack application to allow users find and save news.
 
-Используемые технологии
+To ba able to save news user need to register himself and to login.
 
-Технологически проект выполнен с помощью фреймворка React. Стили прописаны с использованием CSS. В проэкте создана Nested файловая структура по БЭМ
-Сайт выполнен на русском языке.
-Для позиционироапния объектов применялись Flex и Grid разметки.
+### :arrow_right: Links to test
 
-Сайт является адаптивным.
+Backend https://news-exploer.herokuapp.com/ <br>
+Frontend https://github.com/MilaSergeeva/news-explorer-frontend.git
+Deploy GH-pages https://milasergeeva.github.io/news-explorer-frontend/
 
-Доработки
+### :hammer_and_pick: Technologies were used
 
-Основной функционал сайта находится в доработке. Предстоит настроить аутентификацию и авторизацию, так же поиск и получение новостей из бекенда
+- JavaScript ES6 - object-oriented programming, fetch API (GET, PUT, DELETE)
 
-Запуск
+- React.js (functional and class components, Context, Ref, Redirect, Route, Switch functions etc.),
 
-сборка - npm run build
-npm run start
+- semantic HTML5, styles - CSS3 (Flexbox, Grid, adaptive layout),
 
-Проек собрат с помощью Webpack
+- JSX,
 
-https://milasergeeva.github.io/news-explorer-frontend/
+- BEM - Block Element Modifier is a methodology,
+
+- React hooks (useState, useEffect, useContext, useRef, useHistory),
+
+- Create React App build,
+
+- Node.js, Express.js - API based on REST principles for working with the database, authentication/authorization,
+
+- MongoDb, Mongoose - schema,
+
+- Yandex.Cloud service Virtual Machine, Heroku PAAS,
+
+- Client-side and user-side validation, joi/celebrate modules, jwt-token,
+
+- BodyParser, DotENV, bCrypt, Nodemon,
+
+- Access and error logs are maintained using the winston module,
+
+- Centralized error handling with sending correct statuses and error messages to requests,
+
+- ESLint airbnb-base,
+
+- Figma, Pixel perfect,
+
+- Git versions, branches.
+
+### Preview
+
+Main page<br>
+<img src="./screenshots/main_page.png" width="75%" height="75%"><br>
+
+<br>
+<img src="./screenshots/saved_news_main.png" width="75%" height="75%"><br>
+
+Registration <br>
+<img src="./screenshots/registration.png" width="75%" height="75%"><br>
+
+<br>
+<img src="./screenshots/Search_form.png" width="75%" height="75%"><br>
+
+<br>
+<img src="./screenshots/search_result.png" width="75%" height="75%"><br>
