@@ -9,7 +9,7 @@ To ba able to save news user need to register himself and to login.
 ### :arrow_right: Links to test
 
 Backend https://news-exploer.herokuapp.com/ <br>
-Frontend https://github.com/MilaSergeeva/news-explorer-frontend.git
+Frontend https://github.com/MilaSergeeva/news-explorer-frontend.git<br>
 Deploy GH-pages https://milasergeeva.github.io/news-explorer-frontend/
 
 ### :hammer_and_pick: Technologies were used
