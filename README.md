@@ -50,17 +50,17 @@ Deploy GH-pages https://milasergeeva.github.io/news-explorer-frontend/
 
 ### Preview
 
-Main page<br>
-<img src="./screenshots/main_page.png" width="75%" height="75%"><br>
+Main page<br/>
+<img src="./screenshots/main_page.png" width="75%" height="75%"><br/>
 
-<br>
-<img src="./screenshots/saved_news_main.png" width="75%" height="75%"><br>
+User main page with saved news <br/>
+<img src="./screenshots/saved_news_main.png" width="75%" height="75%"><br/>
 
-Registration <br>
-<img src="./screenshots/registration.png" width="75%" height="75%"><br>
+Registration <br/>
+<img src="./screenshots/registration.png" width="75%" height="75%"><br/>
 
-<br>
-<img src="./screenshots/Search_form.png" width="75%" height="75%"><br>
+<br/>
+<img src="./screenshots/Search_form.png" width="75%" height="75%"><br/>
 
-<br>
-<img src="./screenshots/search_result.png" width="75%" height="75%"><br>
+<br/>
+<img src="./screenshots/search_result.png" width="75%" height="75%"><br/>
