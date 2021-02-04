@@ -52,6 +52,8 @@ Deploy GH-pages https://milasergeeva.github.io/news-explorer-frontend/
 
 Main page<br/>
 <img src="./screenshots/main_page.png" width="75%" height="75%"><br/>
+<br/>
+<br/>
 
 User main page with saved news <br/>
 <img src="./screenshots/saved_news_main.png" width="75%" height="75%"><br/>
